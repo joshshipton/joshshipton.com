@@ -79,6 +79,8 @@ form {
 
 #post-date {
     font-weight: normal; /* Make date less bold than title */
+    font-weight: lighter;
+
 }
 
 #post-peek {
