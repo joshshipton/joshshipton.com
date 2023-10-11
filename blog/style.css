@@ -35,3 +35,52 @@ a {
     text-decoration-color: black;
     color: black; /* Set the link text color to black */
 }
+
+#top-nav-bar{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+/* Apply styling to the form */
+form {
+    display: flex;
+    justify-content: space-between;
+    width: 300px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+#center {
+    text-align: center; /* Center text horizontally */
+    display: flex;
+    justify-content: center; /* Center text vertically */
+    align-items: center;
+    }
+
+
+#a-single-post{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid black; /* Add borders to each post */
+
+}
+
+
+
+
+
+#post-title {
+    font-weight: bold;
+    font-size: larger;
+}
+
+#post-date {
+    font-weight: normal; /* Make date less bold than title */
+}
+
+#post-peek {
+    margin: 10px 0;
+}
