@@ -1,0 +1,37 @@
+body {
+    line-height: 1.4;
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 50px auto;
+    max-width: 650px;
+}
+
+#maincontent {
+    max-width: 42em;
+    margin: 15px auto;
+}
+
+h2 {
+    font-size: 24px; /* You can adjust the size as needed */
+}
+
+ul {
+    list-style-type: disc; /* Change the bullet style as needed */
+    margin-left: 20px;
+}
+
+p {
+    margin-bottom: 10px; /* Add space between paragraphs */
+}
+
+.ai-message {
+    background-color: white;
+    color: white;
+    /* Add additional styles for this element as needed */
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-color: black;
+    color: black; /* Set the link text color to black */
+}
