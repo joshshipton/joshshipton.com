@@ -1,7 +1,7 @@
 let postData = [
     {
       "title": "Hello world",
-      "link": "https://joshshipton.com/blog/hello-world",
+      "link": "https://joshshipton.com/hello-world",
       "date": "11/10/2023",
       "peek": "I've finally decided to go ahead and start a blog. Blog is probably pushing it, to be honest. You can think of this as a collective home for all of my ramblings that won't get me canceled.",
       "tags": ["first-post, hello world"],
