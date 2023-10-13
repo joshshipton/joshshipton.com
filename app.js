@@ -1,7 +1,7 @@
 let postData = [
     {
       "title": "Hello world",
-      "link": "https://joshshipton.com/blog/hello-world",
+      "link": "/hello-world.html",
       "date": "11/10/2023",
       "peek": "I've finally decided to go ahead and start a blog. Blog is probably pushing it, to be honest. You can think of this as a collective home for all of my ramblings that won't get me canceled.",
       "tags": ["first-post, hello world"],
@@ -41,4 +41,42 @@ function getRecentPosts(){
   }
 }
 
-getRecentPosts();
+// function to add the nav bar to the top of every file, just cause I ceebs doing it
+function addNavBar(){
+  console.log("brrrrrrr");
+    // Create the nav element
+  const navElement = document.createElement("nav");
+  navElement.setAttribute("id", "top-nav-bar");
+
+  // Create the paragraph element
+  const paragraphElement = document.createElement("p");
+
+  // Create the anchor elements and add them to the paragraph
+  const homeLink = document.createElement("a");
+  homeLink.href = "index.html";
+  homeLink.textContent = "Home";
+
+  const reachMeLink = document.createElement("a");
+  reachMeLink.href = "reach-me.html";
+  reachMeLink.textContent = "Reach me";
+
+  const blogsLink = document.createElement("a");
+  blogsLink.href = "blog-roll.html";
+  blogsLink.textContent = "Blogs I like";
+
+  // Append the anchor elements to the paragraph element
+  paragraphElement.appendChild(homeLink);
+  paragraphElement.appendChild(document.createTextNode(" • "));
+  paragraphElement.appendChild(reachMeLink);
+  paragraphElement.appendChild(document.createTextNode(" • "));
+  paragraphElement.appendChild(blogsLink);
+
+  // Append the paragraph element to the nav element
+  navElement.appendChild(paragraphElement);
+
+  // Add the nav element as the first child of the body
+  document.body.insertBefore(navElement, document.body.firstChild);
+}
+
+addNavBar();
+getRecentPosts(); 
