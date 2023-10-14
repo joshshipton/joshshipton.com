@@ -1,12 +1,14 @@
-folder_name = input("chuck us the name of the .md file: ")
+folder_name = input("chuck us the name of the .txt file: ")
 
 with open(folder_name, 'r') as file:
     content =  file.readlines()
 
 # need to change md into html here
 
-new_name = folder_name.replace('.md', '.html')
+new_name = folder_name.replace('.txt', '.html')
 
+
+content = [item for item in content if item != "\n"]
 
 with open(new_name,'w') as file:
     # writes the start of the head plus the title
