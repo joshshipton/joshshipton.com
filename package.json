@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/joshshipton/personal_website#readme",
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.1",
-    "@vercel/analytics": "^1.1.1"
+    "@supabase/supabase-js": "^2.38.1"
   }
 }
