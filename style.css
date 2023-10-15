@@ -52,7 +52,7 @@ form {
     margin: 0 auto; /* Center the form horizontally */
 }
 
-#center {
+.center {
     text-align: center; /* Center text horizontally */
     display: flex;
     justify-content: center; /* Center text vertically */

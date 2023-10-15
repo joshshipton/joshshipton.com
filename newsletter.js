@@ -1,5 +1,5 @@
 let form = document.getElementById('newsletter');
-let txt = document.getElementsByClassName('newsletter-label');
+let txt = document.getElementById('newsletter-label');
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -15,8 +15,9 @@ form.addEventListener("submit", async function(e) {
     alert("Signed up :)");
     form.reset();
     form.remove();
-    txt[0].remove();
-  } else {
+    txt.remove();
+  }
+    else {
     alert("Failed to sign up.");
   }
 });
