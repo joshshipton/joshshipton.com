@@ -5,7 +5,8 @@ let postData = [
       "date": "11/10/2023",
       "peek": "I've finally decided to go ahead and start a blog. Blog is probably pushing it, to be honest. You can think of this as a collective home for all of my ramblings that won't get me canceled.",
       "tags": ["first-post, hello world"],
-    }
+    },
+    {'title': 'TESTING PYTHON SCRIPT','link': '/test.html','date': '69/420/2003','peek': 'A copypasta is a block of text copied and pasted t',}
   ];
 
 

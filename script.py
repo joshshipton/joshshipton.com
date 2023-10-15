@@ -1,31 +1,49 @@
-folder_name = input("chuck us the name of the .txt file: ")
+#!/usr/bin/env python
 
-with open(folder_name, 'r') as file:
-    content =  file.readlines()
+import sys
 
-# need to change md into html here
+#usage ./script {.txt file}
+def main(argv):
+    # Do something with argv
+    print(f"Received arguments: {argv}")
 
-new_name = folder_name.replace('.txt', '.html')
+    try:
+        folder_name = argv[0]
+    except ValueError:
+        return print("Correct usage: ./script {.txtfile}")
+
+    try:
+        with open(folder_name, 'r') as file:
+            content = file.readlines()
+    except FileNotFoundError:
+        return print("Correct usage: ./script {.txtfile}")
+
+    new_name = folder_name.replace('.txt', '.html')
+
+    content = [item.strip() for item in content if item.strip() != ""]
+    title = content[0]
+    date = content[1]
+
+    with open(new_name, 'w') as file:
+        file.write("""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="style.css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>"""
+        + new_name + """</title></head><body>""")
+        
+        file.write(f"<h1 id='title'>{title}</h1>")
+        
+        for i in range(2, len(content)):
+            if content[i].startswith("HEADER"):
+                file.write(f"<h3>{content[i][7:]}</h3>")
+            else:
+                file.write(f"<p>{content[i]}</p>")
+                
+        file.write(f"<p>Published on {date} </p>")
+        
+        file.write("""</body><script src="app.js"></script></html>""")
+
+    print(f"HTML file '{new_name}' has been created from '{folder_name}'.")
+    print("Updating Json Object Now")
+    print(",{" + f"'title': '{title}', 'link': '/{new_name}', 'date': '{date}', 'peek': '{content[2][:50]}'" + "}")
 
 
-content = [item for item in content if item != "\n"]
-
-with open(new_name,'w') as file:
-    # writes the start of the head plus the title
-    file.write("""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="style.css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>`
-    """ + content[0])
-    # writes the rest of the head and the nav bar
-    file.write("""</title></head><body><nav id="top-nav-bar"><p><a href="index.html">Home</a> • <a href="reach-me.html">Reach me</a> • <a href="blog-roll.html">Blogs I like</a> </p></nav>""")
-    # now read the content from the thingo
-    for i in range(2, len(content)):
-        file.write(content[i])
-    
-    # close the html folder
-    file.write("""</body></html>""")
-
-
-
-
-print(f"HTML file '{new_name}' has been created from '{folder_name}'.")
-
-print(content)
+if __name__ == "__main__":
+    main(sys.argv[1:])

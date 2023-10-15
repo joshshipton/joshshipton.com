@@ -1,0 +1,23 @@
+{
+  "name": "personal_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshshipton/personal_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshshipton/personal_website/issues"
+  },
+  "homepage": "https://github.com/joshshipton/personal_website#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.1"
+  }
+}

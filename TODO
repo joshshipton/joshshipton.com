@@ -1,0 +1,20 @@
+1. Finish Python Script to turn the template into html
+    add support for images as well
+
+2. Update JSON object and make JSON object a seperate file with data from .txt file
+
+3. actually write blog posts.....
+
+4. make some kind of backend api that emails can be sent to and then commited to the db. Right now this doesn't work at all....
+
+
+
+
+
+
+
+
+
+
+
+xx. Make a local database.db to store the blog posts? can just have an sqllite command in a bash file that does it automatically, this can come later thoughts
