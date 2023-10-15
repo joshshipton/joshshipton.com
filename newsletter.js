@@ -15,7 +15,7 @@ form.addEventListener("submit", async function(e) {
     alert("Signed up :)");
     form.reset();
     form.remove();
-    txt.remove();
+    txt[0].remove();
   } else {
     alert("Failed to sign up.");
   }
