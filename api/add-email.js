@@ -1,13 +1,20 @@
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = 'https://rdxhiwxfooidvexdrgxs.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'; 
+const supabaseKey = process.env.SUPABASE_KEY
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+
 module.exports = async (req, res) => {
     if (req.method === 'POST') {
+    console.log("actually got code");
       const { email } = req.body;
+
+      if (!email) {
+        return res.status(400).json({ error: 'Email is missing' });
+      }
+  
       const { data, error } = await supabase
         .from('emails')
         .insert([{ email }]);
