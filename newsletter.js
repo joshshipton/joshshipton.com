@@ -18,6 +18,6 @@ form.addEventListener("submit", async function(e) {
     txt.remove();
   }
     else {
-    alert("Failed to sign up.");
+    alert("Already Signed up");
   }
 });
