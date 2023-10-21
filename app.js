@@ -12,8 +12,8 @@ let postData = [
 
 // function to make and fill the recent posts part of the "blog"
 function getRecentPosts(){
-  for (let i = 0; i < postData.length; i++) {
-      let content = postData[i];
+  for (let i = postData.length - 1; i >= 0; i--) {
+    let content = postData[i];
 
       // Create elements for title (as an <a> tag), date, and peek
       let title = document.createElement("a");
