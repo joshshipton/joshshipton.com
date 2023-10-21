@@ -1,0 +1,6 @@
+New post, you can also read it here: {link}
+
+{post}
+
+
+If you don't like these posts you can't unsubscribe because I havn't built that feature yet. You can block me though. 

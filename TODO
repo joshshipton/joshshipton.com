@@ -7,13 +7,9 @@
 
 4. a way to actually send emails, an ON UPDATE to blog posts would work. Another thing that would work is a script that just loops thru the emails in the db
 
+5. write code that when they sign up first tries to send an email to them before commiting the email to the db
 
-
-
-
-
-
-
+6. add a "i have no attention span buttom" that people can press to toggle images 
 
 
 
