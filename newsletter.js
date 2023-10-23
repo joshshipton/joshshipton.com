@@ -24,6 +24,7 @@ if(given_email){
             txt.remove();
             localStorage.setItem('given_email', 'true');
         } else {
+            console.log(response);
             alert("Already Signed up");
         }
     });
