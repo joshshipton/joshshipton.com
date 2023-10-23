@@ -10,7 +10,7 @@ if(given_email){
     form.addEventListener("submit", async function(e) {
         e.preventDefault();
         const email = form.elements.email.value;
-    
+        console.log(email);
         const response = await fetch('/api/add-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
