@@ -20,7 +20,6 @@ module.exports = async (req, res) => {
         if (error) {
             return res.status(400).json({ error: `Supabase error: ${error.message}` });
         }
-
         return res.status(200).json({ data });
     } else {
         res.status(405).end(); // Method not allowed

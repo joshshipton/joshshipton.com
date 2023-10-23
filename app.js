@@ -6,7 +6,7 @@ let postData = [
       "peek": "I've finally decided to go ahead and start a blog. Blog is probably pushing it, to be honest. You can think of this as a collective home for all of my ramblings that won't get me canceled.",
       "tags": ["first-post, hello world"],
     }
-    ,{'title': 'The insane ROI of being bored', 'link': '/boredom.html', 'date': '21/10/2023', 'peek': "when you’re doing nothing a lot more things suddenly become more fun than what you’re doing right now."}
+    ,{'title':"Mabye being bored isn't so bad", 'link': '/boredom.html', 'date': '21/10/2023', 'peek': "when you’re doing nothing a lot more things suddenly become more fun than what you’re doing right now."}
   ];
 
 
