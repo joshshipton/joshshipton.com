@@ -1,34 +1,31 @@
 let form = document.getElementById('newsletter');
 let txt = document.getElementById('newsletter-label');
 
-let given_email = False; 
+let given_email = localStorage.getItem('given_email') === 'true';
 
 if(given_email){
     form.remove();
     txt.remove();
-}
-else{
+} else {
     form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const email = form.elements.email.value;
+        e.preventDefault();
+        const email = form.elements.email.value;
     
-    const response = await fetch('/api/add-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-    });
+        const response = await fetch('/api/add-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
     
-    if (response.ok) {
-        alert("Signed up :)");
-        form.reset();
-        form.remove();
-        txt.remove();
-        given_email = True; 
-
-    }
-        else {
-        alert("Already Signed up");
-    }
+        if (response.ok) {
+            alert("Signed up :)");
+            form.reset();
+            form.remove();
+            txt.remove();
+            localStorage.setItem('given_email', 'true');
+        } else {
+            alert("Already Signed up");
+        }
     });
 }
 
