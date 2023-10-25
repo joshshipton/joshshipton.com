@@ -13,7 +13,7 @@ def main(argv):
         return print("Correct usage: ./script {.txtfile}")
 
     try:
-        with open(folder_name, 'r') as file:
+        with open(folder_name, 'r', encoding='utf-8') as file:
             content = file.readlines()
     except FileNotFoundError:
         return print("Correct usage: ./script {.txtfile}")
