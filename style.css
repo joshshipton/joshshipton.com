@@ -1,3 +1,10 @@
+/* Your other CSS rules can go here */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+/* More of your CSS rules can follow */
+
+
 body {
     line-height: 1.4;
     font-size: 16px;
@@ -31,10 +38,14 @@ p {
 }
 
 a {
-    text-decoration: underline;
-    text-decoration-color: black;
+    text-decoration: none; /* Remove default underline if necessary */
+    border-bottom: 1px dotted black; /* Set the color and style of the underline */
     color: black; /* Set the link text color to black */
 }
+
+a:hover {
+    border-bottom: 1.5px solid black; 
+  }
 
 #top-nav-bar{
     position: absolute;

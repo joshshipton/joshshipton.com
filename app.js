@@ -46,7 +46,7 @@ function getRecentPosts(){
 
 // function to add the nav bar to the top of every file, just cause I ceebs doing it
 function addNavBar(){
-  console.log("brrrrrrr");
+  console.log("code go brrrrrrr");
     // Create the nav element
   const navElement = document.createElement("nav");
   navElement.setAttribute("id", "top-nav-bar");
@@ -64,8 +64,8 @@ function addNavBar(){
   reachMeLink.textContent = "Reach me";
 
   const blogsLink = document.createElement("a");
-  blogsLink.href = "blog-roll.html";
-  blogsLink.textContent = "Blogs I like";
+  blogsLink.href = "quotes.html";
+  blogsLink.textContent = "Quote bank";
 
   // Append the anchor elements to the paragraph element
   paragraphElement.appendChild(homeLink);
