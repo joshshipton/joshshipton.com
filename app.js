@@ -8,7 +8,7 @@ let postData = [
     }
     ,{'title':"Mabye being bored isn't so bad", 'link': '/boredom.html', 'date': '21/10/2023', 'peek': "when you’re doing nothing a lot more things suddenly become more fun than what you’re doing right now."},
     {'title': 'If you don’t like something. maybe you just haven’t done it enough', 'link': '/enjoying-things.html', 'date': '25/10/2023', 'peek': 'Life hack I’ve realized lately. Pretty much anythi'}
-
+    ,{'title': 'Why you should outsource your opinions', 'link': '/opinions.html', 'date': '3/11/2023', 'peek': 'Epistemology is fucked. knowing things, and knowin'}
   ];
 
 
