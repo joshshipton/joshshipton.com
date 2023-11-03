@@ -16,7 +16,7 @@ body {
     font-size: 16px;
     padding: 0 10px;
     margin: 50px auto;
-    max-width: 650px;
+    max-width: 850px;
     font-family: 'Geist', sans-serif;
 }
 
@@ -125,4 +125,18 @@ form {
     /* Set the height of the container */
     text-align: center;
     /* Center text when it wraps */
+}
+
+
+/* Adds more space between list items */
+
+li {
+    margin-bottom: 20px;
+}
+
+
+/* Makes the list numbers bold */
+
+li::before {
+    font-weight: bold;
 }
