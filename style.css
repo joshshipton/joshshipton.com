@@ -140,3 +140,23 @@ li {
 li::before {
     font-weight: bold;
 }
+
+
+/* QUOTES */
+
+.quotes-title {
+    text-align: center;
+}
+
+.quotes-container {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.quotes-container p {
+    padding: 20px;
+    margin-bottom: 25px;
+}

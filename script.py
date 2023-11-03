@@ -56,7 +56,7 @@ def main(argv):
 
         file.write(f"<p>Published on {date} </p>")
 
-        file.write("""</body><script src="app.js"></script></html>""")
+        file.write("""</body><script src="js/app.js"></script></html>""")
 
     print(f"HTML file '{new_name}' has been created from '{folder_name}'.")
     print("Updating Json Object Now")

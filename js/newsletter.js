@@ -3,7 +3,7 @@ let txt = document.getElementById('newsletter-label');
 
 let given_email = localStorage.getItem('given_email') === 'true';
 
-if(given_email){
+if (given_email) {
     form.remove();
     txt.remove();
 } else {
@@ -16,7 +16,7 @@ if(given_email){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
         });
-    
+
         if (response.ok) {
             alert("Signed up :)");
             form.reset();
@@ -29,4 +29,3 @@ if(given_email){
         }
     });
 }
-
