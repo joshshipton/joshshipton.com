@@ -18,23 +18,24 @@ def get_link(filename):
     return link
 
 def get_data_from_supabase():
-    url: str = 'https://your-supabase-url.supabase.co'  # Replace with your actual Supabase URL
+    url: str = 'https://rdxhiwxfooidvexdrgxs.supabase.co'  # Replace with your actual Supabase URL
     key: str = os.getenv('SUPABASE_KEY')  # Make sure this matches the environment variable storing your Supabase key
     supabase = supabase_py.create_client(url, key)
     
     response = supabase.table('emails').select('email').execute()
     
-    # Check the response status code
-    if response.status_code == 200:
-        # Extract the email data from the response
-        email_data = response.json()  # Parse the JSON response into a dictionary
+    # Check if there is an error key in the response
+    if 'error' in response:
+        # Handle any errors - print the error message and return an empty list
+        print(f"Error: {response['error']}")
+        return []
+    else:
+        # Assume the response contains the data directly if there's no error
+        email_data = response['data']
         emails = [item['email'] for item in email_data]
         print(emails)
         return emails
-    else:
-        # Handle any errors - print the error message and return an empty list
-        print(f"Error: {response.status_code}, {response.text}")
-        return []
+
 
 # Function to send emails to a list of email addresses
 
@@ -65,11 +66,20 @@ def send_emails(email_list, link):
 
     server.quit()
 
+def print_emails(lst):
+   print("\n-=-=-=-=-=-=-=-=-=-=-=-=-")
+
+   for email in lst:
+        print(email, end=" ")
+   print("\n-=-=-=-=-=-=-=-=-=-=-=-=-")
+
 
 def main(filename):
     link = get_link(filename)
     email_list = get_data_from_supabase()
-    send_emails(email_list, link)
+    print_emails(email_list)
+   #  doesnt work but at least I can pull all the emails 
+   #  send_emails(email_list, link)
 
 
 if __name__ == "__main__":
