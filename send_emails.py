@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 import supabase_py
 import smtplib
@@ -30,6 +29,7 @@ def get_data_from_supabase():
         # Extract the email data from the response
         email_data = response.json()  # Parse the JSON response into a dictionary
         emails = [item['email'] for item in email_data]
+        print(emails)
         return emails
     else:
         # Handle any errors - print the error message and return an empty list
