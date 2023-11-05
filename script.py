@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import sys
-
+p
 # Smart quotes mapping
 smart_quotes_mapping = {
     '‘': "'",  # Left single quotation mark to plain single quote

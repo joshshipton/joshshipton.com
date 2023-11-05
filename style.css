@@ -129,6 +129,13 @@ form {
     /* Center text when it wraps */
 }
 
+/* needs to be in a div idk why */
+.dead-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* This will take the full height of the viewport */
+  }
 
 /* Adds more space between list items */
 
@@ -171,3 +178,5 @@ li::before {
   font-style: italic;
 
 }
+
+
