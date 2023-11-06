@@ -1,9 +1,3 @@
-/* Your other CSS rules can go here */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
-
-/* More of your CSS rules can follow */
-
 @font-face {
     font-family: 'Geist';
     src: url('/fonts/Geist-Regular.otf') format('opentype');
@@ -102,6 +96,7 @@ form {
     margin-top: 15vh;
 }
 
+/* For the recent posts thingo */
 #post-title {
     font-weight: bold;
     font-size: larger;
@@ -117,41 +112,38 @@ form {
     margin: 10px 0;
 }
 
+/* center txt */
 .centered-text {
     display: flex;
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     height: 200px;
-    /* Set the height of the container */
     text-align: center;
-    /* Center text when it wraps */
 }
 
-/* needs to be in a div idk why */
+
+/* makes something dead-center of the page, needs to be in a div */
 .dead-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh; /* This will take the full height of the viewport */
+    height: 70vh;
   }
 
-/* Adds more space between list items */
 
+
+/* Less Ugly lists */
 li {
+
     margin-bottom: 20px;
 }
-
-
-/* Makes the list numbers bold */
 
 li::before {
     font-weight: bold;
 }
 
 
-/* QUOTES */
+/* For the quotes page */
 
 .quotes-title {
     text-align: center;
@@ -171,8 +163,9 @@ li::before {
 
 }
 
+/* For when i want in post quotes */
 .block-quote {
-  border-left: 5px solid #808080; /* Gray color */
+  border-left: 5px solid #808080;
   margin: 1em 0;
   padding-left: 1em;
   font-style: italic;
