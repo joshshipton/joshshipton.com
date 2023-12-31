@@ -19,7 +19,7 @@
   <p>test</p>
   <article class="prose">
     <h1>{post.title}</h1>
-    <div>{@html htmlContent}</div> <!-- Render the HTML content here -->
+    <div>{@html htmlContent}</div> 
     <p>Created on: {post.date_created}</p>
     <p>Last Edited: {post.date_last_edited}</p>
   </article>
