@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/edit/add-new-words/+page.svelte";
