@@ -14,10 +14,10 @@
   {#each posts as post}
     <div>
       <a href={`/post/${post.post_link}`}>
-        <p class="text-lg font-bold text-left hover:underline " >{post.title}</p>
+        <p class="text-lg font-bold text-left hover:underline" >{post.title}</p>
 
 
-        <p class="text-sm text-light text-gray-500 text-left">{post.date_created}</p>
+        <p class="text-sm text-light text-left">{post.date_created}</p>
         <p class="text-sm text-left">{post.content_peek}...</p>
       </a>
     </div>
