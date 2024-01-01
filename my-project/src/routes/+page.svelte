@@ -18,7 +18,7 @@
 
 
         <p class="text-sm text-light text-gray-500 text-left">{post.date_created}</p>
-        <p class="text-sm text-left">{post.content_peek}</p>
+        <p class="text-sm text-left">{post.content_peek}...</p>
       </a>
     </div>
   {/each}

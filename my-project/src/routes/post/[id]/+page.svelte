@@ -16,11 +16,10 @@
     });
   </script>
   
-  <p>test</p>
   <article class="prose">
-    <h1>{post.title}</h1>
+    <p class="font-bold text-3xl text-left py-6 mt-6">{post.title}</p>
     <div>{@html htmlContent}</div> 
-    <p>Created on: {post.date_created}</p>
-    <p>Last Edited: {post.date_last_edited}</p>
+    <p class="font-light text-sm py-6">{post.date_created}</p>
+
   </article>
   
