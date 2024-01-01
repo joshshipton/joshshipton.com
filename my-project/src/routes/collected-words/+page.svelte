@@ -1,3 +1,13 @@
-<h1>hi my name is Josh </h1>
+<script>
+    export let data;
+    const { quotes } = data;
+</script>
 
-<!-- i feel like I wanna rename this to something like " texts ive found and liked" cause it should be passages and stuff as well as texts -->
+<div>
+    {#each quotes as quote}
+        <div class="quote">
+            <p>{quote.content}</p>
+            <p><em>— {quote.author}</em></p>
+        </div>
+    {/each}
+</div>
