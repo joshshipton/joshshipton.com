@@ -11,7 +11,7 @@
 >
   <a href="/">home</a>
   •
-  <a href="/collected-words">collected words</a>
+  <a href="/collected-words">word collection</a>
   •
   <a href="/stream">thought stream</a>
   •
