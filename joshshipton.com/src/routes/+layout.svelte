@@ -7,8 +7,8 @@
 </svelte:head>
 
 <nav
-  class="absolute top-1 left-1/2 transform -translate-x-1/2 text-lg whitespace-nowrap py-1 gap-2 flex-row flex"
->
+  class="absolute top-1 left-1/2 transform -translate-x-1/2 text-lg whitespace-nowrap py-1 gap-2 flex-row flex sm:text-sm md:text-base lg:text-lg"
+>s
   <a href="/">home</a>
   •
   <a href="/collected-words">collected words</a>
@@ -17,7 +17,6 @@
   •
   <a href="/reach-me">reach me</a>
 </nav>
-
 <body>
   <slot />
 </body>
