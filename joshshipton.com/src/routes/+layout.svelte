@@ -7,7 +7,7 @@
 </svelte:head>
 
 <nav 
- class="absolute top-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-sm md:text-base lg:text-lg">
+ class="absolute top-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-md md:text-base lg:text-lg">
 
 
 

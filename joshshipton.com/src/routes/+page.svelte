@@ -6,7 +6,7 @@
 <div>
 <p class="text-3xl font-bold text-center">Hi!</p>
 <p class="text-sm text-center">
-  I'm Josh, I made a blog because <a href="https://www.benkuhn.net/">people</a> on
+  I'm Josh, I made a blog because <a href="/post/why-blog">people</a> on
   the internet told me it was a good idea. (I'm easily influenced)
 </p>
 <div class="flex flex-col mx-4 gap-2">
