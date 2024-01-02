@@ -6,9 +6,11 @@
   <title>Josh Shipton</title>
 </svelte:head>
 
-<nav
-  class="absolute top-1 left-1/2 transform -translate-x-1/2 text-lg whitespace-nowrap py-1 gap-1 flex-row flex sm:text-sm md:text-base lg:text-lg"
->
+<nav 
+ class="absolute top-0 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-sm md:text-base lg:text-lg">
+
+
+
   <a href="/">home</a>
   •
   <a href="/collected-words">word collection</a>
