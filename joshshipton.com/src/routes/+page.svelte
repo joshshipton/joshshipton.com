@@ -3,7 +3,7 @@
   const { posts } = data;
   console.log(posts);
 </script>
-
+<div>
 <p class="text-3xl font-bold text-center">Hi!</p>
 <p class="text-sm text-center">
   I'm Josh, I made a blog because <a href="https://www.benkuhn.net/">people</a> on
@@ -23,3 +23,5 @@
     </div>
   {/each}
 </div>
+</div>
+

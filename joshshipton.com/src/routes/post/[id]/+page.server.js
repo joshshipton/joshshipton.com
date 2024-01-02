@@ -16,7 +16,6 @@ export const load = async ({ params }) => {
     throw new Error("Error fetching post");
   }
 
-  console.log(post)
   return {
     post,
   };
