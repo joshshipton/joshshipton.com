@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { enhance } from '$app/forms';
+  import { enhance } from "$app/forms";
 
   export let data;
   const { posts } = data;
@@ -18,6 +18,20 @@
       localStorage.setItem("subscribed", "true");
     }
   }
+
+  function nosub() {
+    if (
+      confirm(
+        "If you ever change your mind, just refresh local-storage or open the page in a private window to get the option again."
+      )
+    ) {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("subscribed", "true");
+      }
+      // refresh the page
+      location.reload();
+    }
+  }
 </script>
 
 <div>
@@ -28,8 +42,7 @@
   </p>
   <!-- TODO check in local storage if they have subscribed, if they have hide it -->
   {#if isSubscribed}
-    <div>
-    </div>
+    <div></div>
   {:else}
     <div class="flex flex-col items-center">
       <!-- <p class="text-sm text-center">If you like these posts, consider subscribing,</p> -->
@@ -43,21 +56,28 @@
           type="email"
           name="email"
           placeholder="you@example.com"
-          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black"
+          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-40"
           required
         />
         <input
           type="text"
           name="name"
-          placeholder="Name"
-          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black"
+          placeholder="name"
+          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-16"
           required
         />
         <button
           type="submit"
-          class=" hover:underline text-black font-bold py-2 px-4 rounded transition duration-200"
+          class=" hover:underline text-black font-bold py-2 px-2 rounded transition duration-200"
         >
           subscribe??
+        </button>
+        <button
+          class="flex flex-row hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
+          type="button"
+          on:click={nosub}
+        >
+          no thanks
         </button>
       </form>
     </div>
