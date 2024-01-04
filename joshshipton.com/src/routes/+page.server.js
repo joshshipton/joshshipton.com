@@ -14,3 +14,37 @@ export const load = async () => {
 
   };
 };
+
+
+// create a form action 
+
+export const actions = {
+  addEmail: async ({ request }) => {
+    try {
+      const formData = await request.formData();
+      const email = formData.get('email').trim();
+      const name = formData.get('name').trim();
+
+      // Simple email validation
+      if (!email.match(/^\S+@\S+\.\S+$/)) {
+        return { error: 'Invalid email format' };
+      }
+
+      const { error } = await supabase.from('emails').insert([{ email, name }]);
+      if (error) {
+        console.error('Error inserting email:', error);
+        return { error: 'Failed to subscribe' };
+      }
+
+      // Set a flag in local storage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('subscribed', 'true');
+      }
+
+      return { success: 'Thank you for subscribing!' };
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      return { error: 'Unexpected error occurred' };
+    }
+  }
+};
