@@ -52,20 +52,23 @@
         action="?/addEmail"
         class="flex flex-col md:flex-row items-center justify-center gap-2"
       >
-        <input
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-40"
-          required
-        />
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-16"
-          required
-        />
+        <div class="sm:flex sm:flex-row md:flex md:flex-row sm:gap-1 md:gap-2">
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-50"
+            required
+          />
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            class="border-0 text-gray-700 bg-transparent border-b-2 border-dotted border-gray-400 focus:outline-none focus:border-solid focus:border-black w-16"
+            required
+          />
+        </div>
+        <div class="sm:flex sm:flex-row md:flex md:flex-row sm:gap-1 md:gap-2">
         <button
           type="submit"
           class=" hover:underline text-black font-bold py-2 px-2 rounded transition duration-200"
@@ -73,12 +76,13 @@
           subscribe??
         </button>
         <button
-          class="flex flex-row hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
+          class="hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
           type="button"
           on:click={nosub}
         >
           no thanks
         </button>
+        </div>
       </form>
     </div>
   {/if}
