@@ -5,6 +5,15 @@
   export let data;
   const { posts } = data;
   let isSubscribed = true;
+  console.log(`
+     ____.            .__           .__    .__        __          
+    |    | ____  _____|  |__   _____|  |__ |__|______/  |_  ____   ____       ____  ____   _____  
+    |    |/  _ \\/  ___/  |  \\ /  ___/  |  \\|  \\____ \\   __\\/  _ \\ /    \\    _/ ___\\/  _ \\ /     \\ 
+/\\__|    (  <_> )___ \\|   Y  \\___ \\|   Y  \\  |  |_> >  | (  <_> )   |  \\   \\  \\__(  <_> )  Y Y  \\
+\\________|\\____/____  >___|  /____  >___|  /__|   __/|__|  \\____/|___|  / /\\ \\___  >____/|__|_|  /
+                    \\/     \\/     \\/     \\/   |__|                    \\/  \\/     \\/            \\/ 
+`);
+
 
   onMount(() => {
     // Check local storage on component mount
@@ -69,19 +78,19 @@
           />
         </div>
         <div class="sm:flex sm:flex-row md:flex md:flex-row sm:gap-1 md:gap-2">
-        <button
-          type="submit"
-          class=" hover:underline text-black font-bold py-2 px-2 rounded transition duration-200"
-        >
-          subscribe??
-        </button>
-        <button
-          class="hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
-          type="button"
-          on:click={nosub}
-        >
-          no thanks
-        </button>
+          <button
+            type="submit"
+            class=" hover:underline text-black font-bold py-2 px-2 rounded transition duration-200"
+          >
+            subscribe??
+          </button>
+          <button
+            class="hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
+            type="button"
+            on:click={nosub}
+          >
+            no thanks
+          </button>
         </div>
       </form>
     </div>
