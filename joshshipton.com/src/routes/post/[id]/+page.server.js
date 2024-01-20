@@ -1,6 +1,9 @@
 import { supabase } from "$lib/supabase";
+import { redirect } from '@sveltejs/kit';
 
-export const load = async ({ params }) => {
+export const load = async ({ locals, params }) => {
+
+
   const post_link = params.id;
   console.log(post_link);
 
@@ -19,4 +22,5 @@ export const load = async ({ params }) => {
   return {
     post,
   };
-};
+
+}
