@@ -27,7 +27,8 @@
   // Custom rendering for lists
   renderer.list = (body, ordered) => {
     const type = ordered ? "ol" : "ul";
-    return `<${type} class="px-1">${body}</${type}>`;
+    const listClass = ordered ? "ordered-list-class" : "unordered-list-class"; // Add custom classes if needed
+    return `<${type} class="${listClass} px-1">${body}</${type}>`;
   };
 
   // Custom rendering for list items
@@ -61,3 +62,4 @@
   <div>{@html htmlContent}</div>
   <p class="font-light text-sm py-6">Published on {post.date_created}</p>
 </article>
+
