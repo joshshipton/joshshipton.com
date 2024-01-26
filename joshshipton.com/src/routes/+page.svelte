@@ -119,3 +119,6 @@
     </p>
   </div>
 </div>
+  <footer class="flex items-center justify-center w-full">
+  <p>P.S you can find the RSS feed <a href="/api/rss.xml" data-sveltekit-reload>here</a></p>
+</footer>
