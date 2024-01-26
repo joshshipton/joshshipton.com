@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   export let data;
   const drafts = data;
   
@@ -64,7 +64,7 @@
                   >
                   Edit
                 </button>
-</a>
+                </a>
               </td>
             </tr>
           </tbody>
@@ -72,4 +72,4 @@
       </div>
     </div>
   </main>
-</div>
+</div> -->
