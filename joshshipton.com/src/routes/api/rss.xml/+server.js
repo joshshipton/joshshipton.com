@@ -37,8 +37,8 @@ export const GET = async () => {
 const render = (posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Blog Posts</title>
-<description>Latest blog posts</description>
+<title>Posts from Joshshipton.com</title>
+<description>the latest and greatest ramblings</description>
 <link>https://joshshipton.com</link>
 <atom:link href="https://joshshipton.com/api/rss.xml" rel="self" type="application/rss+xml"/>
 ${posts
@@ -46,8 +46,8 @@ ${posts
         (post) => `<item>
 <guid isPermaLink="true">https://www.joshshipton.com/post/${post.post_link}</guid>
 <title>${post.title}</title>
-<link>https://yourwebsite.com/blog/${post.post_link}</link>
-<description>${post.content_peek}</description>
+<link>https://joshshipton.com/post/${post.post_link}</link>
+<description>${post.post_content}</description>
 <pubDate>${new Date(post.date_created).toUTCString()}</pubDate>
 </item>`
     )
