@@ -1,7 +1,7 @@
-export const load = async ({ locals }) => {
-    const session = await locals.getSession();
+// export const load = async ({ locals }) => {
+//     const session = await locals.getSession();
 
-    if (!session || !session.user) {
-        throw redirect(307, '/login');
-    }
-}
+//     if (!session || !session.user) {
+//         throw redirect(307, '/login');
+//     }
+// }
