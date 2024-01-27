@@ -1,4 +1,5 @@
 import { supabase } from "$lib/supabase";
+import { marked } from "marked";
 
 export const prerender = true;
 
@@ -47,6 +48,24 @@ function escapeXml(unsafe) {
     });
 }
 
+const renderer = new marked.Renderer();
+
+renderer.heading = (text, level) => `<h${level}>${text}</h${level}>`;
+renderer.blockquote = (quote) => `<blockquote>${quote}</blockquote>`;
+renderer.list = (body, ordered) => {
+    const type = ordered ? "ol" : "ul";
+    return `<${type}>${body}</${type}>`;
+};
+renderer.listitem = (text) => `<li>${text}</li>`;
+renderer.strong = (text) => `<strong>${text}</strong>`;
+
+// Set the renderer to marked
+marked.setOptions({ renderer });
+
+const convertMarkdownToHtml = (markdown) => {
+    return marked.parse(markdown);
+};
+
 
 const render = (posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -61,7 +80,7 @@ ${posts
 <guid isPermaLink="true">https://www.joshshipton.com/post/${escapeXml(post.post_link)}</guid>
 <title>${escapeXml(post.title)}</title>
 <link>https://joshshipton.com/post/${escapeXml(post.post_link)}</link>
-<description>${escapeXml(post.post_content)}</description>
+<description><![CDATA[${convertMarkdownToHtml(post.post_content)}]]></description>
 <pubDate>${new Date(post.date_created).toUTCString()}</pubDate>
 </item>`
     )
