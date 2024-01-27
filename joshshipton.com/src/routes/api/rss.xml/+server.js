@@ -34,6 +34,20 @@ export const GET = async () => {
     );
 };
 
+function escapeXml(unsafe) {
+    return unsafe.replace(/[<>&'"]/g, (c) => {
+        switch (c) {
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
+            default: return c;
+        }
+    });
+}
+
+
 const render = (posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
@@ -44,10 +58,10 @@ const render = (posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 ${posts
     .map(
         (post) => `<item>
-<guid isPermaLink="true">https://www.joshshipton.com/post/${post.post_link}</guid>
-<title>${post.title}</title>
-<link>https://joshshipton.com/post/${post.post_link}</link>
-<description>${post.post_content}</description>
+<guid isPermaLink="true">https://www.joshshipton.com/post/${escapeXml(post.post_link)}</guid>
+<title>${escapeXml(post.title)}</title>
+<link>https://joshshipton.com/post/${escapeXml(post.post_link)}</link>
+<description>${escapeXml(post.post_content)}</description>
 <pubDate>${new Date(post.date_created).toUTCString()}</pubDate>
 </item>`
     )
