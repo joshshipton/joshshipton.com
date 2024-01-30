@@ -10,11 +10,18 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+
 def add_quote():
     # Get user input for the quote
     content = input("Enter the quote content: ")
     author = input("Enter the author's name: ")
     source = input("Enter the source (if any): ")
+    
+
+
+    if not source:
+        source = None  
+    
 
     # Prepare the data payload
     data = {
@@ -25,11 +32,11 @@ def add_quote():
 
     # Insert the quote into the Supabase table
     response = supabase.table("quotes").insert(data).execute()
+    
+    print("Quote added successfully.")
 
-    if response.get('error'):
-        print(f"Error inserting quote: {response['error']}")
-    else:
-        print("Quote added successfully.")
+
+
 
 if __name__ == "__main__":
     add_quote()
