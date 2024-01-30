@@ -1,1 +1,1 @@
-my personal website, acts as a personal-journal, blog and place to store quotes + passages + ideas that I like from what I'm reading. Built with the SuKit stack because its the best 
+My personal website + note taking/idea generation workflow. Includes scripts to save .md files to a postgress db as well as a front-end that renders selected markdown files as posts and quotes for the website.
