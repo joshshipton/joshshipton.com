@@ -1,1 +1,0 @@
-// this will be hit when a user wants to subsribe to the blog

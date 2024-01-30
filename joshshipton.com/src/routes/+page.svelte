@@ -2,18 +2,19 @@
   import { onMount } from "svelte";
   import { enhance } from "$app/forms";
 
-  export let data;
-  const { posts } = data;
-  let isSubscribed = true;
   console.log(`
-     ____.            .__           .__    .__        __          
-    |    | ____  _____|  |__   _____|  |__ |__|______/  |_  ____   ____       ____  ____   _____  
-    |    |/  _ \\/  ___/  |  \\ /  ___/  |  \\|  \\____ \\   __\\/  _ \\ /    \\    _/ ___\\/  _ \\ /     \\ 
+   ____.            .__           .__    .__        __          
+  |    | ____  _____|  |__   _____|  |__ |__|______/  |_  ____   ____       ____  ____   _____  
+  |    |/  _ \\/  ___/  |  \\ /  ___/  |  \\|  \\____ \\   __\\/  _ \\ /    \\    _/ ___\\/  _ \\ /     \\ 
 /\\__|    (  <_> )___ \\|   Y  \\___ \\|   Y  \\  |  |_> >  | (  <_> )   |  \\   \\  \\__(  <_> )  Y Y  \\
 \\________|\\____/____  >___|  /____  >___|  /__|   __/|__|  \\____/|___|  / /\\ \\___  >____/|__|_|  /
-                    \\/     \\/     \\/     \\/   |__|                    \\/  \\/     \\/            \\/ 
+                  \\/     \\/     \\/     \\/   |__|                    \\/  \\/     \\/            \\/ 
 `);
 
+  export let data;
+  const { posts, popular_posts } = data;
+
+  let isSubscribed = false;
 
   onMount(() => {
     // Check local storage on component mount
@@ -22,32 +23,34 @@
     }
   });
 
-  function handleSubmit() {
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission behavior
     if (typeof window !== "undefined") {
       localStorage.setItem("subscribed", "true");
+      isSubscribed = true;
     }
   }
 
   function nosub() {
     if (
       confirm(
-        "If you ever change your mind, just refresh local-storage or open the page in a private window to get the option again."
+        "If you ever change your mind, just refresh local storage or open the page in a private window to get the option again."
       )
     ) {
       if (typeof window !== "undefined") {
-        localStorage.setItem("subscribed", "true");
+        localStorage.setItem("subscribed", "false");
+        isSubscribed = false;
       }
-      // refresh the page
-      location.reload();
     }
   }
 </script>
 
 <div>
-  <p class="text-3xl font-bold text-center">Hi!</p>
+  <p class="text-3xl font-bold text-center">Josh Shipton</p>
   <p class="text-sm text-center">
-    I'm Josh, I made a blog because <a href="/post/why-blog">people</a> on the internet
-    told me it was a good idea. (I'm easily influenced)
+    I'm Josh. I'm an athlete, programmer and wannabe writer. I made a personal
+    website because <a href="/post/why-blog">people</a> on the internet told me it
+    was a good idea. (I'm easily influenced)
   </p>
   <!-- TODO check in local storage if they have subscribed, if they have hide it -->
   {#if isSubscribed}
@@ -110,6 +113,42 @@
         </a>
       </div>
     {/each}
+ <p><a href="/all-posts">See all...</a></p>
+  </div>
+
+  <div class="flex flex-col mx-4 gap-2">
+    <p class="text-xl font-semibold text-center py-4">Popular Posts</p>
+    {#each popular_posts as post}
+      <div>
+        <a href={`/post/${post.post_link}`}>
+          <p class="text-lg font-bold text-left hover:underline">
+            {post.title}
+          </p>
+
+          <p class="text-sm text-light text-left">{post.date_created}</p>
+          <p class="text-sm text-left">{post.content_peek}...</p>
+        </a>
+      </div>
+    {/each}
+  </div>
+
+  <div class="flex flex-col mx-4 gap-2">
+    <p class="text-xl font-semibold text-center py-4">Projects</p>
+    <div>
+      <a href={`https://kenku.org`}>
+        <p class="text-lg font-bold text-left hover:underline">Kenku.org</p>
+        <p class="text-sm text-left">A smart Journal for combat sports</p>
+      </a>
+    </div>
+    <div>
+      <a href={`https://github.com/joshshipton/joshshipton.com`}>
+        <p class="text-lg font-bold text-left hover:underline">This Website</p>
+        <p class="text-sm text-left">
+          Journal + note manager on the backend. Blog on the
+          front end.
+        </p></a
+      >
+    </div>
   </div>
 
   <div>
@@ -119,6 +158,10 @@
     </p>
   </div>
 </div>
-  <footer class="flex items-center justify-center w-full">
-  <p>P.S you can find the RSS feed <a href="/api/rss.xml" data-sveltekit-reload>here</a></p>
+<footer class="flex items-center justify-center w-full">
+  <p>
+    P.S you can find an RSS feed <a href="/api/rss.xml" data-sveltekit-reload
+      >here</a
+    >
+  </p>
 </footer>

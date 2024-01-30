@@ -13,7 +13,6 @@ export const load = async ({ params }) => {
     throw new Error("Error fetching quotes");
   }
 
-  console.log(quotes)
   return {
     quotes
   };

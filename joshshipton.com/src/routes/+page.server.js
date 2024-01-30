@@ -6,12 +6,24 @@ export const load = async () => {
     .from("posts")
     .select("id, title, date_created, post_link, content_peek ")
     .eq("is_draft", false)
-    .order("date_created", { ascending: false });
+    .order("date_created", { ascending: false })
+    .limit(5);
 
   if (error) throw error;
 
+  const { data: popular_posts, popular_error } = await supabase
+  .from("posts")
+  .select("id, title, date_created, post_link, content_peek ")
+  .eq("is_draft", false)
+  .eq("is_popular", true)
+  .order("date_created", { ascending: false })
+  .limit(3);
+
+if (error) throw error;
+if(popular_error) throw popular_error;
+
   return {
-    posts,
+    posts, popular_posts
   };
 };
 
