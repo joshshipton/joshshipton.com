@@ -1,5 +1,9 @@
-
-
+ID=""
+TITLE="Notes from a random YouTube video"
+LINK="hormozi-confidence-notes"
+IS_DRAFT=T
+IS_POPULAR=F
+----------
 Today I was watching [this video](https://www.youtube.com/watch?v=pt50QF6al8g&ab_channel=AlexHormozi) from Alex Hormozi, Alex is a bit of a "business guru" on YouTube but personally I see him as a bit of a philosopher and see his advice as beneficial to general life instead of to the specific endeavour of Business. I thought the video had some great ideas. Since I don't want to forget these good ideas I started taking notes on some of the ones that stuck out to me the most. Here are those notes.
 
 ### Don't build confidence without evidence
