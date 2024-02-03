@@ -144,7 +144,7 @@
       <a href={`https://github.com/joshshipton/joshshipton.com`}>
         <p class="text-lg font-bold text-left hover:underline">This Website</p>
         <p class="text-sm text-left">
-          Journal + note manager behind the scenes. Blog + personal website on the in front of the scenes.
+          Journal + note manager behind the scenes. Blog + personal website in front of the scenes.
         </p></a
       >
     </div>

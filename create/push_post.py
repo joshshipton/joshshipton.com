@@ -46,13 +46,23 @@ def parse_post(file_path: str):
     }, content[:metadata.start()]
 
 
-def update_file_with_id(file_path: str, post_id: int, header: str):
+def update_file_with_id(file_path: str, post_id: int):
     with open(file_path, 'r+', encoding='utf-8') as file:
-        content = file.read()
-        file.seek(0)
-        file.write(header + f"ID=\"{post_id}\"\n" + content)
-        file.truncate()
-
+        lines = file.readlines()
+        updated = False
+        for i, line in enumerate(lines):
+            # Check if the line contains the ID metadata
+            if line.startswith('ID="'):
+                # Replace the existing ID value with the new post_id
+                lines[i] = f'ID="{post_id}"\n'
+                updated = True
+                break
+        
+        # If the ID was found and updated, rewrite the file
+        if updated:
+            file.seek(0)
+            file.writelines(lines)
+            file.truncate()
 
 def upload_post_to_supabase(file_path: str, data):
     header = data.pop('header', None)
