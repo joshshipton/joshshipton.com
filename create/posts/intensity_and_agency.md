@@ -5,9 +5,10 @@ IS_DRAFT=T
 IS_POPULAR=F
 ----------
 
-Wanted to write about my current model that I'm adapting to my life, but mostly my athletic endevaours. Either it goes amazing I look like a genius and have a record that it was thought out and planned, or it blows up in my face and I learn that my theory was wrong. 
+Wanted to write about a framework that I've been using in my own life, but mostly in my athletic endeavours. Either doing this works wonders and I look like a genius or it blows up in my face. Either way I have a record of my thoughts at this stage in my life and I either look like a genius or learn.
 
 ### Explaning the Theory 
+
 I'll explain the theory first and then talk about how it specifically relates to my life.
 
 >**" When you're given options on where to invest your time you should invest it in the same place as the most intense, high achiveing (foot-note1) people"**

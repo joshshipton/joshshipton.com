@@ -70,7 +70,7 @@ const convertMarkdownToHtml = (markdown) => {
 const render = (posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Posts from Joshshipton.com</title>
+<title>Posts from joshshipton.com</title>
 <description>the latest and greatest ramblings</description>
 <link>https://joshshipton.com</link>
 <atom:link href="https://joshshipton.com/api/rss.xml" rel="self" type="application/rss+xml"/>
