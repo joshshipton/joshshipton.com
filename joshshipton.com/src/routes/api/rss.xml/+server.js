@@ -19,7 +19,6 @@ export const GET = async () => {
             }
         );
     }
-
     // Format the data for the RSS feed
     const body = render(data);
     const headers = {
