@@ -15,8 +15,8 @@
   •
   <a href="/collected-words">word collection</a>
   •
-  <a href="/stream">thought stream</a>
-  •
+  <!-- <a href="/stream">thought stream</a>
+  • -->
   <a href="/reach-me">reach me</a>
 </nav>
 <body>
