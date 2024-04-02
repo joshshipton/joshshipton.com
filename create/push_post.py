@@ -83,6 +83,8 @@ def upload_post_to_supabase(file_path: str, data):
         db_data['id'] = new_post_id
         response = supabase.table("posts").insert(db_data).execute()
         update_file_with_id(file_path, new_post_id, header)
+        print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" * 5)
+        print("new id is" + db_data['id'])
 
     print(response)
     print("Post uploaded successfully.")
