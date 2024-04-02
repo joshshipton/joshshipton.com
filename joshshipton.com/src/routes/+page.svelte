@@ -53,10 +53,6 @@
     was a good idea. (I'm easily influenced)
     
   </p>
-  <br>
-  <p class="text-sm text-center">
-    This site mainly functions as a place to document things I find intresting. If you expected any type of consistency or order, you're in the wrong place...
-  </p>
   <!-- TODO check in local storage if they have subscribed, if they have hide it -->
   {#if isSubscribed}
     <div></div>
@@ -103,6 +99,10 @@
       </form>
     </div>
   {/if}
+
+  <p class="text-sm text-center">
+    This site mainly functions as a place to document things I find intresting. If you expected any type of consistency or order, you're in the wrong place...
+  </p>
 
   <div class="flex flex-col mx-4 gap-2">
     <p class="text-xl font-semibold text-center py-4">Recent Posts</p>
