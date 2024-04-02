@@ -24,10 +24,11 @@
   });
 
   function handleSubmit(event) {
-    event.preventDefault(); // Prevent default form submission behavior
     if (typeof window !== "undefined") {
       localStorage.setItem("subscribed", "true");
       isSubscribed = true;
+      // reload the page
+      window.location.reload();
     }
   }
 
@@ -38,8 +39,9 @@
       )
     ) {
       if (typeof window !== "undefined") {
-        localStorage.setItem("subscribed", "false");
-        isSubscribed = false;
+        localStorage.setItem("subscribed", "true");
+        isSubscribed = true;
+        window.location.reload();
       }
     }
   }
