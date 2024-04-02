@@ -48,9 +48,14 @@
 <div>
   <p class="text-3xl font-bold text-center">Josh Shipton</p>
   <p class="text-sm text-center">
-    I'm Josh. I'm an athlete, programmer and wannabe writer. I made a personal
+    I'm Josh. I'm an athlete and programmer. I made a personal
     website because <a href="/post/why-blog">people</a> on the internet told me it
     was a good idea. (I'm easily influenced)
+    
+  </p>
+  <br>
+  <p class="text-sm text-center">
+    This site mainly functions as a place to document things I find intresting. If you expected any type of consistency or order, you're in the wrong place...
   </p>
   <!-- TODO check in local storage if they have subscribed, if they have hide it -->
   {#if isSubscribed}
