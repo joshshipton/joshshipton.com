@@ -101,7 +101,7 @@
   {/if}
 
   <p class="text-sm text-center">
-    This site mainly functions as a place to document things I find intresting. If you expected any type of consistency or order, you're in the wrong place...
+    This site mainly functions as a place to document things I find intresting or am currently working on. If you expected any type of consistency or order, you're in the wrong place...
   </p>
 
   <div class="flex flex-col mx-4 gap-2">
