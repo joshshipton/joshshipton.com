@@ -22,6 +22,7 @@ def parse_post(file_path: str):
     metadata = re.search(
         r"ID=\"(.*)\"\nTITLE=\"(.*)\"\nLINK=\"(.*)\"\nIS_DRAFT=(.*)\nIS_POPULAR=(.*)\n-{10}\n", content, re.DOTALL)
     if not metadata:
+        print(metadata)
         raise ValueError("Invalid file format or metadata missing")
 
     post_id, title, link, is_draft, is_popular = metadata.groups()
@@ -46,7 +47,7 @@ def parse_post(file_path: str):
     }, content[:metadata.start()]
 
 
-def update_file_with_id(file_path: str, post_id: int):
+def update_file_with_id(file_path: str, post_id: int, third):
     with open(file_path, 'r+', encoding='utf-8') as file:
         lines = file.readlines()
         updated = False

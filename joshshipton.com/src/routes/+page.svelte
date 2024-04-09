@@ -53,7 +53,7 @@
 <div>
   <p class="text-3xl font-bold text-center">Josh Shipton</p>
   <p class="text-sm text-center">
-    I'm Josh. I'm an athlete and programmer. I made a <a href="post/about">personal
+    <a href="/me">I'm Josh</a>. I'm an athlete and programmer. I made a <a href="post/about">personal
     website</a> because <a href="/post/why-blog">people</a> on the internet told me it
     was a good idea. (I'm easily influenced)
     
