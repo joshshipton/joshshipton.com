@@ -1,6 +1,9 @@
 <script>
   import { onMount } from "svelte";
   import { marked } from "marked";
+  import Prism from "prismjs";
+  import "prismjs/components/prism-python";
+  import "prismjs/themes/prism.css";
 
   const renderer = new marked.Renderer();
 
@@ -54,6 +57,9 @@
       gfm: true,
       breaks: true,
     });
+
+    // Apply syntax highlighting
+    Prism.highlightAll();
   });
 </script>
 
@@ -62,4 +68,3 @@
   <div>{@html htmlContent}</div>
   <p class="font-light text-sm py-6">Published on {post.date_created}</p>
 </article>
-
