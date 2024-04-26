@@ -6,14 +6,13 @@ IS_POPULAR=F
 ----------
 Some quick context before I pivoted to computer science I studied philosophy at university. I planned to finish my bachelors degree then pursue further studies and eventually end up in academia. 
 
-Out of all the [branches of Philosophy]((https://leverageedu.com/blog/branches-of-philosophy/#:~:text=Through%20the%207%20branches%20of,human%20mind%20and%20the%20world.). I found Moral Philosophy to be the most interesting. If you've spent enough time with me in person you have undoubtedly heard me bring up Neo-Aristotelian virtue ethics. The goal of this entry is to have a simple summary of virtue ethics that I can direct people to if my in-person explanation is insufficient. 
+Out of all the [branches of Philosophy](https://en.wikipedia.org/wiki/Outline_of_philosophy)I found Moral Philosophy to be the most interesting. If you've spent enough time with me in person you have undoubtedly heard me bring up Neo-Aristotelian virtue ethics. The goal of this entry is to have a simple summary of virtue ethics that I can direct people to if my in-person explanation is insufficient. 
 
 ### Speedrunning context any % 
 
-In order to understand why N-A virtue ethics is so genius you'll need an understanding of some of the basic moral theories, you've probably heard of them before so I'll make it quick.
+In order to understand why N-A virtue ethics is so genius you'll need a general understanding of some of the basic moral theories, you've probably heard of them before so I'll make it quick.
 
-
-###### The Golden Rule
+#### The Golden Rule
 
 > *"Treat everyone else how you want to be treated"*
 
@@ -27,7 +26,7 @@ Imagine we have a person called Jeff, Jeff has a disorder in which he derives pl
 
 &#8756; !(The Golden Rule)
 
-###### Deontology
+#### Deontology
 
 > *"Treat every action like it would become a universal rule"*  
 
@@ -43,15 +42,36 @@ Imagine an axe murder comes to your house and asks you where your friend is, the
 
 &#8756; !(Deontology)
 
-###### Utilitarianism
+#### Utilitarianism
 
-(deontology, util, virtue-ethics)
+> *"The right action is the one that maximizes (pleasure/goodness/happiness/utility/other_good_thing) for the largest number of people (and sometimes minimizes pain too)"* 
 
-x in this theory 
-y in this theory
-z in this theory 
+**Explanation** 
 
-show why they're all insufficient quickly, deontology - axe murder, util maximizing pleasure feels wrong sometimes, virtue ethics = circular
+There are a lot of different branches of utilitarianism but they all have the same jist. Something is right/good if it maximizes good and minimizes bad. 
+
+**Problem** 
+
+So many thought experiments here. 
+
+
+#### Virtue Ethics
+
+> *"The right action is the action that the virtuous man would do"* 
+
+**Explanation** 
+
+
+
+**Problem** 
+
+Circular
+
+-------------------------------
+
+
+Time for the good stuff, all these are insufficient here's one that I think is pretty close to perfect, genius, and super interesting.
+
 
 explain neo-aritotelian virute ethics, explain how it fixes these problems 
 
