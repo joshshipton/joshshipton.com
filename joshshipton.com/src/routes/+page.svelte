@@ -12,7 +12,7 @@
 `);
 
   export let data;
-  const { posts, popular_posts } = data;
+  const { posts, popular_posts, links } = data;
 
   let isSubscribed = false;
 
@@ -45,18 +45,16 @@
       }
     }
   }
-
 </script>
 
-
-
 <div>
-  <p class="text-3xl font-bold text-center">Josh Shipton</p>
+  <!-- Testing if this will show up when google -->
+  <p class="text-3xl font-bold text-center">JOSH SHIPTON INTERNET WEBSITE</p>
   <p class="text-sm text-center">
-    <a href="/me">I'm Josh</a>. I'm an athlete and programmer. I made a <a href="post/about">personal
-    website</a> because <a href="/post/why-blog">people</a> on the internet told me it
-    was a good idea. (I'm easily influenced)
-    
+    <a href="/me">I'm Josh</a>. I'm an athlete and programmer. I made a
+    <a href="post/about">personal website</a>
+    because <a href="/post/why-blog">people</a> on the internet told me it was a
+    good idea. (I'm easily influenced)
   </p>
   <!-- TODO check in local storage if they have subscribed, if they have hide it -->
   {#if isSubscribed}
@@ -119,7 +117,7 @@
         </a>
       </div>
     {/each}
- <p><a href="/all-posts">See all...</a></p>
+    <p><a href="/all-posts">See all...</a></p>
   </div>
 
   <div class="flex flex-col mx-4 gap-2">
@@ -150,10 +148,25 @@
       <a href={`https://github.com/joshshipton/joshshipton.com`}>
         <p class="text-lg font-bold text-left hover:underline">This Website</p>
         <p class="text-sm text-left">
-          Journal + note manager behind the scenes. Blog + personal website in front of the scenes.
+          Journal + note manager behind the scenes. Blog + personal website in
+          front of the scenes.
         </p></a
       >
     </div>
+  </div>
+
+  <div class="flex flex-col mx-4 gap-2">
+    <p class="text-xl font-semibold text-center py-4">Links</p>
+    {#each links as link}
+      <div>
+        <a href={`/link/${link.link}`}>
+          <p class="text-lg font-bold text-left hover:underline">
+            {link.date}
+          </p>
+        </a>
+      </div>
+    {/each}
+    <p><a href="/all-posts">See all...</a></p>
   </div>
 
   <div>
