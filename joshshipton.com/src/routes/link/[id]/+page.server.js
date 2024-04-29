@@ -9,10 +9,9 @@ export const load = async ({ locals, params }) => {
 
   // Fetch the post using the post_link
   const { data: post, error } = await supabase
-    .from("posts")
+    .from("links")
     .select("*")
     .eq("links_link", post_link)
-    .eq("is_draft", false)
     .single();
 
   if (error) {

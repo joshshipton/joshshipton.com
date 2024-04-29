@@ -24,10 +24,11 @@ if (error) throw error;
   const { data: links , links_error } = await supabase
   .from("links")
   .select("*")
-  .order("date_created", { ascending: false })
+  .order("created_at", { ascending: false })
   .limit(3);
 
 if (error) throw error;
+
 
 
 if(popular_error) throw popular_error;

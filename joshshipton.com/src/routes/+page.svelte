@@ -137,6 +137,20 @@
   </div>
 
   <div class="flex flex-col mx-4 gap-2">
+    <p class="text-xl font-semibold text-center py-4">Links</p>
+    {#each links as link}
+      <div>
+        <a href={`/link/${link.links_link}`}>
+          <p class="text-lg font-bold text-left hover:underline">
+            {link.date}
+          </p>
+        </a>
+      </div>
+    {/each}
+    <p><a href="/all-posts">See all...</a></p>
+  </div>
+
+  <div class="flex flex-col mx-4 gap-2">
     <p class="text-xl font-semibold text-center py-4">Projects</p>
     <div>
       <a href={`https://kenku.org`}>
@@ -153,20 +167,6 @@
         </p></a
       >
     </div>
-  </div>
-
-  <div class="flex flex-col mx-4 gap-2">
-    <p class="text-xl font-semibold text-center py-4">Links</p>
-    {#each links as link}
-      <div>
-        <a href={`/link/${link.link}`}>
-          <p class="text-lg font-bold text-left hover:underline">
-            {link.date}
-          </p>
-        </a>
-      </div>
-    {/each}
-    <p><a href="/all-posts">See all...</a></p>
   </div>
 
   <div>

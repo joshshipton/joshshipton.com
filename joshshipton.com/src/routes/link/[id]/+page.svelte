@@ -50,7 +50,7 @@
   
     onMount(() => {
       // Convert Markdown to HTML
-      htmlContent = marked.parse(post.post_content, {
+      htmlContent = marked.parse(post.content, {
         gfm: true,
         breaks: true,
       });
