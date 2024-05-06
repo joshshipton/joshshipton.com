@@ -12,7 +12,8 @@ export const load = async ({ locals, params }) => {
     .from("posts")
     .select("*")
     .eq("post_link", post_link)
-    .eq("is_draft", false)
+    // show drafts, they will be like "unlisted" youtube videos, visible but only with the link
+    //.eq("is_draft", false)
     .single();
 
   if (error) {
