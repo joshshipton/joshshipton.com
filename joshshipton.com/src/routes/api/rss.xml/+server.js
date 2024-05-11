@@ -8,6 +8,7 @@ export const GET = async () => {
     const { data, error } = await supabase
         .from('posts')
         .select('*')
+        .eq("is_draft", false)
         .order('date_created', { ascending: false });
     
     if (error) {
