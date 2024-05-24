@@ -93,9 +93,6 @@
 </script>
 
 <article class="prose">
-  <img src="/images/eopp-lskill/graph1.png" alt="Graph Image 1"> 
-  <img src="/images/eopp-lskill/graph2.png" alt="Graph Image 2"> 
-
   <p class="font-bold text-3xl text-left py-6 mt-6">{post.title}</p>
   <div>{@html htmlContent}</div>
   <p class="font-light text-sm py-6">Published on {post.date_created}</p>
