@@ -69,7 +69,6 @@ Circular
 
 -------------------------------
 
-
 Time for the good stuff, all these are insufficient here's one that I think is pretty close to perfect, genius, and super interesting.
 
 

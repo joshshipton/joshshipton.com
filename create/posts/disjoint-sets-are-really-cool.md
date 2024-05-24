@@ -19,14 +19,14 @@ But that's a good point! One potential optimisation is to represent the set as a
 
 This is where the real magic of the Union-Find part of the solution comes in, when we union our set's together we can do something magical called *path compression* which represents the nodes/elements in the set as a flat graph in which we arbitrarily choose a representative to act as the "root" of the graph. Or in other words, pick an element. Make every element in the set point to that element.  
 
-<img src="/images/disjoint-sets-are-cool/path-compression.png" alt="path-compression-visual"> 
-  <b><figcaption>Path Compression Visual</figcaption></b>
+<img class="center" src="/images/disjoint-sets-are-cool/path-compression.png" alt="path-compression-visual"> 
+  <b class="center"><figcaption>Path Compression Visual</figcaption></b>
 
 This means that if we want to check if two elements are in the same set instead of having to go all the way back up to the root, we only have to go up one element and check that two sets have the same representative. This is really fast, we are talking [inverse Ackerman](https://www.geeksforgeeks.org/inverse-ackermann-function/) O(α(n) time. And means that the whole solution takes O(N+M * α(n)) time, where n is the amount of elements, and m is the amount of operations. This is for all practical applications constant time. (borat voice) *Very nice!*. 
 
 
 <img src="/images/disjoint-sets-are-cool/union-find.png" alt="union-find"> 
-  <b><figcaption>Union Find Visual</figcaption></b>
+  <b><figcaption class="center">Union Find Visual</figcaption></b>
 
 
 #### Post Script

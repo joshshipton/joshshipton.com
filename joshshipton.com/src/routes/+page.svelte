@@ -147,7 +147,7 @@
         </a>
       </div>
     {/each}
-    <p><a href="/all-posts">See all...</a></p>
+    <p><a href="/all-links">See all...</a></p>
   </div>
 
   <div class="flex flex-col mx-4 gap-2">
