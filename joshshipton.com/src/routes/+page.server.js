@@ -4,7 +4,7 @@ import { supabase } from "$lib/supabase";
 export const load = async () => {
   const { data: posts, error } = await supabase
     .from("posts")
-    .select("id, title, date_created, post_link, content_peek ")
+    .select("*")
     .eq("is_draft", false)
     .order("date_created", { ascending: false })
     .limit(5);
@@ -13,7 +13,7 @@ export const load = async () => {
 
   const { data: popular_posts, popular_error } = await supabase
   .from("posts")
-  .select("id, title, date_created, post_link, content_peek ")
+  .select("*")
   .eq("is_draft", false)
   .eq("is_popular", true)
   .order("date_created", { ascending: false })
@@ -25,7 +25,7 @@ if (error) throw error;
   .from("links")
   .select("*")
   .order("created_at", { ascending: false })
-  .limit(3);
+  .limit(18);
 
 if (error) throw error;
 
