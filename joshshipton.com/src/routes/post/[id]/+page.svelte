@@ -5,8 +5,6 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
-  import katex from "katex";
-  import "katex/dist/katex.min.css";
 
   const renderer = new marked.Renderer();
 
@@ -60,20 +58,6 @@
       gfm: true,
       breaks: true,
     });
-
-    // Render KaTeX for both inline and block LaTeX expressions
-    htmlContent = htmlContent
-      .replace(/\$\$([^$]+)\$\$/g, (_, equation) => {
-        return katex.renderToString(equation, {
-          throwOnError: false,
-          displayMode: true
-        });
-      })
-      .replace(/\$([^$]+)\$/g, (_, equation) => {
-        return katex.renderToString(equation, {
-          throwOnError: false
-        });
-      });
 
     // Apply syntax highlighting
     tick().then(() => {

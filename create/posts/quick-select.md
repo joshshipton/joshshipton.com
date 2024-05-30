@@ -29,57 +29,43 @@ Obviously it's pretty unlikely that we find the correct index at the first eleme
 
 ### Time complexity 
 
+The worst case time complexity of the algorithm is going to occur when we pick the largest or smallest element as the pivot, as we will have to go through the entire array again.
 
-The worst case time complexity of the algorithm is gonna occur when we pick the largest/smallest element as the pivot as we are going to have to then go through the entire array again. 
+  T(n) = T(n-1) + cn <br>
+  = T(n-1) + T(n-2) + cn + c(n-1) <br>
+  = O(n<sup>2</sup>)
 
-\[ 
-T(n) = T(n-1) + cn \\
-= T(n-1) + T(n-2) + cn + c(n-1) \\
-= O(n^2)
-\]
+The best case occurs when we partition the list into two roughly equal halves and continue with half the array.
 
-And the best case is going to occur when we partition the list into two roughly halves and continue with half the array. 
+  T(n) = T(n/2) + cn <br>
+  = T(n/4) + c(n/2) + cn <br>
+  = n (1 + 1/2 + 1/4 + ...) <br>
+  = 2n <br>
+  = O(n)
 
-\[
-T(n) = T(n/2) + cn \\
-= T(n/4) + c(n/2) + cn \\
-= n \left(1 + \frac{1}{2} + \frac{1}{4} + \ldots \right) \\
-= 2n \\
-= O(n)
-\]
 
-The average case (and thus the amortized complexity) of quick select can be shown to be o(n) (linear time) as we will partition `log(n)` times on average.
+The average case (and thus the amortized complexity) of quick select can be shown to be O(n) (linear time) as we will partition log(n) times on average.
 
-\[ 
-T(n) = T\left(\frac{n}{2}\right) + O(n)
-\]
+  T(n) = T(n/2) + O(n)
+
 
 Solving this recurrence relation:
-\[ 
-T(n) = T\left(\frac{n}{2}\right) + cn
-\]
-\[ 
-= T\left(\frac{n}{4}\right) + c\frac{n}{2} + cn
-\]
-\[ 
-= T\left(\frac{n}{8}\right) + c\frac{n}{4} + c\frac{n}{2} + cn
-\]
-\[ 
-= \ldots
-\]
-\[ 
-= T(1) + c(n + \frac{n}{2} + \frac{n}{4} + \ldots)
-\]
 
-The sum inside the parentheses is a geometric series: 
-\[ 
-n + \frac{n}{2} + \frac{n}{4} + \ldots = 2n
-\]
+  T(n) = T(n/2) + cn <br>
+  = T(n/4) + c(n/2) + cn <br>
+  = T(n/8) + c(n/4) + c(n/2) + cn <br>
+  = ... <br>
+  = T(1) + c(n + n/2 + n/4 + ...)
+
+The sum inside the parentheses is a geometric series:
+
+  n + n/2 + n/4 + ... = 2n
 
 which will sum up to:
-\[ 
-T(n) = O(n)
-\]
+ 
+  T(n) = O(n)
+
+Showing that on average quick select takes linear time, super cool.
 
 
 
@@ -123,6 +109,5 @@ def quick_select(arr, l, r, k):
 ```
 
 
-[Very Useful video](https://www.youtube.com/watch?v=AqMiMkPOutQ&ab_channel=CSRobot)(whose code I stole and explains this far better than I do)  
-
+[Very Useful video](https://www.youtube.com/watch?v=AqMiMkPOutQ&ab_channel=CSRobot) (whose code I stole and explains this far better than I do)  
 
