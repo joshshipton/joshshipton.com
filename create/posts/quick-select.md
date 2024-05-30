@@ -9,12 +9,12 @@ I was studying for an exam and came upon this question
 
 >  Design an algorithm for finding the k-th smallest element in an unsorted array of length n that is faster than O(n log n) amortized. Analyse the complexity of your algorithm assuming k as a constant. (5 marks)
 
-This really stumped me, I couldn't figure out how do this in <u>less than</u> O(n * log(n)) time. But now after researching, I know. And I think the algorithm is pretty cool. So for your enjoyment and my retention here it is. 
+This really stumped me, I couldn't figure out how do this in *less than* O(n * log(n)) time. But now after researching, I know. And I think the algorithm is pretty cool. So for your enjoyment and my retention here it is. 
 
 
 We can use ***Quick Select*** to find the K-th smallest element in an unsorted array in average linear O(n) time. 
 
-##### Here's the steps to the algo
+### Here's the steps to the algo
 
 You pick a random element to partition. For simplicity sake I will just always select the last element in the array but in order to achieve the average complexity of o(n) you're going to be better off choosing random elements. 
 
@@ -22,11 +22,12 @@ The goal of the partition is to adjust the array so every element greater than t
 
 The way this works is by using two pointers initially both set to the first index of the array and increment the one of the pointers, (the j one in the graph below) at every step. Every time we increment J we are looking if the J element is greater than the partition. If it is then we swap j with wherever i is and increment i as well. We do this until we are at the partition. When we are at the partition element we swap it with wherever i currently is. Here's a visual example I drew up. (note the Exalidraw skillz). 
 
-<img src="quick-select/graph1" alt="graph1">
+<img src="/images/quick-select/graph1.png" alt="graph1">
+
 
 Obviously it's pretty unlikely that we find the correct index at the first element. But what we do know after the first element is that all elements to the left of wherever the partition ended up are less than the element and all elements greater than the partition are to the right. So we can just call the function recursively on either the right or left side of the array and do so repeatedly until the index where the element ended up is correct to the k-th smallest element (with 0-based indexing this is just going to be k-1). 
 
-##### Time complexity 
+### Time complexity 
 
 
 The worst case time complexity of the algorithm is gonna occur when we pick the largest/smallest element as the pivot as we are going to have to then go through the entire array again. 
@@ -82,7 +83,7 @@ T(n) = O(n)
 
 
 
-###### Here's the python implementation 
+### Here's the python implementation ^_^ 
 
 ```python
 
@@ -122,6 +123,6 @@ def quick_select(arr, l, r, k):
 ```
 
 
-[Very Useful video](https://www.youtube.com/watch?v=AqMiMkPOutQ&ab_channel=CSRobot)(whose code i stole)  
+[Very Useful video](https://www.youtube.com/watch?v=AqMiMkPOutQ&ab_channel=CSRobot)(whose code I stole and explains this far better than I do)  
 
 

@@ -61,11 +61,19 @@
       breaks: true,
     });
 
-    htmlContent = htmlContent.replace(/\$([^$]+)\$/g, (_, equation) => {
-      return katex.renderToString(equation, {
-        throwOnError: false,
+    // Render KaTeX for both inline and block LaTeX expressions
+    htmlContent = htmlContent
+      .replace(/\$\$([^$]+)\$\$/g, (_, equation) => {
+        return katex.renderToString(equation, {
+          throwOnError: false,
+          displayMode: true
+        });
+      })
+      .replace(/\$([^$]+)\$/g, (_, equation) => {
+        return katex.renderToString(equation, {
+          throwOnError: false
+        });
       });
-    });
 
     // Apply syntax highlighting
     tick().then(() => {
