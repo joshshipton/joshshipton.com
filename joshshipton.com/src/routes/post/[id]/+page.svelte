@@ -5,6 +5,8 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
+  import katex from "katex";
+  import "katex/dist/katex.min.css";
 
   const renderer = new marked.Renderer();
 
@@ -57,6 +59,12 @@
     htmlContent = marked.parse(post.post_content, {
       gfm: true,
       breaks: true,
+    });
+
+    htmlContent = htmlContent.replace(/\$([^$]+)\$/g, (_, equation) => {
+      return katex.renderToString(equation, {
+        throwOnError: false,
+      });
     });
 
     // Apply syntax highlighting

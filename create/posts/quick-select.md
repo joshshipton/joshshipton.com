@@ -1,4 +1,4 @@
-ID=""
+ID="87070"
 TITLE="Quick Select Makes Sense"
 LINK="quick-select-eurkea"
 IS_DRAFT=F
@@ -47,7 +47,7 @@ T(n) = T(n/2) + cn \\
 = O(n)
 \]
 
-The average case (and thus the amortized complexity) of quick select can be shown to be o(n) (linear time) 
+The average case (and thus the amortized complexity) of quick select can be shown to be o(n) (linear time) as we will partition `log(n)` times on average.
 
 \[ 
 T(n) = T\left(\frac{n}{2}\right) + O(n)
@@ -70,12 +70,12 @@ T(n) = T\left(\frac{n}{2}\right) + cn
 = T(1) + c(n + \frac{n}{2} + \frac{n}{4} + \ldots)
 \]
 
-The sum inside the parentheses is a geometric series:
+The sum inside the parentheses is a geometric series: 
 \[ 
 n + \frac{n}{2} + \frac{n}{4} + \ldots = 2n
 \]
 
-Therefore:
+which will sum up to:
 \[ 
 T(n) = O(n)
 \]
