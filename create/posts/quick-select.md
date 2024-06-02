@@ -29,11 +29,19 @@ Obviously it's pretty unlikely that we find the correct index at the first eleme
 
 ### Time complexity 
 
-The worst case time complexity of the algorithm is going to occur when we pick the largest or smallest element as the pivot, as we will have to go through the entire array again.
+The worst case time complexity of the algorithm is going to occur when we repeatedly pick the largest or smallest element unsorted elements as the pivot, leading to one partition having n-1 elements and the other partition having 0 elements. As then we are going to have to sort the entire array to find our answer. 
 
   T(n) = T(n-1) + cn <br>
   = T(n-1) + T(n-2) + cn + c(n-1) <br>
+  = T(n−2)=T(n−3)+c(n−2)
+  *we can observe a general pattern in the expansions* 
+  = T(n)=T(n−k)+c(n−k+1)+c(n−k+2)+…+cn
+  *which can be summarised as* 
+  = T(n)=T(1)+c⋅* ((n(n+1)) / 2 )
   = O(n<sup>2</sup>)
+
+
+If you haven't seen this notation before T(n) is the time to solve the problem for an array of size n, and T(n-1) is the time to solve the problem for an array of size T(n-1), which is now the case since this is the side of the partition we are going to look at next. Here `cn` represents the linear time (c for constant) to partition the array of size n. Expanding and summarising the recurrence relation shows that the worst case time complexity is going to be quadratic O(n<sup>2</sup>). This is obviously unlikely though as we would have to continuously choose the worst options. 
 
 The best case occurs when we partition the list into two roughly equal halves and continue with half the array.
 
@@ -99,10 +107,10 @@ def quick_select(arr, l, r, k):
   if pivot == (k-1):
     return arr[pivot]
   
-  # if its greater than then we need to look at the right hand side of k
+  # if its greater than then we need to look at the left hand side of k
   if pivot > (k-1):
-    return quick_select(arr, 1, pivot-1,k)
-  # else we need to check the left hand side
+    return quick_select(arr, l, pivot-1,k)
+  # else we need to check the right hand side
   else:
     return quick_select(arr,pivot+1,r,k)
 
