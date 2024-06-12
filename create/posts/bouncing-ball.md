@@ -10,12 +10,7 @@ This was <u>far</u> more tricky that I thought it was going to be and also ended
 
 I'm going to walk through the steps that it took to get the foundation of these simulations going, it's not perfect but the meat and potatoes are there. By the end you'll be able to simulate some basic physics and have something that looks like this.
 
-  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Zm6qoxx0uEs&ab_channel=JudowithKeishin%28andsometimesKimi%29" title="Bouncing Ball Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
-<video width="560" height="315" controls>
-  <source src="/images/bouny-bouncy/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag. :((
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Zm6qoxx0uEs?si=AF25Bkn3ymroonXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For this simulation I'm going to be using pygame, pygame is a nifty little library that makes it really easy to run simulations like these ones and get visual stuff up on the screen super quick whilst using all that python syntax that we all know and love.
 
@@ -106,7 +101,7 @@ But currently we don't check if the ball has hit the edge of the circle, so it's
 
 We can imagine the ball's coordinate and the center of the big circle as forming a perfect right triangle and then use Pythagoras theorem to see how far the ball is from the middle.
 
-<img src="bouncy_bouncy/collision_detection.png">
+<img src="bouncy_bouncy/distance_from_the_center.png">
 
 In code
 
@@ -127,7 +122,7 @@ A vector is a quantity that has both magnitude (length) and direction. In our ca
 
 A normal vector is just a vector that's perpendicular (90 degrees) to a surface. In this case the normal vector is going to represent the direction from the point of collision towards the center of the circle.
 
-<img src="/images/bouncy-bouncy/normal_vector_drawing.png" alt="graph1">
+<img src="/images/bouncy-bouncy/normal_vector_drawng.png" alt="graph1">
 
 But how do we calculate the normal vector?
 
@@ -327,6 +322,4 @@ while 1==1:
 
     # Cap the frame rate
     pygame.time.Clock().tick(60)
-
-
 ```
