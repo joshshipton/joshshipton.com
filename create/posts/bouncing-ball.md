@@ -1,12 +1,12 @@
 ID="33389"
-TITLE="Making a ball bounce cost me my sanity but forced me to learn maths"
+TITLE="Making a ball bounce cost me my sanity, but forced me to learn maths"
 LINK="bouncing-ball"
 IS_DRAFT=F
 IS_POPULAR=F
 ----------
 Recently [this video](https://www.youtube.com/watch?v=Mu6hloC7ty8&ab_channel=GreenCode) came up on my YouTube, I liked the idea of making satisfying simulations with code and had some post-exams free time on my hands so I thought I would try it for myself.
 
-This was <u>far</u> more tricky that I thought it was going to be and also ended up being the first time I ever used high school math in real life. I really enjoyed the project and learning, so here's a post to share them with my friends and cement my understandings.
+This was **far** more tricky that I thought it was going to be and also ended up being the first time I ever used high school math in real life. I really enjoyed the project and learning, so here's a post to share them with my friends and cement my understandings.
 
 I'm going to walk through the steps that it took to get the foundation of these simulations going, it's not perfect but the meat and potatoes are there. By the end you'll be able to simulate some basic physics and have something that looks like this.
 
