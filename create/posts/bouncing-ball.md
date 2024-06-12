@@ -25,20 +25,13 @@ import pygame
 import math
 
 # init pygame
-
 pygame.init()
 
 # draw a 600 x 600 window
 screen = pygame.display.set_mode((600,600))
-pygame.display.set_caption("BOUNCY BOUNCY!")
-
-BLACK = (0,0,0)
-WHITE = (255,255,255)
-RED = (255,0,0)
 ```
 
-Now we have pygame, we have our screen but we need to start drawing something on the screen. Let's create a new class to draw the large circle that will contain our ball.
-
+Now we have pygame, and a basic screen but we now want to start drawing stuff on the screen. Let's create a new Class to draw the large circle that will contain our ball.
 
 ```python
 class DrawCircle:
@@ -70,7 +63,7 @@ class BouncingBall:
         self.gravity = 0.5
 ```
 
-Going through the variables,
+Going through the variables, 
 
 The x and y coordinates will "spawn" our ball in the middle of the screen.
 
@@ -78,16 +71,13 @@ The ball's velocity is represented as a list [1,2] and controls the speed and di
 
 This means that the ball will start moving downwards and to the right. There's no specific reason for this apart from the fact that it give's it that nice arc as it bounces from left to right.
 
-Radius, how big the ball is.
-
 Elasticity is the amount of energy the ball is going to retain after it collides with the edge's of the outer-circle. An elasticity of 0.9 means that every time the ball collides it loses 10% of it's energy. Giving it a realistic bounce.
-
 
 And then we have a constant for gravity. Gravity acts as a constant downwards acceleration on the ball and makes the simulation look far more "real".
 
 Simple enough!
 
-Now for the real fun part! Let's get this bad boy moving!
+Now for the real fun part! Let's get this bad boy moving! 
 
 ```python
     def move(self):
@@ -99,9 +89,9 @@ Now for the real fun part! Let's get this bad boy moving!
 
 Simple enough, we apply gravity to the y value of the velocity (thus pulling it down a bit) and then move the x and y values of the ball depending on the ball's current velocity in each of the directions.
 
-But currently we don't check if the ball has hit the edge of the circle, so it's just going to move in one direction forever, let's change that and add some collision detection!
+But currently we don't check if the ball has hit the edge of the circle. So it's just going to move in one direction forever, let's change that and add some collision detection!
 
-We can imagine the ball's coordinate and the center of the big circle as forming a perfect right triangle and then use Pythagoras theorem to see how far the ball is from the middle.
+To figure out if the ball has collided with the edge of the circle we can imagine the ball's coordinate and the center of the big circle forming two points of a perfect right-angled triangle. We can then use Pythagoras theorem to calculate how far the ball is from the center and use this information to check if it's at the edge. 
 
 <img src="/images/bouncy-bouncy/distance_from_the_center.png">
 
@@ -112,6 +102,7 @@ if self.distance_to_center() + self.radius > 225:
     # The ball colided with the edge of the circle
 
 def distance_to_center(self):
+    # pythagoras
     return math.sqrt((self.x - 300) ** 2 + (self.y - 300) ** 2)
 ```
 
@@ -127,13 +118,13 @@ A normal vector is just a vector that's perpendicular (90 degrees) to a surface.
 
 But how do we calculate the normal vector?
 
-We first have to find the vector pointing from the ball towards the center, we can do this quickly by subtracting 300 (recall that the center of the large circle is 300,300) from both the x and y coordinates of the ball.
+We first have to find the vector pointing from the ball towards the center, we can do this quickly by subtracting 300 (recall that the center of the large circle is 300,300) from both the x and y coordinates of the ball. Which will get the same point on the opposite side of the circle. As seen in the image below. 
+
+<img src="/images/bouncy-bouncy/simply.png">
 
 ```python
 normal = [self.x - 300, self.y - 300]
 ```
-
-<img src="/images/bouncy-bouncy/simply.png">
 
 Then once we have the vector pointing directly from the ball to the center we need to calculate the magnitude (length) of the current vector. This is the length from the ball to the center of the circle. Again we can use good old Pythagoras to do this.
 
@@ -141,10 +132,9 @@ Then once we have the vector pointing directly from the ball to the center we ne
 normal_length = math.sqrt(normal[0] ** 2 + normal[1] ** 2)
 ```
 
-Ok cool, now we have the normal vector, that wasn't so hard but how is this going to help us bounce?
+Ok cool, now we have the normal vector, that wasn't so hard but how is this going to help us bounce? Intuitively we can't just make the ball exactly from the point and back, this isn't how bouncing works. When I throw a ball at an edge it doesn't just move straight back towards me, but how it bounces should be impacted by the angle and speed that the ball collided with the target. 
 
-First we need to calculate the dot product between the velocity and normal vectors, the dot product is a way to multiply two vectors that results in a single number. It combines the corresponding components of the vectors and then sums the products to do so.
-
+To do this we first we need to calculate the dot product between the velocity and normal vectors, the dot product is a way to multiply two vectors that results in a single number. It combines the corresponding components of the vectors and then sums the products to do so. In this scenario the dot product between the velocity and normal vector's tells us how much of the velocity is directed towards the surface. 
 
 <img src="/images/bouncy-bouncy/dot-product.png">
 
@@ -153,13 +143,9 @@ In the code this looks like so
 ```python
 dot_product = self.velocity[0] * normal[0] + self.velocity[1] * normal[1]
 ```
-
 The dot product is going to determine how much of the ball's velocity is directed towards the center of the circle (the normal direction).
 
-
 We now also need to reflect the new Velocity vector, to give the new direction that the ball is going to move in.
-
-If we hadn't calculated the new velocity vector it would be like throwing a ball against a wall and the ball bouncing straight back to you regardless of what angle the ball hit the wall on. In reality this isn't what happens, the ball bounce depends on the angle that it his the wall on and should reflect this.
 
 We can use a nice math trick here to reflect the velocity vector.
 
@@ -195,7 +181,6 @@ Let's quickly add a draw method
 def draw(self):
     pygame.draw.circle(screen, RED, (int(self.x), int(self.y)), self.radius)
 ```
-
 
 Now create instances of the outer circle and bouncing ball and add a game loop.
 
