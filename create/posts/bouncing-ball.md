@@ -10,7 +10,11 @@ This was <u>far</u> more tricky that I thought it was going to be and also ended
 
 I'm going to walk through the steps that it took to get the foundation of these simulations going, it's not perfect but the meat and potatoes are there. By the end you'll be able to simulate some basic physics and have something that looks like this.
 
+<br>
+<div class='center'>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Zm6qoxx0uEs?si=AF25Bkn3ymroonXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<br>
 
 For this simulation I'm going to be using pygame, pygame is a nifty little library that makes it really easy to run simulations like these ones and get visual stuff up on the screen super quick whilst using all that python syntax that we all know and love.
 
@@ -19,7 +23,6 @@ Here's some boiler plate code, to initialize pygame, draw a screen and define so
 ```python
 import pygame
 import math
-
 
 # init pygame
 
@@ -46,7 +49,6 @@ class DrawCircle:
 
     def draw(self):
         pygame.draw.circle(screen,WHITE, self.center,self.radius,self.width)
-
 ```
 
 Look how easy that was! We've now got a screen with a nice white circle.
@@ -101,14 +103,13 @@ But currently we don't check if the ball has hit the edge of the circle, so it's
 
 We can imagine the ball's coordinate and the center of the big circle as forming a perfect right triangle and then use Pythagoras theorem to see how far the ball is from the middle.
 
-<img src="bouncy_bouncy/distance_from_the_center.png">
+<img src="/images/bouncy-bouncy/distance_from_the_center.png">
 
 In code
 
 ```python
 if self.distance_to_center() + self.radius > 225:
     # The ball colided with the edge of the circle
-
 
 def distance_to_center(self):
     return math.sqrt((self.x - 300) ** 2 + (self.y - 300) ** 2)
@@ -145,12 +146,11 @@ Ok cool, now we have the normal vector, that wasn't so hard but how is this goin
 First we need to calculate the dot product between the velocity and normal vectors, the dot product is a way to multiply two vectors that results in a single number. It combines the corresponding components of the vectors and then sums the products to do so.
 
 
-<img src="bouncy-bouncy/dot-product.png">
+<img src="/images/bouncy-bouncy/dot-product.png">
 
 In the code this looks like so
 
 ```python
-
 dot_product = self.velocity[0] * normal[0] + self.velocity[1] * normal[1]
 ```
 
@@ -200,10 +200,8 @@ def draw(self):
 Now create instances of the outer circle and bouncing ball and add a game loop.
 
 ```python
-
 circle = DrawCircle()
 ball = BouncingBall()
-
 
 # Game loop
 while 1==1:
