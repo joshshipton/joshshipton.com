@@ -5,13 +5,13 @@
     to email me at <a href="mailto:shiptonjosh@gmail.com"
       >shiptonjosh@gmail.com</a
     >
-    or @ me <a href="https://twitter.com/iamjoshshipton">on X</a>
+    or @ me <a href="https://twitter.com/shipowins">on X</a>
   </p>
-  <p>
+  <!-- <p>
     I also enjoy playing chess, feel free to <a
       href="https://lichess.org/@/Ship0">add me</a
     >
-  </p>
+  </p> -->
 </body>
 <footer>
   <p class="text-white font-sm mt-5 mx-4">
