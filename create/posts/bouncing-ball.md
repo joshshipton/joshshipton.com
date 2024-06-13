@@ -6,7 +6,7 @@ IS_POPULAR=F
 ----------
 Recently [this video](https://www.youtube.com/watch?v=Mu6hloC7ty8&ab_channel=GreenCode) came up on my YouTube, I liked the idea of making satisfying simulations with code and had some post-exams free time on my hands so I thought I would try it for myself.
 
-This was **far** more tricky that I thought it was going to be and also ended up being the first time I ever used high school math in real life. I really enjoyed the project and learning, so here's a post to share them with my friends and cement my understandings.
+This was **far** more tricky that I thought it was going to be and also ended up being the first time I ever used high school maths in real life. I really enjoyed the project and learning, so here's a post to share them with my friends and cement my understandings.
 
 I'm going to walk through the steps that it took to get the foundation of these simulations going, it's not perfect but the meat and potatoes are there. By the end you'll be able to simulate some basic physics and have something that looks like this.
 
@@ -114,8 +114,6 @@ A vector is a quantity that has both magnitude (length) and direction. In our ca
 
 A normal vector is just a vector that's perpendicular (90 degrees) to a surface. In this case the normal vector is going to represent the direction from the point of collision towards the center of the circle.
 
-<img src="/images/bouncy-bouncy/normal_vector_drawng.png" alt="graph1">
-
 But how do we calculate the normal vector?
 
 We first have to find the vector pointing from the ball towards the center, we can do this quickly by subtracting 300 (recall that the center of the large circle is 300,300) from both the x and y coordinates of the ball. Which will get the same point on the opposite side of the circle. As seen in the image below. 
@@ -132,9 +130,22 @@ Then once we have the vector pointing directly from the ball to the center we ne
 normal_length = math.sqrt(normal[0] ** 2 + normal[1] ** 2)
 ```
 
+But you may have realised a problem, this is gonna get really big really fast, and we don't actually care about the length, we only care about the direction so we can [normalize](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/vector-magnitude-normalization#:~:text=To%20normalize%20a%20vector%2C%20therefore,the%20unit%20vector%20readily%20accessible.) this value. To make it more normal and avoid things like [buffer overflow](https://en.wikipedia.org/wiki/Buffer_overflow) and let's us have more accurate, less exaggerated velocities. 
+
+We can do this by dividing each component of the vector by its magnitude again this will keep the overall direction of the vector the same, whilst managing the overall length. 
+
+```python
+normal = [normal[0] / normal_length, normal[1] / normal_length]
+```
+In fancy terms this is now called a *unit vector* because it has a length of 1.
+
 Ok cool, now we have the normal vector, that wasn't so hard but how is this going to help us bounce? Intuitively we can't just make the ball exactly from the point and back, this isn't how bouncing works. When I throw a ball at an edge it doesn't just move straight back towards me, but how it bounces should be impacted by the angle and speed that the ball collided with the target. 
 
-To do this we first we need to calculate the dot product between the velocity and normal vectors, the dot product is a way to multiply two vectors that results in a single number. It combines the corresponding components of the vectors and then sums the products to do so. In this scenario the dot product between the velocity and normal vector's tells us how much of the velocity is directed towards the surface. 
+To do this we first we need to calculate the dot product between the velocity and normal vectors, the dot product is a way to multiply two vectors that results in a single number. It combines the corresponding components of the vectors and then sums the products to do so.
+
+In this scenario the dot product between the velocity and normal vector's tells us how much of the velocity is directed towards the collision point. A positive dot product means that the ball is moving towards the collision point, and a negative means it is moving away.  
+
+Here's an example that skip's normalization for simplicity sake.
 
 <img src="/images/bouncy-bouncy/dot-product.png">
 
@@ -173,9 +184,7 @@ self.x -= normal[0] * overlap
 self.y -= normal[1] * overlap
 ```
 
-And that's all the maths and physics done. Easy peasy! Now to get things cooking let's
-
-Let's quickly add a draw method
+And that's all the maths and physics done. Easy peasy! Now to get things cooking let's quickly add a draw method to draw the bouncing ball to the screen. 
 
 ```python
 def draw(self):
@@ -261,8 +270,7 @@ class BouncingBall:
             # Calculate the normal vector at the point of collision
             normal = [self.x - 300, self.y - 300]
             normal_length = math.sqrt(normal[0] ** 2 + normal[1] ** 2)
-            # Can normalize but I haven't noticed a big difference
-            #normal = [normal[0] / normal_length, normal[1] / normal_length]
+            normal = [normal[0] / normal_length, normal[1] / normal_length]
 
             # Reflect the ball's velocity around the normal vector
             dot_product = self.velocity[0] * normal[0] + self.velocity[1] * normal[1]
