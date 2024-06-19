@@ -98,11 +98,11 @@ To figure out if the ball has collided with the edge of the circle we can imagin
 In code
 
 ```python
-if self.distance_to_center() + self.radius > 225:
-    # The ball colided with the edge of the circle
+if self.distance_to_center() + self.radius > 255:
+    # The ball collided with the edge of the circle
 
 def distance_to_center(self):
-    # pythagoras
+    # Pythagoras
     return math.sqrt((self.x - 300) ** 2 + (self.y - 300) ** 2)
 ```
 
@@ -179,7 +179,7 @@ self.velocity[1] *= self.elasticity
 Now we have a bit of a problem. As the code currently stands the ball will get stuck inside the boundary and break everything. We can add a small amount of overlap to the ball to prevent it from getting stuck in the curvature of the boundary.
 
 ```python
-overlap = self.distance_to_center() + self.radius - 225
+overlap = self.distance_to_center() + self.radius - 255
 self.x -= normal[0] * overlap
 self.y -= normal[1] * overlap
 ```
@@ -266,7 +266,7 @@ class BouncingBall:
         self.y += self.velocity[1]
 
         # Check for collision with the boundary of the larger circle
-        if self.distance_to_center() + self.radius > 225:
+        if self.distance_to_center() + self.radius > 255:
             # Calculate the normal vector at the point of collision
             normal = [self.x - 300, self.y - 300]
             normal_length = math.sqrt(normal[0] ** 2 + normal[1] ** 2)
@@ -282,7 +282,7 @@ class BouncingBall:
             self.velocity[1] *= self.elasticity
 
             # Move the ball slightly outside the circle to prevent sticking
-            overlap = self.distance_to_center() + self.radius - 225
+            overlap = self.distance_to_center() + self.radius - 255
             self.x -= normal[0] * overlap
             self.y -= normal[1] * overlap
 
