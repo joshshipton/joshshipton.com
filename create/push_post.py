@@ -41,10 +41,30 @@ def parse_post(file_path: str):
         'title': title,
         'post_link': link,
         'post_content': post_content,
-        'content_peek': content_peek,
+        'content_peek': clean_post_peek(content_peek),
         'is_draft': is_draft.upper() == 'T',
         'is_popular': is_popular.upper() == 'T'
     }, content[:metadata.start()]
+
+def clean_post_peek(content_peek):
+    cleaned_peek = []
+    skip_mode = False  # Indicates if we are skipping characters inside brackets
+
+    for char in content_peek:
+        if char == "#":
+            continue  # Skip hashtags
+        if char == "(":
+            skip_mode = True  # Start skipping characters inside brackets
+            continue
+        if char == ")":
+            skip_mode = False  # End skipping characters inside brackets
+            continue
+
+        if not skip_mode:
+            cleaned_peek.append(char)
+
+    return ''.join(cleaned_peek)
+
 
 
 def update_file_with_id(file_path: str, post_id: int, third):
