@@ -1,6 +1,50 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cellular Automata Diseases</title>
+    <style>
+        .cell {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ccc;
+        }
+        .normal { background-color: #fff; }
+        .recovered { background-color: yellow; }
+        .infected { background-color: #f00; }
+        .immune { background-color: #0f0; }
+        .dead { background-color: black; }
+
+        #settings {
+            padding-left: 50px;
+            padding-right: -500px;
+        }
+
+        #stats {
+            padding-right: 50px;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(75, 10px); /* x columns */
+            grid-template-rows: repeat(75, 10px); /* x rows */
+            justify-content: center;
+            padding-top: 10px;
+            margin: 0 auto;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     <div id="settings">
@@ -20,7 +64,6 @@
         <br>
         <br>
         <button type="submit" id="createBtn">Create</button>
-
     </div>
 
     <div id="grid"></div> 
@@ -56,248 +99,183 @@
         </div>
     </div>
 
-</body>
+    <script>
+        class Disease {
+            constructor(name, mortalityRatePercentage, infectionRatePercentage, recoveryTime, chanceOfImmunity, lengthOfImmunity) {
+                this.name = name;
+                this.mortalityRatePercentage = mortalityRatePercentage / 100;
+                this.infectionRatePercentage = infectionRatePercentage / 100;
+                this.recoveryTime = recoveryTime;
+                this.chanceOfImmunity = chanceOfImmunity / 100;
+                this.lengthOfImmunity = lengthOfImmunity;
+            }
 
+            shouldInfect(infectedNeighbors) {
+                // take into account infected neighbors, make it an exponential function
+                const baseRate = this.infectionRatePercentage;
+                const adjustedRate = 1 - Math.pow((1 - baseRate), infectedNeighbors);
+                return Math.random() < adjustedRate;
+            }
 
+            shouldDie() {
+                return Math.random() < this.mortalityRatePercentage;
+            }
 
-<script>class Disease {
-    constructor(name, mortalityRatePercentage, infectionRatePercentage, recoveryTime, chanceOfImmunity, lengthOfImmunity) {
-        this.name = name;
-        this.mortalityRatePercentage = mortalityRatePercentage / 100;
-        this.infectionRatePercentage = infectionRatePercentage / 100;
-        this.recoveryTime = recoveryTime;
-        this.chanceOfImmunity = chanceOfImmunity / 100;
-        this.lengthOfImmunity = lengthOfImmunity;
-    }
+            shouldRecover() {
+                return Math.random() < (1 - this.mortalityRatePercentage);
+            }
 
+            shouldGetImmunity() {
+                return Math.random() < this.chanceOfImmunity;
+            }
 
-    shouldInfect(infectedNeighbors) {
-        // take into account infected neighbors, make it an exponential function
-        const baseRate = this.infectionRatePercentage;
-        const adjustedRate = 1 - Math.pow((1 - baseRate), infectedNeighbors);
-        return Math.random() < adjustedRate;
-    }
+            shouldLoseImmunity(daysImmune) {
+                return daysImmune >= this.lengthOfImmunity;
+            }
+        }
 
+        function createGrid(rows, cols) {
+            const grid = new Array(rows);
+            for (let i = 0; i < rows; i++) {
+                grid[i] = new Array(cols).fill({ state: 'normal', daysInfected: 0, daysImmune: 0 });
+            }
+            return grid;
+        }
 
-    shouldDie() {
-        return Math.random() < this.mortalityRatePercentage;
-    }
+        function updateGrid(grid, disease) {
+            const rows = grid.length;
+            const cols = grid[0].length;
+            const newGrid = createGrid(rows, cols);
 
-    shouldRecover() {
-        return Math.random() < (1 - this.mortalityRatePercentage);
-    }
-
-    shouldGetImmunity() {
-        return Math.random() < this.chanceOfImmunity;
-    }
-
-    shouldLoseImmunity(daysImmune) {
-        return daysImmune >= this.lengthOfImmunity;
-    }
-}
-
-function createGrid(rows, cols) {
-    const grid = new Array(rows);
-    for (let i = 0; i < rows; i++) {
-        grid[i] = new Array(cols).fill({ state: 'normal', daysInfected: 0 });
-    }
-    return grid;
-}
-
-// loop to update the simulation run every "day"
-function updateGrid(grid, disease) {
-    // get the dimensions of the grid and make a new one
-    const rows = grid.length;
-    const cols = grid[0].length;
-    const newGrid = createGrid(rows, cols);
-
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const cell = grid[i][j];
-            const infectedNeighbors = countInfectedNeighbors(grid, i, j);
-            // if it's normal and should be infected, infect
-            if ((cell.state === 'normal' || cell.state === "recovered") && infectedNeighbors > 1 && disease.shouldInfect(infectedNeighbors)) {
-                // set daysInfected to 1
-                newGrid[i][j] = { state: 'infected', daysInfected: 1 };
-                // if its infected, check if it should recover or die or get immunity
-            } else if (cell.state === 'infected') {
-                // if it's been infected for the recovery time, recover
-                if (cell.daysInfected >= disease.recoveryTime) {
-                    // Check if should recover or die
-                    if (disease.shouldDie()) {
-                        newGrid[i][j] = { state: 'dead', daysInfected: cell.daysInfected };
-                    } else { // Should recover
-                        // Check if should be immune 
-                        if (disease.shouldGetImmunity()) {
-
-                            // make it Immune, set days immune to 1
-                            newGrid[i][j] = { state: 'immune', daysImmune: 1, daysInfected: 0 };
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const cell = grid[i][j];
+                    const infectedNeighbors = countInfectedNeighbors(grid, i, j);
+                    // if it's normal and should be infected, infect
+                    if ((cell.state === 'normal' || cell.state === "recovered") && infectedNeighbors > 1 && disease.shouldInfect(infectedNeighbors)) {
+                        // set daysInfected to 1
+                        newGrid[i][j] = { state: 'infected', daysInfected: 1, daysImmune: 0 };
+                        // if its infected, check if it should recover or die or get immunity
+                    } else if (cell.state === 'infected') {
+                        // if it's been infected for the recovery time, recover
+                        if (cell.daysInfected >= disease.recoveryTime) {
+                            // Check if should recover or die
+                            if (disease.shouldDie()) {
+                                newGrid[i][j] = { state: 'dead', daysInfected: cell.daysInfected, daysImmune: 0 };
+                            } else { // Should recover
+                                // Check if should be immune 
+                                if (disease.shouldGetImmunity()) {
+                                    // make it Immune, set days immune to 1
+                                    newGrid[i][j] = { state: 'immune', daysImmune: 1, daysInfected: 0 };
+                                } else {
+                                    // recover without Immunity
+                                    newGrid[i][j] = { state: 'recovered', daysInfected: 0, daysImmune: 0 };
+                                }
+                            }
+                        } else { // infected and shouldn't recover
+                            newGrid[i][j] = { state: 'infected', daysInfected: cell.daysInfected + 1, daysImmune: 0 };
+                        }
+                    } else if (cell.state === 'immune') {
+                        // change it to take into account the length of imunity not the length of infection
+                        if (disease.shouldLoseImmunity(cell.daysImmune)) {
+                            newGrid[i][j] = { state: 'recovered', daysInfected: 0, daysImmune: 0 };
                         } else {
-                            // recover without Immunity
-                            newGrid[i][j] = { state: 'recovered', daysInfected: 0 };
+                            // increment days immune
+                            newGrid[i][j] = { state: 'immune', daysImmune: cell.daysImmune + 1, daysInfected: 0 };
                         }
                     }
-                } else { // infected and shouldn't recover
-                    newGrid[i][j] = { state: 'infected', daysInfected: cell.daysInfected + 1 };
-                }
-            } else if (cell.state === 'immune') {
-                // change it to take into account the length of imunity not the length of infection
-                if (disease.shouldLoseImmunity(cell.daysImmune)) {
-                    newGrid[i][j] = { state: 'recovered', daysInfected: 0 };
-                } else {
-                    // increment days immune
-                    newGrid[i][j] = { state: 'immune', daysImmune: cell.daysImmune + 1, daysInfected: 0 };
+                    else { // it's normal just leave it as is
+                        newGrid[i][j] = cell;
+                    }
                 }
             }
-            else { // it's normal just leave it as is
-                newGrid[i][j] = cell;
+            return newGrid;
+        }
+
+        function countInfectedNeighbors(grid, x, y) {
+            let count = 0;
+            for (let dx = -1; dx <= 1; dx++) {
+                for (let dy = -1; dy <= 1; dy++) {
+                    if (dx === 0 && dy === 0) continue;
+                    const nx = x + dx, ny = y + dy;
+                    if (nx >= 0 && nx < grid.length && ny >= 0 && ny < grid[0].length) {
+                        if (grid[nx][ny].state === 'infected') {
+                            count++;
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
+        function initializeGrid(grid, initialInfected) {
+            for (let i = 0; i < initialInfected; i++) {
+                const x = Math.floor(Math.random() * grid.length);
+                const y = Math.floor(Math.random() * grid[0].length);
+                grid[x][y] = { state: 'infected', daysInfected: 1, daysImmune: 0 };
             }
         }
-    }
-    return newGrid;
-}
 
-// Count the number of infected neighbors, used to decide the probability of infection
-function countInfectedNeighbors(grid, x, y) {
-    let count = 0;
-    for (let dx = -1; dx <= 1; dx++) {
-        for (let dy = -1; dy <= 1; dy++) {
-            if (dx === 0 && dy === 0) continue;
-            const nx = x + dx, ny = y + dy;
-            if (nx >= 0 && nx < grid.length && ny >= 0 && ny < grid[0].length) {
-                if (grid[nx][ny].state === 'infected') {
-                    count++;
-                }
-            }
+        function drawGrid(grid) {
+            const gridContainer = document.getElementById('grid');
+            gridContainer.innerHTML = '';
+            grid.forEach(row => {
+                row.forEach(cell => {
+                    const cellElement = document.createElement('div');
+                    cellElement.className = 'cell ' + cell.state;
+                    gridContainer.appendChild(cellElement);
+                });
+            });
         }
-    }
-    return count;
-}
 
-// Initialize the grid randomly spreading out the chosen number of inital infected people
-function initializeGrid(grid, initialInfected) {
-    for (let i = 0; i < initialInfected; i++) {
-        const x = Math.floor(Math.random() * grid.length);
-        const y = Math.floor(Math.random() * grid[0].length);
-        grid[x][y] = { state: 'infected', daysInfected: 1 };
-    }
-}
+        function updateStats(grid) {
+            let infected = 0, dead = 0, recovered = 0, immune = 0;
+            grid.forEach(row => {
+                row.forEach(cell => {
+                    if (cell.state === 'infected') infected++;
+                    if (cell.state === 'dead') dead++;
+                    if (cell.state === 'recovered') recovered++;
+                    if (cell.state === 'immune') immune++;
+                });
+            });
+            document.getElementById("days_passed").textContent = `Day: ${days++}`;
+            document.getElementById('disease_infected_stat').textContent = `Infected: ${infected}`;
+            document.getElementById('disease_killed_stat').textContent = `Killed: ${dead}`;
+            document.getElementById('disease_recovered_stat').textContent = `Recovered: ${recovered}`;
+            document.getElementById('disease_immune_stat').textContent = `Immune: ${immune}`;
+            document.getElementById('total_simulated_people').textContent = `Total: ${grid.length * grid[0].length}`;
+        }
 
-// draw the grid on the screen, its pretty much just a ton of divs, would be more efficient to use canvas
-// but ceebs
-function drawGrid(grid) {
-    const gridContainer = document.getElementById('grid');
-    gridContainer.innerHTML = '';
-    grid.forEach(row => {
-        row.forEach(cell => {
-            const cellElement = document.createElement('div');
-            cellElement.className = 'cell ' + cell.state;
-            gridContainer.appendChild(cellElement);
+        let disease;
+        let days = 1;
+        let grid = createGrid(75, 75);
+
+        drawGrid(grid);
+
+        document.getElementById('createBtn').addEventListener('click', () => {
+            const infectionRate = parseInt(document.getElementById('rate_of_infection_input').value);
+            const mortalityRate = parseInt(document.getElementById('mortaility_rate_input').value);
+            const initialInfected = parseInt(document.getElementById('inital_infected_input').value);
+            const recoveryTime = parseInt(document.getElementById('recovery_time_input').value);
+            const chanceOfImmunity = parseInt(document.getElementById('chance_of_immunity_input').value);
+            const lengthOfImmunity = parseInt(document.getElementById('length_of_immunity_input').value);
+
+            disease = new Disease("Example Disease", mortalityRate, infectionRate, recoveryTime, chanceOfImmunity, lengthOfImmunity);
+
+            initializeGrid(grid, initialInfected);
+            document.getElementById('disease_name_stat').textContent = `Disease Name: ${disease.name}`;
+
+            simulate(grid, disease);
         });
-    });
-}
 
-function updateStats(grid) {
-    let infected = 0, dead = 0, recovered = 0;
-    grid.forEach(row => {
-        row.forEach(cell => {
-            if (cell.state === 'infected') infected++;
-            if (cell.state === 'dead') dead++;
-            if (cell.state === 'recovered' || cell.state == "immune") recovered++;
-        });
-    });
-    document.getElementById("days_passed").textContent = `Day: ${days++}`;
-    document.getElementById('disease_infected_stat').textContent = `Infected: ${infected}`;
-    document.getElementById('disease_killed_stat').textContent = `Killed: ${dead}`;
-    document.getElementById('disease_recovered_stat').textContent = `Recovered: ${recovered}`;
-    document.getElementById('total_simulated_people').textContent = `Total: ${grid.length * grid[0].length}`;
-}
-
-let disease;
-let days = 1;
-let grid = createGrid(75, 75);
-
-drawGrid(grid);
-
-document.getElementById('createBtn').addEventListener('click', () => {
-    const infectionRate = parseInt(document.getElementById('rate_of_infection_input').value);
-    const mortalityRate = parseInt(document.getElementById('mortaility_rate_input').value);
-    const initialInfected = parseInt(document.getElementById('inital_infected_input').value);
-    const recoveryTime = parseInt(document.getElementById('recovery_time_input').value);
-    const chanceOfImmunity = parseInt(document.getElementById('chance_of_immunity_input').value);
-    const lengthOfImmunity = parseInt(document.getElementById('length_of_immunity_input').value);
-
-    disease = new Disease("Example Disease", mortalityRate, infectionRate, recoveryTime, chanceOfImmunity, lengthOfImmunity);
-
-    initializeGrid(grid, initialInfected);
-    document.getElementById('disease_name_stat').textContent = `Disease Name: ${disease.name}`;
-
-    simulate(grid, disease);
-});
-
-function simulate(grid, disease) {
-    drawGrid(grid);
-    updateStats(grid);
-    setTimeout(() => {
-        const newGrid = updateGrid(grid, disease);
-        simulate(newGrid, disease);
-    }, 100);
-}
-
-// Click to Infect (shelved)
-// const gridContainer = document.getElementById('grid');
-// gridContainer.addEventListener('click', (event) => {
-//     const cell = event.target;
-//     const index = Array.prototype.indexOf.call(gridContainer.children, cell);
-//     const x = Math.floor(index / grid[0].length);
-//     const y = index % grid[0].length;
-//     grid[x][y] = grid[x][y].state === 'normal' ? { state: 'infected', daysInfected: 1 } : { state: 'normal', daysInfected: 0 };
-//     drawGrid(grid);
-// });
-</script>
-<style>
-.cell {
-    width: 10px;
-    height: 10px;
-    border: 1px solid #ccc;
-}
-.normal { background-color: #fff; }
-.recovered {background-color: yellow;}
-.infected { background-color: #f00; }
-.immune { background-color: #0f0; }
-.dead {background-color: black;}
-
-#couple{
-    display: flex;
-    justify-content: row;
-}
-
-#settings {
-    align-items: center;
-    padding-left: 50px;
-    padding-right: -500px;
-    justify-content: column;
-}
-
-#stats{
-    padding-right: 50px;
-}
-
-#grid {
-    display: grid;
-    grid-template-columns: repeat(75, 10px); /* x columns */
-    grid-template-rows: repeat(75, 10px); /* x rows */
-    justify-content: center;
-    padding-top: 10px;
-    margin: 0 auto;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}</style>
+        function simulate(grid, disease) {
+            drawGrid(grid);
+            updateStats(grid);
+            setTimeout(() => {
+                const newGrid = updateGrid(grid, disease);
+                simulate(newGrid, disease);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
