@@ -209,6 +209,14 @@
         </p></a
       >
     </div>
+    <div>
+      <a href={`/projects`}>
+        <p class="text-lg font-bold text-left hover:underline">and many more</p>
+        <p class="text-sm text-left">
+          check out the projects page (click here)
+        </p>
+      </a>
+    </div>
   </div>
   <div>
     <p class="text-white font-sm mt-5 mx-4">
