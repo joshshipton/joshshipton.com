@@ -213,7 +213,7 @@
       <a href={`/projects`}>
         <p class="text-lg font-bold text-left hover:underline">and many more</p>
         <p class="text-sm text-left">
-          check out the projects page (click here)
+          check out the projects page to see some of the hosted projects (click here)
         </p>
       </a>
     </div>
