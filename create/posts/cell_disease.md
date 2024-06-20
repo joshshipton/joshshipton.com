@@ -11,7 +11,7 @@ With more time on my hands I decided I wanted to play around and learn more abou
 
 After researching practical applications for cellular autoamta I can upon [this](https://link.springer.com/article/10.1140/epjs/s11734-022-00619-1) paper. Where someone used cellular automata to model the spread of COVID. 
 
-This didn't seem as sophisitacted as other ideas that I was interested in like [traffic flow](https://uu.diva-portal.org/smash/get/diva2:483914/FULLTEXT01.pdf) (I'm coming for this later)
+This didn't seem as sophisitacted as other ideas that I was interested in like [traffic flow](https://uu.diva-portal.org/smash/get/diva2:483914/FULLTEXT01.pdf) (I'm coming for this later) so I decided to tackle it. 
 
 
 If you want to play around with the disease simulation yourself I'm hosting it [here](), plug in whatever values you want and go crazy. 
