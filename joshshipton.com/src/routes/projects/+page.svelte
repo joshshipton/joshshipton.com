@@ -2,20 +2,21 @@
   import { onMount } from "svelte";
   import { enhance } from "$app/forms";
 
-  // Initialized projects data
+  // IF YOU ADD SOMETHING NEW ADD IT TO THE START
   const projects = [
+    {
+      title: "Life without death Cellular Automata playground",
+      date_created: "2024-06-20",
+      project_link: "life-without-death-playground.html",
+      note: "playground to test and visualize life without death cellular automata",
+    },
     {
       title: "Cellular Automata disease simulation",
       date_created: "2024-04-20",
       project_link: "cellular-automata-disease.html",
       post_link: "cellular-auto-disease-simulation",
     },
-    {
-      title: "Life without death Cellular Automata playground",
-      date_created: "2024-06-20",
-      project_link: "life-without-death-playground.html",
-      note: "playground to test and visualize life without death cellular automata",
-    }
+    
   ];
 </script>
 
@@ -35,7 +36,7 @@
             {project.title}
           </p>
           {#if project.post_link}
-            <a href="/posts/{project.post_link}">
+            <a href="/post/{project.post_link}">
               <p class="text-sm text-light text-left hover:underline">project write up</p>
             </a>
           {/if}
