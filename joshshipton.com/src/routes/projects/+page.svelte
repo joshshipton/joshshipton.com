@@ -5,11 +5,17 @@
   // Initialized projects data
   const projects = [
     {
-      title: "Cellular Automata",
-      date_created: "2024-06-20",
+      title: "Cellular Automata disease simulation",
+      date_created: "2024-04-20",
       project_link: "cellular-automata-disease.html",
       post_link: "cellular-auto-disease-simulation",
     },
+    {
+      title: "Life without death Cellular Automata playground",
+      date_created: "2024-06-20",
+      project_link: "life-without-death-playground.html",
+      note: "playground to test and visualize life without death cellular automata",
+    }
   ];
 </script>
 
@@ -32,6 +38,9 @@
             <a href="/posts/{project.post_link}">
               <p class="text-sm text-light text-left hover:underline">project write up</p>
             </a>
+          {/if}
+          {#if project.note}
+            <p class="text-sm text-light text-left">{project.note}</p>
           {/if}
           <p class="text-sm text-light text-left">{project.date_created}</p>
         </a>
