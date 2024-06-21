@@ -24,7 +24,6 @@
   <body>
     <div>
       <canvas id="canvas" width="1600" height="1600"></canvas>
-
       <div id="controls">
         <select id="circleSizes">
           <option value="">Select circle radius...</option>
@@ -32,10 +31,8 @@
           <option value="25">Radius 25</option>
           <option value="30">Radius 30</option>
           <option value="35">Radius 35</option>
-
           <option value="40">Radius 40</option>
           <option value="50">Radius 50</option>
-
           <option value="60">Radius 60</option>
           <option value="70">Radius 70</option>
           <option value="80">Radius 80</option>
@@ -45,14 +42,15 @@
         </select>
         <button id="addCircle">Add Circle</button>
         <label><input type="checkbox" id="fastMode" /> Fast Mode</label>
-
+        <label
+          ><input type="checkbox" id="superFastMode" /> Super Fast Mode</label
+        >
         <button id="start">Start</button>
         <button id="clear">Clear</button>
         <p id="status"></p>
       </div>
     </div>
     <script>
-      alert("Zoom out, controls @ bottom. Not mobile friendly.");
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
       const size = 1600;
@@ -61,6 +59,7 @@
       const rows = size / resolution;
       let grid = createGrid();
       let running = false;
+      let updateCounter = 0;
 
       function createGrid() {
         return Array.from({ length: cols }, () => Array(rows).fill(0));
@@ -68,7 +67,6 @@
 
       function drawGrid() {
         ctx.clearRect(0, 0, size, size);
-
         for (let col = 0; col < cols; col++) {
           for (let row = 0; row < rows; row++) {
             const cell = grid[col][row];
@@ -83,40 +81,49 @@
         }
       }
 
-      let updateCounter = 0; // Counter to track the number of updates
-      const updateThreshold = 100; // Number of steps to wait before redrawing
-
       function updateGrid() {
         if (!running) return;
-        const nextGrid = createGrid();
 
+        let updateThreshold = document.getElementById("superFastMode").checked
+          ? 1000
+          : 100;
+
+        const nextGrid = createGrid();
         for (let col = 0; col < cols; col++) {
           for (let row = 0; row < rows; row++) {
             const currentCell = grid[col][row];
             const count = countNeighbors(col, row);
-            if (currentCell === 0 && count === 3) {
-              nextGrid[col][row] = 1;
-            } else if (currentCell === 1) {
-              nextGrid[col][row] = 1; // Cells remain occupied forever
-            }
+            nextGrid[col][row] =
+              (currentCell === 0 && count === 3) || currentCell === 1 ? 1 : 0;
           }
         }
 
         grid = nextGrid;
         updateCounter++;
 
-        // Draw only every 'updateThreshold' steps
-        if (updateCounter % updateThreshold === 0) {
-          drawGrid();
-        } else if (document.getElementById("fastMode").checked) {
-          // Check if fast mode is enabled
+        // Update the status text each frame when in fast modes
+        if (
+          document.getElementById("fastMode").checked ||
+          document.getElementById("superFastMode").checked
+        ) {
           document.getElementById("status").textContent =
             "Running... " + updateCounter + " updates processed";
         }
 
+        // Draw the grid only after reaching the update threshold
+        if (updateCounter % updateThreshold === 0) {
+          drawGrid();
+          if (
+            !document.getElementById("fastMode").checked &&
+            !document.getElementById("superFastMode").checked
+          ) {
+            document.getElementById("status").textContent =
+              "Running... " + updateCounter + " updates processed";
+          }
+        }
+
         requestAnimationFrame(updateGrid);
       }
-
       function countNeighbors(x, y) {
         let count = 0;
         for (let i = -1; i <= 1; i++) {
@@ -134,7 +141,6 @@
         let centerX = Math.floor(cols / 2);
         let centerY = Math.floor(rows / 2);
         console.log(centerX, centerY);
-
         for (
           let col = Math.max(centerX - radius, 0);
           col <= Math.min(centerX + radius, cols - 1);
@@ -160,20 +166,13 @@
         .getElementById("addCircle")
         .addEventListener("click", function () {
           let radius = document.getElementById("circleSizes").value;
-
-          // Check if the 'custom' option was selected
           if (radius === "custom") {
-            // Use a prompt to ask the user for a custom radius
-            radius = prompt("Please enter a custom radius:", "50"); // Default value is 50
-
-            // Check if the user entered a value or canceled the prompt
+            radius = prompt("Please enter a custom radius:", "50");
             if (radius === null || radius === "") {
               alert("No radius entered. Please select a radius.");
-              return; // Stop the function if no valid input was given
+              return;
             }
           }
-
-          // Parse the radius as an integer and add the circle
           radius = parseInt(radius);
           if (!isNaN(radius)) {
             addCircle(radius);
@@ -182,15 +181,17 @@
           }
         });
 
-      document.getElementById("clear").addEventListener("click", function () {
-        running = false;
-        grid = createGrid();
-        drawGrid();
-      });
       document.getElementById("start").addEventListener("click", function () {
         running = true;
         updateCounter = 0; // Reset the counter every time the simulation starts
         updateGrid();
+      });
+
+      document.getElementById("clear").addEventListener("click", function () {
+        running = false;
+        grid = createGrid();
+        drawGrid();
+        document.getElementById("status").textContent = "";
       });
 
       drawGrid(); // Initially draw the empty grid.
