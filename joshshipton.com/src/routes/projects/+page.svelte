@@ -8,7 +8,7 @@
       title: "Cellular Automata",
       date_created: "2024-06-20",
       project_link: "cellular-automata-disease.html",
-      post_link: "cellular-auto-disease",
+      post_link: "cellular-auto-disease-simulation",
     },
   ];
 </script>

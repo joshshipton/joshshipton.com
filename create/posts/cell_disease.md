@@ -6,7 +6,7 @@ IS_POPULAR=F
 ----------
 
 ### [Simulation Link](https://www.joshshipton.com/projects/cellular-automata-disease.html)
-I was watching this [video](https://www.youtube.com/watch?v=p3lsYlod5OU&t=3889s) when the guest started talking about [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton). Earlier in the year I wasted quite a few hours on [this site](https://playgameoflife.com/) playing around with guns, spaceships and other kinds of automata. 
+I was watching this [video](https://www.youtube.com/watch?v=p3lsYlod5OU&t=3889s) when the guest started talking about [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton). Earlier in the year I wasted quite a few hours on [this site](https://playgameoflife.com/) playing around with gliders, spaceships, ladders and other kinds of automata. 
 
 With more time on my hands I decided I wanted to play around and learn more about cellular automata. I have no idea why I find them so fascinating but I could watch them for hours. During the course of development for this project I lost a lot of time starting and re-running the simulation. There's something about such simple rules being able to create such vivid patterns that creates a psychedelic experience. 
 
@@ -25,7 +25,7 @@ Here's an example run through
 
 #### How it Works
 
-The Simulation runs as a 750x750 grid in which each cell represents a person. There are four states represented by different colors as seen in the key on the right hand side of the simulation.
+The Simulation runs as a 75x75 grid in which each cell represents a person. There are four states represented by different colors as seen in the key on the right hand side of the simulation.
 
 Each cell at any time can either be infected, recovered (but not immune), immune or normal (no state)
 
