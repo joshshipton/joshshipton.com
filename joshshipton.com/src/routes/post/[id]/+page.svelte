@@ -45,6 +45,12 @@
     return `<strong class="font-semibold">${text}</strong>`;
   };
 
+
+  renderer.image = (href, title, text) => {
+  const imageUrl = getPublicImageUrl(href);
+  return `<div class="center"><img src="${imageUrl}" alt="${text}" title="${title || ''}" class="my-4"></div>`;
+};
+
   marked.setOptions({ renderer });
 
   export let data;

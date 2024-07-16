@@ -94,7 +94,7 @@
             const currentCell = grid[col][row];
             const count = countNeighbors(col, row);
             nextGrid[col][row] =
-              (currentCell === 0 && count === 3) || currentCell === 1 ? 1 : 0;
+              (currentCell === 0 && count == 3) || currentCell === 1 ? 1 : 0;
           }
         }
 
@@ -129,6 +129,7 @@
         for (let i = -1; i <= 1; i++) {
           for (let j = -1; j <= 1; j++) {
             if (i === 0 && j === 0) continue;
+            // THIS WRAPS AROUND MAKES IT TORODIAL
             const col = (x + i + cols) % cols;
             const row = (y + j + rows) % rows;
             count += grid[col][row];
