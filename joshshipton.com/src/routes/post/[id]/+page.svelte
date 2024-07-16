@@ -5,7 +5,6 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
-  import { supabase, getPublicImageUrl } from "$lib/supabase";
 
   const renderer = new marked.Renderer();
 
@@ -47,10 +46,9 @@
   };
 
 
-  renderer.image = (href, title, text) => {
-  const imageUrl = getPublicImageUrl(href);
-  return `<div class="center"><img src="${imageUrl}" alt="${text}" title="${title || ''}" class="my-4"></div>`;
-};
+   renderer.image = (href, text) => {
+   return `<div class="center"><img src="${href}" alt="${text}" class="my-4"></div>`;
+ };
 
   marked.setOptions({ renderer });
 
