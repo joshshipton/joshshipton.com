@@ -21,6 +21,7 @@ export const load = async ({ locals, params }) => {
     throw new Error("Error fetching post");
   }
 
+
   return {
     post,
   };
