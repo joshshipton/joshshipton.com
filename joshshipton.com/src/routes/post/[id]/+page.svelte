@@ -5,6 +5,7 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
+  import { supabase, getPublicImageUrl } from "$lib/supabase";
 
   const renderer = new marked.Renderer();
 
