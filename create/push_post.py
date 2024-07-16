@@ -59,7 +59,9 @@ def clean_post_peek(content_peek):
         if char == ")":
             skip_mode = False  # End skipping characters inside brackets
             continue
-
+        if char == "]" or char == "[":
+            continue; 
+            
         if not skip_mode:
             cleaned_peek.append(char)
 
