@@ -76,17 +76,7 @@
     return `<${tag} class="${classes}">${content}</${tag}>`;
   };
 
-  marked.setOptions({
-  renderer: renderer,
-  gfm: true,
-  breaks: true,
-  highlight: function(code, lang) {
-    if (lang === 'html') {
-      return code;  // Return the HTML as-is to be rendered
-    }
-    // Your existing highlight function for other languages
-  }
-});
+  marked.setOptions({ renderer });
 
   export let data;
   const { post } = data;
