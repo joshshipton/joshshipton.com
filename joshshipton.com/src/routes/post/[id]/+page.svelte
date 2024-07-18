@@ -50,6 +50,32 @@
    return `<div class="center"><img src="${href}" alt="${text}" class="my-4"></div>`;
  };
 
+   // Custom rendering for tables
+   renderer.table = (header, body) => {
+    return `<table class="w-full border-collapse my-4">
+      <thead>${header}</thead>
+      <tbody>${body}</tbody>
+    </table>`;
+  };
+
+  renderer.tablerow = (content) => {
+    return `<tr class="even:bg-gray-50">${content}</tr>`;
+  };
+
+  renderer.tablecell = (content, { header, align }) => {
+    const tag = header ? 'th' : 'td';
+    const classes = [
+      'border',
+      'border-gray-300',
+      'px-4',
+      'py-2',
+      'text-left',
+      header ? 'bg-gray-100 font-semibold' : '',
+      align ? `text-${align}` : ''
+    ].join(' ');
+    return `<${tag} class="${classes}">${content}</${tag}>`;
+  };
+
   marked.setOptions({ renderer });
 
   export let data;
