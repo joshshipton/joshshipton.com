@@ -94,8 +94,7 @@ I wanted to make the most out of training with Lachlan Giles and Levi. So I boug
 
 ## Expense Distribution 
 
-<h1> Testing </h1>
-
+```html
     <div class="bg-white p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold mb-4">Expense Distribution</h2>
         <div class="relative w-64 h-64">
@@ -130,3 +129,4 @@ I wanted to make the most out of training with Lachlan Giles and Levi. So I boug
             </div>
         </div>
     </div>
+```
