@@ -92,41 +92,16 @@ I wanted to make the most out of training with Lachlan Giles and Levi. So I boug
 |---------|----------|
 | Laundry | 39.70    |
 
-## Expense Distribution 
 
-```html
-    <div class="bg-white p-8 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold mb-4">Expense Distribution</h2>
-        <div class="relative w-64 h-64">
-            <svg class="w-full h-full" viewBox="0 0 32 32">
-                <circle r="16" cx="16" cy="16" class="fill-blue-500" />
-                <circle r="16" cx="16" cy="16" class="fill-green-500" stroke="white" stroke-width="32" stroke-dasharray="65.4 100" />
-                <circle r="16" cx="16" cy="16" class="fill-yellow-400" stroke="white" stroke-width="32" stroke-dasharray="43.9 100" />
-                <circle r="16" cx="16" cy="16" class="fill-red-500" stroke="white" stroke-width="32" stroke-dasharray="25.35 100" />
-                <circle r="16" cx="16" cy="16" class="fill-purple-500" stroke="white" stroke-width="32" stroke-dasharray="8.19 100" />
-            </svg>
-        </div>
-        <div class="mt-4">
-            <div class="flex items-center mb-2">
-                <div class="w-4 h-4 bg-blue-500 mr-2"></div>
-                <span>Travel (36.46%)</span>
-            </div>
-            <div class="flex items-center mb-2">
-                <div class="w-4 h-4 bg-green-500 mr-2"></div>
-                <span>Accommodation (30.05%)</span>
-            </div>
-            <div class="flex items-center mb-2">
-                <div class="w-4 h-4 bg-yellow-400 mr-2"></div>
-                <span>Grocery (15.30%)</span>
-            </div>
-            <div class="flex items-center mb-2">
-                <div class="w-4 h-4 bg-red-500 mr-2"></div>
-                <span>Competition (10.00%)</span>
-            </div>
-            <div class="flex items-center mb-2">
-                <div class="w-4 h-4 bg-purple-500 mr-2"></div>
-                <span>Other (8.19%)</span>
-            </div>
-        </div>
-    </div>
-```
+### Worked hours spent 
+
+I currently make around $38 an hour at my highest paying job which is working as an orderly with casual rates. 
+
+<div class="center">
+
+$2500/38 = 66 hours of work
+
+</div> 
+
+An average shift at the hospital is around 9 hours, that means I would have to work around 7.5 shifts to afford this trip. 
+
