@@ -31,7 +31,7 @@
   // // Custom rendering for lists
   renderer.list = (body, ordered) => {
     const type = ordered ? "ol" : "ul";
-    return `<${type} style="list-style-type: decimal;" class="px-10">${body}</${type}>`;
+    return `<${type}  class="px-10" style="list-style-type: decimal;" >${body}</${type}>`;
   };
 
   // Custom rendering for list items
