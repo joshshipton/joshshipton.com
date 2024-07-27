@@ -5,7 +5,8 @@ IS_DRAFT=F
 IS_POPULAR=F
 ----------
 
-<p class="text-small italic"> Inspired by <a href="https://guzey.com/lifehacks/"> alexey</a></p>
+<p class=" py-[-2] text-small italic"> Inspired by <a href="https://guzey.com/lifehacks/"> alexey</a></p>
+<br>
 
 1. lot's of alpha in low status
 2. go first
@@ -20,3 +21,4 @@ IS_POPULAR=F
 11. you can learn anything
 12. everything is figure-out-able
 13. suffering is good 
+14. always select for excellence over specificity 

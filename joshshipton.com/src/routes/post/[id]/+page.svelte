@@ -36,7 +36,7 @@
 
   // Custom rendering for list items
   renderer.listitem = (text) => {
-    return `<li>${text}</li>`;
+    return `<li class="px-10">${text}</li>`;
   };
 
   // Custom rendering for bold text
