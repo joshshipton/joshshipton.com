@@ -28,17 +28,17 @@
     return `<blockquote class="border-l-4 border-gray-200 pl-4 italic my-4">${quote}</blockquote>`;
   };
 
-  // Custom rendering for lists
-  renderer.list = (body, ordered) => {
-    const type = ordered ? "ol" : "ul";
-    const listClass = ordered ? "ordered-list-class" : "unordered-list-class"; // Add custom classes if needed
-    return `<${type} class="${listClass} px-1">${body}</${type}>`;
-  };
+  // // Custom rendering for lists
+  // renderer.list = (body, ordered) => {
+  //   const type = ordered ? "ol" : "ul";
+  //   const listClass = ordered ? "ordered-list-class" : "unordered-list-class"; // Add custom classes if needed
+  //   return `<${type} class="${listClass} px-1">${body}</${type}>`;
+  // };
 
-  // Custom rendering for list items
-  renderer.listitem = (text) => {
-    return `<li>${text}</li>`;
-  };
+  // // Custom rendering for list items
+  // renderer.listitem = (text) => {
+  //   return `<li>${text}</li>`;
+  // };
 
   // Custom rendering for bold text
   renderer.strong = (text) => {
