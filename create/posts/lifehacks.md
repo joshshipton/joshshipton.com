@@ -22,3 +22,4 @@ IS_POPULAR=F
 12. everything is figure-out-able
 13. suffering is good 
 14. always select for excellence over specificity 
+15. drink water
