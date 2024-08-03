@@ -1,5 +1,5 @@
 import re
-import os
+mport os
 import sys
 import random
 from dotenv import load_dotenv
@@ -48,7 +48,9 @@ def parse_post(file_path: str):
 
 def clean_post_peek(content_peek):
     cleaned_peek = []
-    skip_mode = False  # Indicates if we are skipping characters inside brackets
+    skip_mode = False
+    # skip mode 2 for < jank but idc
+    skip_mode_2 = False
 
     for char in content_peek:
         if char == "#":
@@ -59,10 +61,22 @@ def clean_post_peek(content_peek):
         if char == ")":
             skip_mode = False  # End skipping characters inside brackets
             continue
+
         if char == "]" or char == "[":
-            continue; 
-            
-        if not skip_mode:
+            continue;
+
+        if char == "<":
+            skip_mode_2 = True
+            continue
+
+        if char == ">":
+            skip_mode_2 = False
+            continue
+
+        if char == "
+
+
+        if not skip_mode and not skip_mode_2:
             cleaned_peek.append(char)
 
     return ''.join(cleaned_peek)
@@ -80,7 +94,7 @@ def update_file_with_id(file_path: str, post_id: int, third):
                 lines[i] = f'ID="{post_id}"\n'
                 updated = True
                 break
-        
+
         # If the ID was found and updated, rewrite the file
         if updated:
             file.seek(0)
