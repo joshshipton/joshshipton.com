@@ -1,5 +1,5 @@
 import re
-mport os
+import os
 import sys
 import random
 from dotenv import load_dotenv
@@ -72,9 +72,6 @@ def clean_post_peek(content_peek):
         if char == ">":
             skip_mode_2 = False
             continue
-
-        if char == "
-
 
         if not skip_mode and not skip_mode_2:
             cleaned_peek.append(char)
