@@ -79,7 +79,6 @@ def clean_post_peek(content_peek):
     return ''.join(cleaned_peek)
 
 
-
 def update_file_with_id(file_path: str, post_id: int, third):
     with open(file_path, 'r+', encoding='utf-8') as file:
         lines = file.readlines()
@@ -135,5 +134,8 @@ if __name__ == "__main__":
         post_data, header = parse_post(file_path)
         post_data['header'] = header
         upload_post_to_supabase(file_path, post_data)
+        print("-=-=-=-=-=-=-=-=--=-=")
+        print("LINKS IS") 
+        print("https://joshshipton.com/post/" + post_data["post_link"])
     except Exception as e:
         print(f"Error: {e}")
