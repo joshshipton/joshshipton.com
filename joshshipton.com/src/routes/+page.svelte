@@ -157,7 +157,7 @@
     <div>
       <a href={`https://kenku.org`}>
         <p class="text-lg font-bold text-left hover:underline">kenku.org</p>
-        <p class="text-sm text-left">A smart journal for combat sports</p>
+        <p class="text-sm text-left">a smart journal for combat sports</p>
       </a>
     </div>
     <div>
