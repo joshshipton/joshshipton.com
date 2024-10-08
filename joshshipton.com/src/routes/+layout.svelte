@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Josh Shipton</title>
+  <title>internet website</title>
 </svelte:head>
 
 <nav
