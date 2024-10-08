@@ -90,7 +90,7 @@
   <p class="text-sm text-center">
     <a href="post/me">I'm Josh</a>. I'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">programmer</a>. I made a
     <a href="post/about">personal website</a>
-    because <a href="/post/why-blog">people</a> on the internet told me it was a
+    because people on the internet told me it was a
     good idea. (I'm easily influenced)
   </p>
   {#if isSubscribed}
