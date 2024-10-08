@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { enhance } from "$app/forms";
-
   console.log(`
    ____.            .__           .__    .__        __          
   |    | ____  _____|  |__   _____|  |__ |__|______/  |_  ____   ____       ____  ____   _____  
@@ -13,27 +12,14 @@
 
   export let data;
   const { posts, popular_posts, links } = data;
-
   let isSubscribed = false;
-  //let currentFilter = "all recent";
-  //let currentFilterIndex = 0;
-
   onMount(() => {
     // Check local storage on component mount
     if (typeof localStorage !== "undefined") {
       isSubscribed = localStorage.getItem("subscribed") === "true";
-
-      let savedFilter = localStorage.getItem("currentFilter");
-      if (savedFilter) {
-        currentFilter = savedFilter;
-        let index = postsFilter.indexOf(savedFilter);
-        if (index !== -1) {
-          currentFilterIndex = index;
-          document.getElementById("togglePostButton").innerText = currentFilter;
-        }
-      }
+     }
     }
-  });
+  );
 
   function handleSubmit(event) {
     if (typeof window !== "undefined") {
@@ -47,7 +33,7 @@
   function nosub() {
     if (
       confirm(
-        "If you ever change your mind, just refresh local storage or open the page in a private window to get the option again."
+        "if you ever change your mind, just refresh local storage or open the page in a private window to get the option again •ᴗ•"
       )
     ) {
       if (typeof window !== "undefined") {
@@ -58,40 +44,16 @@
     }
   }
 
-  // let postsFilter = ["all recent", "recent grappling", "recent tech"];
-  // currentFilterIndex = 0;
-
-  // function togglePostFilter() {
-  //   currentFilterIndex = (currentFilterIndex + 1) % postsFilter.length;
-  //   currentFilter = postsFilter[currentFilterIndex];
-  //   document.getElementById("togglePostButton").innerText = currentFilter;
-  //   if (typeof localStorage !== "undefined") {
-  //     localStorage.setItem("currentFilter", currentFilter);
-  //   }
-  // }
-
-  // function filterPosts(posts, filter) {
-  //   if (filter === "all recent") {
-  //     return posts;
-  //   }
-
-  //   for (let post of posts) {
-  //     console.log(post.tags);
-  //   }
-  //   console.log("filterPosts: unknown filter", filter);
-  //   console.log("filterPosts: posts", posts);
-  //   return posts;
-  //}
 </script>
 
 <div>
   <!-- Testing if this will show up when google -->
   <p class="text-3xl font-bold text-center">JOSH SHIPTON INTERNET WEBSITE</p>
   <p class="text-sm text-center">
-    <a href="post/me">I'm Josh</a>. I'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">programmer</a>. I made a
+    <a href="post/me">i'm josh</a>. i'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">programmer</a>. i made a
     <a href="post/about">personal website</a>
     because people on the internet told me it was a
-    good idea. (I'm easily influenced)
+    good idea. (i'm easily influenced)
   </p>
   {#if isSubscribed}
     <div></div>
@@ -195,14 +157,14 @@
     <div>
       <a href={`https://kenku.org`}>
         <p class="text-lg font-bold text-left hover:underline">kenku.org</p>
-        <p class="text-sm text-left">A smart Journal for combat sports</p>
+        <p class="text-sm text-left">A smart journal for combat sports</p>
       </a>
     </div>
     <div>
       <a href={`https://github.com/joshshipton/joshshipton.com`}>
         <p class="text-lg font-bold text-left hover:underline">this website</p>
         <p class="text-sm text-left">
-          Journal + note manager behind the scenes. Blog + personal website in
+          journal + note manager behind the scenes. blog + personal website in
           front of the scenes.
         </p></a
       >
@@ -228,7 +190,7 @@
 
 <footer class="flex items-center justify-center w-full">
   <p>
-    p.s you can find an RSS feed <a href="/api/rss.xml" data-sveltekit-reload
+    p.s you can find an rss feed <a href="/api/rss.xml" data-sveltekit-reload
       >here</a
     >
   </p>
