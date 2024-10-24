@@ -2,16 +2,17 @@ ID="99491"
 TITLE="hash table from scratch in prolog (boo)"
 LINK="hashtable-in-prolog"
 IS_DRAFT=F
-IS_POPULAR=F
+IS_POPULAR=T
 ----------
 
-I'm currently [knowledge representation](https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning) at university, a part of this unit is logic programming for which we use [Prolog](https://en.wikipedia.org/wiki/Prolog). I seriously dislike Prolog as a programming language. i find it unnatural to work with and it's quirks irritate me. but this definitely a skill issue (see below image) in an attempt to try to mend my broken relationship with the language i decided to build a data structure from scratch in it (aka procrastinate from actually studying for my exams). i chose hash maps because theyre easy to understand, i like them and O(1) insertion and retrieval time is sexy.
+i'm currently taking [knowledge representation](https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning) at university, a core part of this unit is logic programming for which we use [Prolog](https://en.wikipedia.org/wiki/Prolog). i seriously dislike Prolog as a programming language. i find it unnatural to work with and it's quirks irritate me. but this definitely a skill issue (see below image) in an attempt to try to mend my broken relationship with the language i decided to build a data structure from scratch in it (aka procrastinate from actually studying for my exams). i chose hash maps because theyre easy to understand, i like them and O(1) insertion and retrieval time is sexy.
 
 <img class="center" src="https://rdxhiwxfooidvexdrgxs.supabase.co/storage/v1/object/public/images/skill-issue-always.jpg" alt="everything is a skill issue"></img>
 
-before I dive into my hash table here are some of my FAVORITE Prolog quirks /s
+before i dive into my hash table here are some of my FAVORITE Prolog quirks /s
 
-1. = is different
+### "=" is different
+
 ```prolog
 % = is for unification, not assignment
 X = 5.         % Unifies X with 5
@@ -21,10 +22,11 @@ Sum is 2 + 3.  % Evaluates 2 + 3 and unifies Sum with 5
 
 % =:= for arithmetic equality
 5 =:= 2 + 3.   % true
-5 = 2 + 3.     % false! Because it doesn't evaluate 2 + 3
+5 = 2 + 3.     % false! Because it doesnt evaluate 2 + 3
 ```
 
-2. order matters a lot
+### order matters a lot
+
 ```prolog
 % This will work fine
 good_factorial(0, 1).
@@ -43,7 +45,7 @@ bad_factorial(N, Result) :-
 bad_factorial(0, 1).
 ```
 
-3. no loops, everything is recursive (this one is my least favorite)
+### no loops, everything is recursive (this one is my least favorite)
 
 ```prolog
 print_numbers(0).
@@ -54,10 +56,108 @@ print_numbers(N) :-
     print_numbers(N1).
 ```
 
+<br> 
 
-The implementation leverages several unique features of Prolog's logical programming paradigm. Dynamic predicates are used to create mutable state, which isn't typically associated with Prolog's declarative nature. The collision handling is particularly elegant in Prolog - it uses the language's built-in backtracking mechanism to naturally handle multiple items at the same hash position. Memory management takes advantage of Prolog's database-like structure with assertz for adding facts and retractall for cleaning up old entries. The dynamic resizing implementation showcases how Prolog can maintain complex data structures, growing the table when the load factor exceeds 0.7 and using recursive predicates to rehash all items to their new positions. Performance monitoring is implemented through Prolog's fact-based system, tracking the number of items and calculating statistics. This combination of logical programming concepts with traditional data structure implementation demonstrates how Prolog, despite its quirks, can be used to create efficient and maintainable data structures.
+# <div class="center"> ~~~ hash table time ~~~ </div> 
+<br> 
 
-AND HERE IT IS.
+ok now lets start with the hashtable, i think this will be easiest if we break the code down into it's main parts. 
+let's break this bad boy down into its main parts:
+
+### the basics of our hash table
+
+```prolog
+prologCopy:- dynamic hash_bucket/3.  % stores (hash value, key, value)
+:- dynamic table_size/1.   % keeps track of table size
+:- dynamic item_count/1.   % counts our stuff
+```
+
+this tells prolog "hey, these things are gonna change while we run". think of it like creating variables that can actually change (which is weird in prolog). the /3 and /1 just mean how many parameters each one takes.
+
+
+### initialization (setting up our table)
+```prolog
+prologCopyinit_hash_table(size) :-
+    retractall(hash_bucket(_, _, _)),    % clear any old junk
+    retractall(table_size(_)),           % out with the old size
+    retractall(item_count(_)),           % reset our counter
+    assertz(table_size(size)),           % set new size
+    assertz(item_count(0)).              % start fresh at 0
+```
+
+this is like our constructor. retractall is basically "delete everything matching this pattern" and assertz is "add this new fact". the _ is prolog for "i don't care what this value is".
+
+### the hash function (where the magic happens)
+
+```prolog
+prologCopyhash_function(key, size, hashvalue) :-
+    string_codes(key, codes),            % convert string to ascii numbers
+    sum_codes(codes, sum),               % add them up
+    a is 0.69420,                        % completely arbitrary constant...
+    product is sum * a,                  % multiply
+    fractional is product - floor(product), % get decimal part
+    hashvalue is floor(size * fractional). % scale to table size
+```
+
+this is our hash function - nothing too fancy, just:
+converts string to ascii numbers -> adds them up -> multiplies them by a completely random constant -> takes the decimal part and scales it to fit our table size 
+
+
+### handling collisions
+
+prolog actually makes this super easy. when multiple items hash to the same spot, they just... exist there. the backtracking system handles it automatically. when we look something up:
+
+```prolog
+prologCopyget(key, value) :-
+    table_size(size),
+    hash_function(key, size, hashvalue),
+    hash_bucket(hashvalue, key, value).  % magic happens here
+prolog will find the right one automatically by matching both the hash AND the key.
+```
+
+### load factor and resizing
+
+```prolog
+prologCopycheck_load_factor :-
+    item_count(count),
+    table_size(size),
+    loadfactor is count / size,
+    (loadfactor > 0.7 ->                 % if too full
+        resize_table                     % make it bigger
+    ;   true                            % else do nothing
+    ).
+```
+when the table gets too full (>70%), we: double the size, grab all our current items and  rehash everything into the bigger table
+
+### the recursive parts (because prolog)
+
+```prolog
+prologCopyrehash_all([]).                          % base case: empty list = done
+rehash_all([key-value|rest]) :-          % for each item:
+    table_size(size),
+    hash_function(key, size, newhash),   % get new position
+    assertz(hash_bucket(newhash, key, value)),
+    rehash_all(rest).                    % do the rest
+```
+this is classic prolog recursion:
+
+base case: empty list? doneski
+otherwise: handle first item, then recurse on the rest
+
+testing it out:
+
+```prolog
+prologCopymain :-
+    init_hash_table(10),
+    insert("key1", value1),
+    insert("meaning_of_life", 42),
+    % ... more insertions ...
+    print_stats.
+```
+
+and that's our hash table! 
+
+here's the implementation in it's entirety. is it the most efficient implementation ever? probably not. but its cool how working with prolog can lead to a decent outcome. 
 
 ```prolog
 % tell prolog these predicates will change during runtime
@@ -180,3 +280,14 @@ main :-
 % tell prolog to run main when loaded
 :- initialization(main).
 ```
+
+
+cool prolog features that make this work:
+
+- automatic backtracking: helps with collisions
+- dynamic predicates: lets us modify the table
+- pattern matching: makes lookups clean
+- recursion: because prolog loves recursion
+- fact-based storage: using prolog's database-like features
+
+
