@@ -5,14 +5,14 @@ IS_DRAFT=F
 IS_POPULAR=F
 ----------
 
-I'm currently taking a unit called [knowledge representation](https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning) at university, a part of this unit is logic programming for which we use [Prolog](https://en.wikipedia.org/wiki/Prolog). I seriously dislike Prolog as a language. i find it unnatural to work with and it's quirks irritate me. but this almost definitely a skill issue (see below image) to try to mend my broken relationship with the language i decided to build a data structure from scratch in it (procrastinate from actually studying for my exams). i chose hash maps because theyre easy to understand and i like them, O(1) insertion and retrieval time is sexy.
+I'm currently [knowledge representation](https://en.wikipedia.org/wiki/Knowledge_representation_and_reasoning) at university, a part of this unit is logic programming for which we use [Prolog](https://en.wikipedia.org/wiki/Prolog). I seriously dislike Prolog as a programming language. i find it unnatural to work with and it's quirks irritate me. but this definitely a skill issue (see below image) in an attempt to try to mend my broken relationship with the language i decided to build a data structure from scratch in it (aka procrastinate from actually studying for my exams). i chose hash maps because theyre easy to understand, i like them and O(1) insertion and retrieval time is sexy.
 
 <img class="center" src="https://rdxhiwxfooidvexdrgxs.supabase.co/storage/v1/object/public/images/skill-issue-always.jpg" alt="everything is a skill issue"></img>
 
 before I dive into my hash table here are some of my FAVORITE Prolog quirks /s
 
 1. = is different
-```lisp
+```prolog
 % = is for unification, not assignment
 X = 5.         % Unifies X with 5
 
@@ -25,7 +25,7 @@ Sum is 2 + 3.  % Evaluates 2 + 3 and unifies Sum with 5
 ```
 
 2. order matters a lot
-```lisp
+```prolog
 % This will work fine
 good_factorial(0, 1).
 good_factorial(N, Result) :-
@@ -45,7 +45,7 @@ bad_factorial(0, 1).
 
 3. no loops, everything is recursive (this one is my least favorite)
 
-```lisp
+```prolog
 print_numbers(0).
 print_numbers(N) :-
     N > 0,
@@ -53,11 +53,13 @@ print_numbers(N) :-
     N1 is N - 1,
     print_numbers(N1).
 ```
+
+
 The implementation leverages several unique features of Prolog's logical programming paradigm. Dynamic predicates are used to create mutable state, which isn't typically associated with Prolog's declarative nature. The collision handling is particularly elegant in Prolog - it uses the language's built-in backtracking mechanism to naturally handle multiple items at the same hash position. Memory management takes advantage of Prolog's database-like structure with assertz for adding facts and retractall for cleaning up old entries. The dynamic resizing implementation showcases how Prolog can maintain complex data structures, growing the table when the load factor exceeds 0.7 and using recursive predicates to rehash all items to their new positions. Performance monitoring is implemented through Prolog's fact-based system, tracking the number of items and calculating statistics. This combination of logical programming concepts with traditional data structure implementation demonstrates how Prolog, despite its quirks, can be used to create efficient and maintainable data structures.
 
 AND HERE IT IS.
 
-```lisp
+```prolog
 % tell prolog these predicates will change during runtime
 :- dynamic hash_bucket/3.  % stores triplets of (hash value, key, value)
 :- dynamic table_size/1.   % keeps track of how big our table is
