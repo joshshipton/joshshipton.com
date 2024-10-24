@@ -5,6 +5,8 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
+  import "prismjs/components/prism-prolog";  // Add this line
+  import "prismjs/components/prism-c"
 
   const renderer = new marked.Renderer();
 
