@@ -135,7 +135,7 @@ if __name__ == "__main__":
         post_data['header'] = header
         upload_post_to_supabase(file_path, post_data)
         print("-=-=-=-=-=-=-=-=--=-=")
-        print("LINKS IS") 
+        print("LINKS IS")
         print("https://joshshipton.com/post/" + post_data["post_link"])
     except Exception as e:
         print(f"Error: {e}")

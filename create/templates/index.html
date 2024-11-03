@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto p-4">
+    <div class="mb-6">
+        <h1 class="text-xl mb-2">Content Manager</h1>
+        <div class="space-x-4 text-sm">
+            <a href="{{ url_for('new_post') }}" class="hover:underline">new post</a>
+            <a href="{{ url_for('new_links') }}" class="hover:underline">new link</a>
+            <a href="{{ url_for('new_quote') }}" class="hover:underline">new quote</a>
+        </div>
+    </div>
+
+    <input type="text" id="searchInput" 
+           placeholder="search..." 
+           class="w-full p-2 mb-8 bg-gray-50 border-b focus:outline-none"
+           value="{{ request.args.get('search', '') }}">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Posts Column -->
+        <div>
+            <h2 class="text-lg mb-4">Posts</h2>
+            <div id="postsContainer" class="space-y-6">
+                {% for post in posts %}
+                <div class="space-y-2">
+                    <h3 class="font-medium">{{ post.title }}</h3>
+                    <p class="text-sm text-gray-600">{{ post.content_peek }}</p>
+                    <div class="text-sm space-x-3">
+                        <a href="{{ url_for('push_post', post_id=post.id) }}" 
+                           class="hover:underline">push</a>
+                        <a href="{{ url_for('edit_post', post_id=post.id) }}"
+                           class="hover:underline">edit</a>
+                        <a href="{{ url_for('delete_post', post_id=post.id) }}" 
+                           class="hover:underline text-gray-500"
+                           onclick="return confirm('Are you sure?')">delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Links Column -->
+        <div>
+            <h2 class="text-lg mb-4">Links</h2>
+            <div id="linksContainer" class="space-y-6">
+                {% for link in links %}
+                <div class="space-y-2">
+                    <h3 class="font-medium">{{ link.date }}</h3>
+                    <p class="text-sm text-gray-600">{{ link.links_link }}</p>
+                    <div class="text-sm space-x-3">
+                        <a href="{{ url_for('edit_link', link_id=link.id) }}"
+                           class="hover:underline">edit</a>
+                        <a href="{{ url_for('delete_link', link_id=link.id) }}" 
+                           class="hover:underline text-gray-500"
+                           onclick="return confirm('Are you sure?')">delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Quotes Column -->
+        <div>
+            <h2 class="text-lg mb-4">Quotes</h2>
+            <div id="quotesContainer" class="space-y-6">
+                {% for quote in quotes %}
+                <div class="space-y-2">
+                    <p class="text-sm italic">{{ quote.content }}</p>
+                    <p class="text-sm text-gray-600">- {{ quote.author }}</p>
+                    {% if quote.source %}
+                    <p class="text-xs text-gray-500">{{ quote.source }}</p>
+                    {% endif %}
+                    <div class="text-sm">
+                        <a href="{{ url_for('delete_quote', quote_id=quote.id) }}" 
+                           class="hover:underline text-gray-500"
+                           onclick="return confirm('Are you sure?')">delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let searchTimeout;
+
+function renderResults(data) {
+    const postsContainer = document.getElementById('postsContainer');
+    const quotesContainer = document.getElementById('quotesContainer');
+    const linksContainer = document.getElementById('linksContainer');
+
+    // Render posts
+    postsContainer.innerHTML = data.posts.map(post => `
+        <div class="space-y-2">
+            <h3 class="font-medium">${post.title}</h3>
+            <p class="text-sm text-gray-600">${post.content_peek || ''}</p>
+            <div class="text-sm space-x-3">
+                <a href="/post/${post.id}/push" class="hover:underline">push</a>
+                <a href="/post/${post.id}/edit" class="hover:underline">edit</a>
+                <a href="/post/${post.id}/delete" 
+                   class="hover:underline text-gray-500"
+                   onclick="return confirm('Are you sure?')">delete</a>
+            </div>
+        </div>
+    `).join('');
+
+    // Render quotes
+    quotesContainer.innerHTML = data.quotes.map(quote => `
+        <div class="space-y-2">
+            <p class="text-sm italic">${quote.content}</p>
+            <p class="text-sm text-gray-600">- ${quote.author}</p>
+            ${quote.source ? `<p class="text-xs text-gray-500">${quote.source}</p>` : ''}
+            <div class="text-sm">
+                <a href="/quote/${quote.id}/delete" 
+                   class="hover:underline text-gray-500"
+                   onclick="return confirm('Are you sure?')">delete</a>
+            </div>
+        </div>
+    `).join('');
+
+    // Render links
+    linksContainer.innerHTML = data.links.map(link => `
+        <div class="space-y-2">
+            <h3 class="font-medium">${link.date}</h3>
+            <p class="text-sm text-gray-600">${link.links_link}</p>
+            <div class="text-sm space-x-3">
+                <a href="/link/${link.id}/edit" class="hover:underline">edit</a>
+                <a href="/link/${link.id}/delete" 
+                   class="hover:underline text-gray-500"
+                   onclick="return confirm('Are you sure?')">delete</a>
+            </div>
+        </div>
+    `).join('');
+}
+
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    clearTimeout(searchTimeout);
+    
+    searchTimeout = setTimeout(() => {
+        const searchQuery = e.target.value;
+        fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`)
+            .then(response => response.json())
+            .then(data => renderResults(data))
+            .catch(error => console.error('Error:', error));
+    }, 300);
+});
+</script>
+{% endblock %}

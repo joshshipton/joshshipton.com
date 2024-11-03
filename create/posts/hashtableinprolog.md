@@ -25,26 +25,6 @@ Sum is 2 + 3.  % Evaluates 2 + 3 and unifies Sum with 5
 5 = 2 + 3.     % false! Because it doesnt evaluate 2 + 3
 ```
 
-### order matters a lot
-
-```prolog
-% This will work fine
-good_factorial(0, 1).
-good_factorial(N, Result) :-
-    N > 0,
-    N1 is N - 1,
-    good_factorial(N1, SubResult),
-    Result is N * SubResult.
-
-% This will cause infinite recursion
-bad_factorial(N, Result) :-
-    N > 0,
-    N1 is N - 1,
-    bad_factorial(N1, SubResult),
-    Result is N * SubResult.
-bad_factorial(0, 1).
-```
-
 ### no loops, everything is recursive (this one is my least favorite)
 
 ```prolog
@@ -56,18 +36,44 @@ print_numbers(N) :-
     print_numbers(N1).
 ```
 
-<br> 
 
-# <div class="center"> ~~~ hash table time ~~~ </div> 
-<br> 
+### negation as failure
 
-ok now lets start with the hashtable, i think this will be easiest if we break the code down into it's main parts. 
-let's break this bad boy down into its main parts:
+```prolog
+% Let's define some simple facts
+likes(john, pizza).
+likes(mary, sushi).
+likes(john, sushi).
+
+% You might think this would work to find who doesn't like pizza:
+find_pizza_hater(Person) :-
+    \+ likes(Person, pizza). % "\+" is the negation operator
+
+% But this fails:
+% ?- find_pizza_hater(mary).
+% false    <-- confusion??
+
+% You need this thing instead:
+find_pizza_hater(Person) :-
+    likes(Person, _),         % first find a person that exists
+    \+ likes(Person, pizza).  % then check if they don't like pizza
+
+% This works:
+% ?- find_pizza_hater(mary).
+% true
+```
+
+<br>
+
+# <div class="center"> ~~~ hash table time ~~~ </div>
+<br>
+
+ok now lets start with the hashtable, i think this will be easiest if we break the code down into it's main parts.
 
 ### the basics of our hash table
 
 ```prolog
-prologCopy:- dynamic hash_bucket/3.  % stores (hash value, key, value)
+:- dynamic hash_bucket/3.  % stores (hash value, key, value)
 :- dynamic table_size/1.   % keeps track of table size
 :- dynamic item_count/1.   % counts our stuff
 ```
@@ -77,7 +83,7 @@ this tells prolog "hey, these things are gonna change while we run". think of it
 
 ### initialization (setting up our table)
 ```prolog
-prologCopyinit_hash_table(size) :-
+init_hash_table(size) :-
     retractall(hash_bucket(_, _, _)),    % clear any old junk
     retractall(table_size(_)),           % out with the old size
     retractall(item_count(_)),           % reset our counter
@@ -90,7 +96,7 @@ this is like our constructor. retractall is basically "delete everything matchin
 ### the hash function (where the magic happens)
 
 ```prolog
-prologCopyhash_function(key, size, hashvalue) :-
+hash_function(key, size, hashvalue) :-
     string_codes(key, codes),            % convert string to ascii numbers
     sum_codes(codes, sum),               % add them up
     a is 0.69420,                        % completely arbitrary constant...
@@ -100,7 +106,7 @@ prologCopyhash_function(key, size, hashvalue) :-
 ```
 
 this is our hash function - nothing too fancy, just:
-converts string to ascii numbers -> adds them up -> multiplies them by a completely random constant -> takes the decimal part and scales it to fit our table size 
+converts string to ascii numbers -> adds them up -> multiplies them by a completely random constant -> takes the decimal part and scales it to fit our table size
 
 
 ### handling collisions
@@ -108,7 +114,7 @@ converts string to ascii numbers -> adds them up -> multiplies them by a complet
 prolog actually makes this super easy. when multiple items hash to the same spot, they just... exist there. the backtracking system handles it automatically. when we look something up:
 
 ```prolog
-prologCopyget(key, value) :-
+get(key, value) :-
     table_size(size),
     hash_function(key, size, hashvalue),
     hash_bucket(hashvalue, key, value).  % magic happens here
@@ -118,7 +124,7 @@ prolog will find the right one automatically by matching both the hash AND the k
 ### load factor and resizing
 
 ```prolog
-prologCopycheck_load_factor :-
+check_load_factor :-
     item_count(count),
     table_size(size),
     loadfactor is count / size,
@@ -132,7 +138,7 @@ when the table gets too full (>70%), we: double the size, grab all our current i
 ### the recursive parts (because prolog)
 
 ```prolog
-prologCopyrehash_all([]).                          % base case: empty list = done
+rehash_all([]).                          % base case: empty list = done
 rehash_all([key-value|rest]) :-          % for each item:
     table_size(size),
     hash_function(key, size, newhash),   % get new position
@@ -147,7 +153,7 @@ otherwise: handle first item, then recurse on the rest
 testing it out:
 
 ```prolog
-prologCopymain :-
+main :-
     init_hash_table(10),
     insert("key1", value1),
     insert("meaning_of_life", 42),
@@ -155,9 +161,9 @@ prologCopymain :-
     print_stats.
 ```
 
-and that's our hash table! 
+and that's our hash table!
 
-here's the implementation in it's entirety. is it the most efficient implementation ever? probably not. but its cool how working with prolog can lead to a decent outcome. 
+here's the implementation in it's entirety. is it the most efficient implementation ever? probably not. but its cool how working with prolog can lead to a decent outcome.
 
 ```prolog
 % tell prolog these predicates will change during runtime

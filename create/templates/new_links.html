@@ -1,0 +1,99 @@
+<!-- templates/new_links.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-lg mb-8">new content diet entry</h1>
+    
+    <form action="{{ url_for('new_links') }}" method="post" class="space-y-8">
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm mb-2">date (optional, defaults to today)</label>
+                <input type="date" name="date"
+                       class="w-full p-2 bg-gray-50 border-b focus:outline-none"
+                       value="{{ today }}">
+            </div>
+
+            <div>
+                <label class="block text-sm mb-2">intro (optional)</label>
+                <textarea name="intro" rows="3"
+                          class="w-full p-2 bg-gray-50 border-b focus:outline-none"
+                          placeholder="any thoughts about this week's content..."></textarea>
+            </div>
+        </div>
+
+        <div id="contentItems" class="space-y-8">
+            <!-- Template for content items -->
+            <template id="contentItemTemplate">
+                <div class="content-item space-y-4 border-l pl-4">
+                    <div class="flex justify-between items-center">
+                        <select name="type[]" class="p-2 bg-gray-50 border-b focus:outline-none">
+                            <option value="articles">article/essay</option>
+                            <option value="videos">video</option>
+                            <option value="tweets">tweet</option>
+                            <option value="books">book</option>
+                            <option value="papers">paper/research</option>
+                            <option value="other">other</option>
+                        </select>
+                        <button type="button" onclick="removeContentItem(this)" 
+                                class="text-sm text-gray-500 hover:underline">remove</button>
+                    </div>
+                    
+                    <input type="text" name="title[]" 
+                           class="w-full p-2 bg-gray-50 border-b focus:outline-none"
+                           placeholder="title">
+                    
+                    <input type="url" name="url[]" 
+                           class="w-full p-2 bg-gray-50 border-b focus:outline-none"
+                           placeholder="url">
+                    
+                    <textarea name="description[]" rows="2"
+                              class="w-full p-2 bg-gray-50 border-b focus:outline-none"
+                              placeholder="thoughts"></textarea>
+                    
+                    <div class="embed-code hidden">
+                        <textarea name="embed[]" rows="2"
+                                  class="w-full p-2 bg-gray-50 border-b focus:outline-none font-mono text-sm"
+                                  placeholder="embed code for videos/tweets"></textarea>
+                    </div>
+                </div>
+            </template>
+        </div>
+        
+        <div class="space-x-4 text-sm">
+            <button type="button" onclick="addContentItem()"
+                    class="hover:underline">add item</button>
+            <button type="submit" name="action" value="save"
+                    class="hover:underline">save as draft</button>
+            <button type="submit" name="action" value="publish"
+                    class="hover:underline">publish</button>
+        </div>
+    </form>
+</div>
+
+<script>
+function addContentItem() {
+    const container = document.getElementById('contentItems');
+    const template = document.getElementById('contentItemTemplate');
+    const clone = template.content.cloneNode(true);
+    container.appendChild(clone);
+    
+    // Add event listener to type selector
+    const newItem = container.lastElementChild;
+    const typeSelector = newItem.querySelector('select');
+    typeSelector.addEventListener('change', function() {
+        const embedDiv = this.closest('.content-item').querySelector('.embed-code');
+        embedDiv.classList.toggle('hidden', !['videos', 'tweets'].includes(this.value));
+    });
+}
+
+function removeContentItem(button) {
+    button.closest('.content-item').remove();
+}
+
+// Add initial content item
+document.addEventListener('DOMContentLoaded', function() {
+    addContentItem();
+});
+</script>
+{% endblock %}
