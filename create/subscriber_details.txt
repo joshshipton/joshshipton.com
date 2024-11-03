@@ -1,0 +1,12 @@
+Name, Email, Date Added
+Alex, figaroalexg@gmail.com, 2023-12-08
+Jack, jack.kempton@live.com, 2023-11-06
+Declan, declanbarrett23@gmail.com, 2023-11-03
+Alana, alanajuslim@gmail.com, 2023-10-23
+Djmon, 23061402@student.uwa.edu.au, 2023-10-15
+Zach, zach.ch02@gmail.com, 2023-10-15
+Josh, shiptonjosh@gmail.com, 2023-10-15
+ch3ngl0rd, chenza20@gmail.com, 2024-01-08
+nicola, nicola@nicolaiarocci.com, 2024-01-26
+Alexander Vasilyev, vasilyevalex04@gmail.com, 2024-04-14
+matt shipton, 1082506@student.ccgs.wa.edu.au, 2024-10-14
