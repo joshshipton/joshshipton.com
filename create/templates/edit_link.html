@@ -1,0 +1,21 @@
+<!-- templates/edit_link.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-lg mb-8">edit content diet entry</h1>
+    
+    <form action="{{ url_for('edit_link', link_id=link.id) }}" method="post" class="space-y-8">
+        <div>
+            <label class="block text-sm mb-2">content</label>
+            <textarea name="content" rows="30" 
+                      class="w-full p-2 bg-gray-50 border-b focus:outline-none font-mono">{{ link.content }}</textarea>
+        </div>
+        
+        <div class="space-x-4 text-sm">
+            <button type="submit" class="hover:underline">save changes</button>
+            <a href="{{ url_for('index') }}" class="hover:underline text-gray-500">cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

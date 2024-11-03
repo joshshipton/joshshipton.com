@@ -347,56 +347,6 @@ def create_links_file(date, intro, content_items, is_draft=True):
     
     return filepath, link, date, content
 
-@app.route('/link/<int:link_id>/edit', methods=['GET', 'POST'])
-def edit_link(link_id):
-    try:
-        # Get link data from Supabase
-        response = supabase.table("links").select("*").eq('id', link_id).execute()
-        if not response.data:
-            flash('Link not found', 'error')
-            return redirect(url_for('index'))
-        
-        link = response.data[0]
-        filepath = os.path.join(LINKS_DIRECTORY, f"{link['links_link']}.md")
-        
-        if request.method == 'POST':
-            try:
-                # Read the current content to preserve the LINK= line
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    current_content = f.read()
-                    link_line = next((line for line in current_content.split('\n') 
-                                    if line.startswith('LINK=')), None)
-                
-                # Update content while preserving the LINK= line
-                updated_content = f"{link_line}\n----------\n\n{request.form['content']}"
-                
-                # Write back to file
-                with open(filepath, 'w', encoding='utf-8') as f:
-                    f.write(updated_content)
-                
-                # Update Supabase
-                supabase.table("links").update({
-                    'content': updated_content,
-                    'date': request.form['date']
-                }).eq('id', link_id).execute()
-                
-                flash('Link updated successfully!', 'success')
-                return redirect(url_for('index'))
-            except Exception as e:
-                flash(f'Error updating link: {str(e)}', 'error')
-        
-        # For GET request, read the current content
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-            # Remove metadata section
-            content = content.split('----------\n', 1)[1] if '----------\n' in content else content
-        
-        return render_template('edit_link.html', link=link, content=content)
-    
-    except Exception as e:
-        flash(f'Error accessing link: {str(e)}', 'error')
-        return redirect(url_for('index'))
-
 @app.route('/link/<int:link_id>/delete')
 def delete_link(link_id):
     try:
@@ -555,6 +505,48 @@ def new_links():
             print(f"Error details: {str(e)}")  # For debugging
     
     return render_template('new_links.html', today=datetime.now().strftime('%Y-%m-%d'))
+
+
+@app.route('/link/<int:link_id>/edit', methods=['GET', 'POST'])
+def edit_link(link_id):
+    try:
+        # Get link data from Supabase
+        response = supabase.table("links").select("*").eq('id', link_id).execute()
+        if not response.data:
+            flash('Link not found', 'error')
+            return redirect(url_for('index'))
+        
+        link = response.data[0]
+        
+        if request.method == 'POST':
+            try:
+                # Get the updated content directly from the form
+                updated_content = request.form.get('content', '')
+                
+                # Update Supabase
+                supabase.table("links").update({
+                    'content': updated_content
+                }).eq('id', link_id).execute()
+                
+                # Find and update the corresponding file if it exists
+                link_filename = f"{link['links_link']}.md"
+                filepath = os.path.join(LINKS_DIRECTORY, link_filename)
+                if os.path.exists(filepath):
+                    with open(filepath, 'w', encoding='utf-8') as f:
+                        f.write(updated_content)
+                
+                flash('Link updated successfully!', 'success')
+                return redirect(url_for('index'))
+            except Exception as e:
+                flash(f'Error updating link: {str(e)}', 'error')
+                return redirect(url_for('index'))
+        
+        # For GET request, just show the current content
+        return render_template('edit_link.html', link=link)
+    
+    except Exception as e:
+        flash(f'Error accessing link: {str(e)}', 'error')
+        return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

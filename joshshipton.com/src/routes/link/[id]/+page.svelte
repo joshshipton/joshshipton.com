@@ -59,7 +59,7 @@
   </script>
   
   <article class="prose">
-    <p class="font-bold text-3xl text-left py-6 mt-6">Links by Today {post.date}</p>
+    <p class="font-bold text-3xl text-left py-6 mt-6">{post.header}</p>
     <div>{@html htmlContent}</div>
   </article>
   
