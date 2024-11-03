@@ -131,8 +131,6 @@ def index():
     posts = get_all_posts()
     quotes = get_all_quotes()
     links = supabase.table("links").select("*").order('date', desc=True).execute().data
-    print(links)
-    print(posts)
     
     search_query = request.args.get('search', '').lower()
     if search_query:
