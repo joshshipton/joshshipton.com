@@ -55,10 +55,6 @@
     because people on the internet told me it was a
     good idea. (i'm easily influenced)
   </p>
-  <p> 
-  i believe that living in public is a good way of maximizing luck and attracting like minded people. this website can be thought of as the most authentic digital representation of myself.
-  </p>
-
   {#if isSubscribed}
     <div></div>
   {:else}
@@ -103,6 +99,11 @@
       </form>
     </div>
   {/if}
+<p class='text-sm text-center'> 
+  i believe that living in public is a good way of maximizing luck and attracting like minded people. this website can be thought of as the most authentic digital representation of myself.
+  </p>
+
+
 
   <div class="flex flex-col mx-4 gap-2">
     <p class="text-xl font-semibold text-center py-4">recent posts</p>
