@@ -53,7 +53,11 @@
     <a href="post/me">i'm josh</a>. i'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">software engineer</a>. i made a
     <a href="post/about">personal website</a>
     because people on the internet told me it was a
-    good idea. (i'm easily influenced). i believe that living in public is a good way of maximizing luck and attracting like minded people. this website can be thought of as the most authentic digital representation of myself.</p>
+    good idea. (i'm easily influenced). 
+</p>
+<br>
+  <p class="text-sm text-center">
+    i believe that living in public is a good way of maximizing luck and attracting like minded people. this website can be thought of as the most authentic digital representation of myself.</p>
   {#if isSubscribed}
     <div></div>
   {:else}
