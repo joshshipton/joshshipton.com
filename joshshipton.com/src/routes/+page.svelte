@@ -55,6 +55,10 @@
     because people on the internet told me it was a
     good idea. (i'm easily influenced)
   </p>
+  <p> 
+  i believe that living in public is a good way of maximizing luck and attracting like minded people. this website can be thought of as the most authentic digital representation of myself.
+  </p>
+
   {#if isSubscribed}
     <div></div>
   {:else}
