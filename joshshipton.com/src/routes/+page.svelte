@@ -49,14 +49,15 @@
 <div>
   <!-- Testing if this will show up when google -->
   <p class="text-3xl font-bold text-center">JOSH SHIPTON INTERNET WEBSITE</p>
-<p class="text-sm leading-relaxed ">
+<p class="text-center text-sm leading-relaxed ">
     <a href="post/me">i'm josh</a>. i'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">software engineer</a>. i made a
     <a href="post/about">personal website</a>
     because people on the internet told me it was a
     good idea. (i'm easily influenced). 
 </p>
-<p class="text-xsm leading-relaxed">
-i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this website is a holistic snapshot of me</p> 
+<p class="text-center text-xsm leading-relaxed">
+i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this website is a holistic snapshot of me
+</p> 
   {#if isSubscribed}
     <div></div>
   {:else}
