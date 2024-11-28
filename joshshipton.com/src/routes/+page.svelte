@@ -55,13 +55,8 @@
     because people on the internet told me it was a
     good idea. (i'm easily influenced). 
 </p>
-
-  <p class="text-sm text-center leading-relaxed">
-this website is my personal corner of the interwebs built to share to publically store thoughts, projects and my favorite words. </p> 
-
-      <p class="text-sm italic leading-relaxed">
-
-i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this is a holistic snapshot of who i am </p> 
+<p class="text-sm italic leading-relaxed">
+i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this website is a holistic snapshot of me</p> 
   {#if isSubscribed}
     <div></div>
   {:else}
