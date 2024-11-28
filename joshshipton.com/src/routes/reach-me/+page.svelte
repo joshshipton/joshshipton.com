@@ -1,10 +1,13 @@
 <body>
   <h1 class="font-bold text-3xl py-6 text-left">lets talk</h1>
   <p>
-    I enjoy talking to people, especially if we share some interests. feel free
+    I enjoy talking to people, especially if we share some interests. 
+
+    for general enquiries or just to say hello feel free
     to email me at <a href="mailto:shiptonjosh@gmail.com"
-      >shiptonjosh [at] gmail [dot] com</a
-    >
+      >shiptonjosh [at] gmail [dot] com</a>. i will respond to every email i get. 
+
+    if you're looking to organize a private lesson, seminar or super-fight you could also contact me on <a href="https://instagram.com/hiptossjosh">instagram 
   </p>
 </body>
 <footer>

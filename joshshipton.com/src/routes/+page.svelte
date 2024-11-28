@@ -55,9 +55,8 @@
     because people on the internet told me it was a
     good idea. (i'm easily influenced). 
 </p>
-<p class="text-center text-xsm leading-relaxed">
-i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this website is a holistic snapshot of me
-</p> 
+<p class="text-center text-sm"> 
+my main <strong>interests</strong> at the moment are exploring novel use cases for algorithms, becoming the best grappler i can be, and figuring out what it means to be a good human </p> 
   {#if isSubscribed}
     <div></div>
   {:else}
