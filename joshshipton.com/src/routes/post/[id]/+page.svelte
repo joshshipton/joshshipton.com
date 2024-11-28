@@ -94,34 +94,7 @@
     // Apply syntax highlighting
     tick().then(() => {
       Prism.highlightAll();
-      const links = document.querySelectorAll("a");
-      links.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (
-          href &&
-          href !== "/" &&
-          href !== "/collected-words" &&
-          href !== "/reach-me"
-        ) {
-          link.classList.add("link-wrapper");
-
-          link.addEventListener("mouseover", () => {
-            const tooltip = document.createElement("div");
-            tooltip.classList.add("link-tooltip");
-            tooltip.textContent = href;
-            link.appendChild(tooltip);
-          });
-
-          link.addEventListener("mouseout", () => {
-            const tooltip = link.querySelector(".link-tooltip");
-            if (tooltip) {
-              tooltip.remove();
-            }
-          });
-        }
-      });
     });
-  });
 </script>
 
 <article class="prose">
