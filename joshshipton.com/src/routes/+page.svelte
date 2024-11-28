@@ -49,7 +49,7 @@
 <div>
   <!-- Testing if this will show up when google -->
   <p class="text-3xl font-bold text-center">JOSH SHIPTON INTERNET WEBSITE</p>
-<p class="text-lg leading-relaxed text-gray-700">
+<p class="text-sm leading-relaxed ">
     <a href="post/me">i'm josh</a>. i'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">software engineer</a>. i made a
     <a href="post/about">personal website</a>
     because people on the internet told me it was a
@@ -59,7 +59,7 @@
   <p class="text-sm text-center leading-relaxed">
 this website is my personal corner of the interwebs built to share to publically store thoughts, projects and my favorite words. </p> 
 
-      <p class="text-sm italic text-gray-600 leading-relaxed">
+      <p class="text-sm italic leading-relaxed">
 
 i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this is a holistic snapshot of who i am </p> 
   {#if isSubscribed}
