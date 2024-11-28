@@ -95,6 +95,7 @@
     tick().then(() => {
       Prism.highlightAll();
     });
+    }; 
 </script>
 
 <article class="prose">
