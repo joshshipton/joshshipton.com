@@ -55,7 +55,7 @@
     because people on the internet told me it was a
     good idea. (i'm easily influenced). 
 </p>
-<p class="text-sm italic leading-relaxed">
+<p class="text-xsm leading-relaxed">
 i believe existing in public is a good way to maximize serendipity and connect with like-minded people. this website is a holistic snapshot of me</p> 
   {#if isSubscribed}
     <div></div>
