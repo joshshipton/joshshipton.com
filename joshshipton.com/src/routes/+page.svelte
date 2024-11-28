@@ -52,8 +52,8 @@
 <p class="text-center text-sm leading-relaxed ">
     <a href="post/me">i'm josh</a>. i'm an <a href="https://www.instagram.com/hiptossjosh/">athlete</a> and <a href="https://www.github.com/joshshipton">software engineer</a>. i made a
     <a href="post/about">personal website</a>
-    because people on the internet told me it was a
-    good idea. (i'm easily influenced). 
+    because people on the internet told me it was a 
+    <a href="https://joshshipton.com/post/person-website-good-idea">good idea</a>. (i'm easily influenced). 
 </p>
 <p class="text-center text-sm"> 
 my main <strong>interests</strong> at the moment are exploring novel use cases for algorithms, becoming the best grappler i can be, and figuring out what it means to be a good human </p> 
