@@ -168,29 +168,4 @@ li::before {
   font-style: italic;
 }
 
-.link-wrapper {
-  position: relative;
-  display: inline-block;
-}
 
-.link-tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 0.5rem;
-  z-index: 10;
-  padding: 0.5rem;
-  background-color: #1f2937;
-  color: #fff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  border-radius: 0.25rem;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  white-space: nowrap;
-}
-
-.link-wrapper:hover .link-tooltip {
-  opacity: 1;
-}
