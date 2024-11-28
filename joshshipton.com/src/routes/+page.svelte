@@ -55,6 +55,7 @@
     <a href="post/about">personal website</a>
     because people on the internet told me it was a 
     <a href="https://joshshipton.com/post/person-website-good-idea">good idea</a>. (i'm easily influenced). my main <strong>interests</strong> at the moment are exploring novel use cases for algorithms, becoming the best grappler i can be, and figuring out what it means to be a good human </p> 
+    
   {#if isSubscribed}
     <div></div>
   {:else}
@@ -99,6 +100,14 @@
       </form>
     </div>
   {/if}
+
+    <p class="text-xl font-semibold text-center py-4">quick filters</p>
+    <div class="text-m flex justify-center gap-4">
+    <a href="/tech">tech</a>
+    <a href="/grappling">grappling</a>
+    <a href="/phil">phil</a>
+  </div>
+
 
 
   <div class="flex flex-col mx-4 gap-2">
