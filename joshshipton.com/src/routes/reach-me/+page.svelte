@@ -6,7 +6,9 @@
     for general enquiries or just to say hello feel free
     to email me at <a href="mailto:shiptonjosh@gmail.com"
       >shiptonjosh [at] gmail [dot] com</a>. i will respond to every email i get. 
-
+</p>
+<br>
+<p>
     if you're looking to organize a private lesson, seminar or super-fight you could also contact me on <a href="https://instagram.com/hiptossjosh">instagram 
   </p>
 </body>
