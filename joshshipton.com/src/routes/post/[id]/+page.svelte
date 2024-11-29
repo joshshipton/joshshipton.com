@@ -30,11 +30,11 @@
     return `<blockquote class="border-l-4 border-gray-200 pl-4 italic my-4">${quote}</blockquote>`;
   };
 
-  // // Custom rendering for lists
-  renderer.list = (body, ordered) => {
-    const type = ordered ? "ol" : "ul";
-    return `<${type}  class="px-10" style="list-style-type: decimal;" >${body}</${type}>`;
-  };
+renderer.list = (body, ordered) => {
+  const type = ordered ? "ol" : "ul";
+  const style = ordered ? "list-style-type: decimal;" : "list-style-type: disc;";
+  return `<${type} class="px-10" style="${style}">${body}</${type}>`;
+};
 
   // Custom rendering for list items
   renderer.listitem = (text) => {
