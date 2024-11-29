@@ -87,7 +87,7 @@
             type="submit"
             class=" hover:underline text-black font-bold py-2 px-2 rounded transition duration-200"
           >
-            subscribe??
+            updates??
           </button>
           <button
             class="hover:underline text-black font-bold py-2 px-2 rounded transition duration-200 whitespace-nowrap"
