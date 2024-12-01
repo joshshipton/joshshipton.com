@@ -1,10 +1,12 @@
 # app.py
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 from dotenv import load_dotenv
 from supabase import create_client, Client
 import re
 from datetime import datetime
+# import from the push post python file
+from push_post import parse_post, upload_post_to_supabase
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'
@@ -55,7 +57,6 @@ def new_post():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-
         try:
             # Create the post file
             filepath = create_post_file(title, content)
@@ -63,27 +64,26 @@ def new_post():
 
             # Try to push it to Supabase immediately
             try:
-                from push_post import parse_post, upload_post_to_supabase
                 post_data, header = parse_post(filepath)
                 post_data['header'] = header
                 upload_post_to_supabase(filepath, post_data)
-                flash('Post created and pushed to Supabase successfully!', 'success')
+                print('Post created and pushed to Supabase successfully!', 'success')
             except Exception as e:
-                flash(f'Post file created but not pushed: {str(e)}', 'warning')
+                print(f'Post file created but not pushed: {str(e)}', 'warning')
 
             return redirect(url_for('index'))
         except Exception as e:
-            flash(f'Error creating post: {str(e)}', 'error')
+            print(f'Error creating post: {str(e)}', 'error')
             print(f"Error creating post: {str(e)}")  # Debug print
 
     return render_template('new_post.html')
 
 def get_all_posts():
-    response = supabase.table("posts").select("*").execute()
+    response = supabase.table("posts").select("*").order("date_created", desc=True).execute()
     return response.data
 
 def get_all_quotes():
-    response = supabase.table("quotes").select("*").execute()
+    response = supabase.table("quotes").select("*").order("date_created", desc=True).execute()
     return response.data
 
 def get_post_by_id(post_id):
@@ -91,13 +91,11 @@ def get_post_by_id(post_id):
     return response.data[0] if response.data else None
 
 def get_post_file_path(post_id):
-    # Scan the posts directory for the file with matching ID
     for filename in os.listdir(POSTS_DIRECTORY):
         if filename.endswith('.md'):
             with open(os.path.join(POSTS_DIRECTORY, filename), 'r', encoding='utf-8') as f:
                 content = f.read()
-                if f'ID="{post_id}"' in content:
-                    return os.path.join(POSTS_DIRECTORY, filename)
+                if f'ID="{post_id}"' in content: return os.path.join(POSTS_DIRECTORY, filename)
     return None
 
 def update_post_file(filepath, title, content, link=None, is_draft='T', is_popular='F'):
@@ -123,7 +121,6 @@ IS_POPULAR={is_popular}
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(updated_content)
-
     return post_id
 
 @app.route('/')
@@ -139,7 +136,6 @@ def index():
         links = [l for l in links if search_query in l['content'].lower()]
     
     return render_template('index.html', posts=posts, quotes=quotes, links=links)
-
 
 app.route('/api/search')
 def api_search():
@@ -163,7 +159,7 @@ def api_search():
 def edit_post(post_id):
     post = get_post_by_id(post_id)
     if not post:
-        flash('Post not found', 'error')
+        print('Post not found', 'error')
         return redirect(url_for('index'))
 
     if request.method == 'POST':
@@ -175,14 +171,14 @@ def edit_post(post_id):
         try:
             filepath = get_post_file_path(post_id)
             if not filepath:
-                flash('Post file not found', 'error')
+                print('Post file not found', 'error')
                 return redirect(url_for('index'))
 
             update_post_file(filepath, title, content, post['post_link'], is_draft, is_popular)
-            flash('Post updated successfully!', 'success')
+            print('Post updated successfully!', 'success')
             return redirect(url_for('index'))
         except Exception as e:
-            flash(f'Error updating post: {str(e)}', 'error')
+            print(f'Error updating post: {str(e)}', 'error')
 
     filepath = get_post_file_path(post_id)
     if filepath:
@@ -205,10 +201,10 @@ def new_quote():
         try:
             data = {'content': content, 'author': author, 'source': source}
             supabase.table("quotes").insert(data).execute()
-            flash('Quote added successfully!', 'success')
+            print('Quote added successfully!', 'success')
             return redirect(url_for('index'))
         except Exception as e:
-            flash(f'Error adding quote: {str(e)}', 'error')
+            print(f'Error adding quote: {str(e)}', 'error')
 
     return render_template('new_quote.html')
 
@@ -218,10 +214,12 @@ def push_post(post_id):
         # Get the file path
         filepath = get_post_file_path(post_id)
         if not filepath:
-            flash('Post file not found', 'error')
+            print('Post file not found', 'error')
             return redirect(url_for('index'))
-
+        
+        #TODO: fix this the flow is wrong, if i push a post and its still marked as a draft it shoukdnt update
         # First update the file to set IS_DRAFT=F
+        """
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
 
@@ -231,6 +229,7 @@ def push_post(post_id):
         # Write the updated content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
+        """
 
         # Now push to Supabase
         from push_post import parse_post, upload_post_to_supabase
@@ -238,9 +237,9 @@ def push_post(post_id):
         post_data['header'] = header
         upload_post_to_supabase(filepath, post_data)
 
-        flash('Post pushed to Supabase successfully!', 'success')
+        print('Post pushed to Supabase successfully!', 'success')
     except Exception as e:
-        flash(f'Error pushing post: {str(e)}', 'error')
+        print(f'Error pushing post: {str(e)}', 'error')
     return redirect(url_for('index'))
 
 
@@ -252,18 +251,18 @@ def delete_post(post_id):
         if filepath:
             os.remove(filepath)
         supabase.table("posts").delete().eq('id', post_id).execute()
-        flash('Post deleted successfully!', 'success')
+        print('Post deleted successfully!', 'success')
     except Exception as e:
-        flash(f'Error deleting post: {str(e)}', 'error')
+        print(f'Error deleting post: {str(e)}', 'error')
     return redirect(url_for('index'))
 
 @app.route('/delete/quote/<int:quote_id>')
 def delete_quote(quote_id):
     try:
         supabase.table("quotes").delete().eq('id', quote_id).execute()
-        flash('Quote deleted successfully!', 'success')
+        print('Quote deleted successfully!', 'success')
     except Exception as e:
-        flash(f'Error deleting quote: {str(e)}', 'error')
+        print(f'Error deleting quote: {str(e)}', 'error')
     return redirect(url_for('index'))
 
 
@@ -351,7 +350,7 @@ def delete_link(link_id):
         # Get the link data first
         response = supabase.table("links").select("*").eq('id', link_id).execute()
         if not response.data:
-            flash('Link not found', 'error')
+            print('Link not found', 'error')
             return redirect(url_for('index'))
         
         link = response.data[0]
@@ -364,9 +363,9 @@ def delete_link(link_id):
         # Delete from Supabase
         supabase.table("links").delete().eq('id', link_id).execute()
         
-        flash('Link deleted successfully!', 'success')
+        print('Link deleted successfully!', 'success')
     except Exception as e:
-        flash(f'Error deleting link: {str(e)}', 'error')
+        print(f'Error deleting link: {str(e)}', 'error')
     
     return redirect(url_for('index'))
 
@@ -493,13 +492,13 @@ def new_links():
                     'links_link': link
                 }
                 supabase.table("links").insert(data).execute()
-                flash('Links created and published!', 'success')
+                print('Links created and published!', 'success')
             else:
-                flash('Links saved as draft!', 'success')
+                print('Links saved as draft!', 'success')
             
             return redirect(url_for('index'))
         except Exception as e:
-            flash(f'Error creating links: {str(e)}', 'error')
+            print(f'Error creating links: {str(e)}', 'error')
             print(f"Error details: {str(e)}")  # For debugging
     
     return render_template('new_links.html', today=datetime.now().strftime('%Y-%m-%d'))
@@ -511,7 +510,7 @@ def edit_link(link_id):
         # Get link data from Supabase
         response = supabase.table("links").select("*").eq('id', link_id).execute()
         if not response.data:
-            flash('Link not found', 'error')
+            print('Link not found', 'error')
             return redirect(url_for('index'))
         
         link = response.data[0]
@@ -533,17 +532,17 @@ def edit_link(link_id):
                     with open(filepath, 'w', encoding='utf-8') as f:
                         f.write(updated_content)
                 
-                flash('Link updated successfully!', 'success')
+                print('Link updated successfully!', 'success')
                 return redirect(url_for('index'))
             except Exception as e:
-                flash(f'Error updating link: {str(e)}', 'error')
+                print(f'Error updating link: {str(e)}', 'error')
                 return redirect(url_for('index'))
         
         # For GET request, just show the current content
         return render_template('edit_link.html', link=link)
     
     except Exception as e:
-        flash(f'Error accessing link: {str(e)}', 'error')
+        print(f'Error accessing link: {str(e)}', 'error')
         return redirect(url_for('index'))
 
 

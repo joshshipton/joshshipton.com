@@ -104,8 +104,6 @@ def upload_post_to_supabase(file_path: str, data):
         key: data[key] for key in data if key != 'header'
     }
 
-    print(db_data)
-
     if db_data.get('id'):
         print("Updating post with id " + str(db_data['id']))
         response = supabase.table("posts").update(
@@ -117,7 +115,7 @@ def upload_post_to_supabase(file_path: str, data):
         response = supabase.table("posts").insert(db_data).execute()
         update_file_with_id(file_path, new_post_id, header)
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" * 5)
-        print("new id is" + db_data['id'])
+        print("new id is" + str(db_data['id']))
 
     print(response)
     print("Post uploaded successfully.")
