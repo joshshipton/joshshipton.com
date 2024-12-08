@@ -3,6 +3,7 @@ TITLE="Chasing Excellence book best quotes"
 LINK="chasing-excellence-book-review-quotes"
 IS_DRAFT=F
 IS_POPULAR=F
+TAGS=[grappling]
 ----------
 
 On a recent plane ride I read [Chasing Excellence](https://www.goodreads.com/book/show/35713474-chasing-excellence) by Ben Bergon. I really liked the book and resonated with a lot of ideas discussed. It was one of those reads that manages to articulate some of your intuitions and then build on top of them in ways you hadn't managed to get to by yourself. 
