@@ -31,9 +31,9 @@ i recently had to make a tough decision that had two clear options (a binary yes
 ### predict the future 
 
 - write stories visualising your future if you pick either decision. how do you feel about each outcome? 
+- make a pros and cons list for each side. 
 
 ### once the decision has been made 
 
-- use the thought of the sunken cost from the other decision to push you to make the most out of the decision you made. 
-
+- use the thought of the sunken cost from the other decision to push you to make the most out of the decision you made. remind yourself of what you sacrificed (the pro's from the opposite decision) and use this as executive scaffolding to push you to make the most out of the oppurtunity. 
 

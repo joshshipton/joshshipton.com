@@ -17,8 +17,6 @@ i've recently switched to doing almost all of my daily journalling on my laptop 
 
 my thinking here is that it includes a written record of my thoughts, how i am thinking, and how my thinking evoles over time, this is easily then given to claude and then as models get better and better it will be able to notice more and more nuanced patterns in my thinking. 
 
-
-
 ## Problems i'm running into
 
 too much information, i write a lot. there is too much information for the LLM. 
@@ -31,8 +29,6 @@ possible solutions
 
 essentially the main thing we are doing here is increasing token density. 
 
-out of all of these tricks only embeddings really makes sense to me, using an llm to summarize and then asking it to summarize the summarize seems like we are going to lose a lot of nuance and is not something i am intrested in or can be bothered to do right now, maybe in the future. would be simple to implement, just summarize each entry with some llm before appending it to the big text file, repeat for all entries. before giving th3e summarization of summarizationt to the llm. 
-
 before we do complex stuff like embeddings i researched simple tricks to increase token density, some of the simplest ones i found were; 
 
 - remove redundant whitespace, whitespace counts as tokens. rwemove extra spaces, tabs and newlines. 
@@ -40,18 +36,13 @@ before we do complex stuff like embeddings i researched simple tricks to increas
 - remove stop words e.g "the", "a", "is", they dont do much to convey information but consume valuable tokens
 - combining sentences, seperate sentences use more tokens. e.g "It rained toady. so i stayed inside." -> "it rained, i stayed inside. (the second sentence uses less tokens)
 
-of these whitespace and removing stop words make the most sense. i'll keep the orignal script that does not change the journal entires other than removing excess new lines at the bottom but also include another script that does more hardcore token densificatiuon (is this the right word? idk,) 
-
-the new script will remove common stop words as well as spaces. 
 
 
-### Results 
 
-for the not token densified version the results are ok. claude is able to pick up on general theems 
 
-### Next steps 
 
-next i want to try using the journal entries as a data-set. i have absoltely no clue how to do this but should be a good time. 
+
+
 
 
 <div class="center">  <h2> ~~~ Code ~~~ </h2> </div> 
@@ -100,8 +91,6 @@ gm() {
 }
 
 ~~~
-
-script without hardcore token density optimizations, removes some extra whitespace but doesnt change the content of the entires at all
 
 ~~~python
 
@@ -186,6 +175,4 @@ output_file = "output.txt"
 # Run the script
 makebook(output_file)
 ~~~
-
-python script with more hardccore opeimations 
 

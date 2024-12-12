@@ -63,6 +63,9 @@ red rising
 
 articles: 
 
+websites: 
 
+geroge macks lindy library "the top 0.1% of ideas ive found" - https://www.george-mack.com/content/lindy-library-the-0-1-of-ideas-ive-found
+less wrong i just love the autism
 
 
