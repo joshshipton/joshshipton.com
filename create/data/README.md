@@ -1,0 +1,1 @@
+just storing stuff in .txt files in case i lose the db for whatever reason
