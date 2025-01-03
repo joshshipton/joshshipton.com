@@ -20,35 +20,41 @@ def parse_post(file_path: str):
 
     # Extract metadata from the template
     metadata = re.search(
-    r"ID=\"(.*)\"\nTITLE=\"(.*)\"\nLINK=\"(.*)\"\nIS_DRAFT=(.*)\nIS_POPULAR=(.*)\nTAGS=\[(.*)\]\n-{10}\n", content, re.DOTALL
+        r"ID=\"(.*)\"\nTITLE=\"(.*)\"\nLINK=\"(.*)\"\nIS_DRAFT=(.*)\nIS_POPULAR=(.*)\nTAGS=\[(.*)\]\n-{10}\n", content, re.DOTALL
     )
     if not metadata:
-        print(metadata)
         raise ValueError("Invalid file format or metadata missing")
 
     post_id, title, link, is_draft, is_popular, tags = metadata.groups()
     tags = tags.split(",") if tags else []
 
-   # Extract content after the metadata
+    # Extract content after the metadata
     post_content = content[metadata.end():].strip()
+
+    # Extract notes from the content
+    notes_match = re.search(r"---NOTES---(.*?)---END NOTES---", post_content, re.DOTALL)
+    notes = notes_match.group(1).strip() if notes_match else None
+    if notes:
+        # Remove notes section from post content
+        post_content = post_content[:notes_match.start()].strip() + post_content[notes_match.end():].strip()
+
     content_peek = post_content[:200] + \
         '...' if len(post_content) > 200 else post_content
 
     post_id = int(post_id) if post_id else None
 
-    print("title is" + title, "link is" + link, "post_id is" +
-          str(post_id), "is_draft is" + is_draft, "is_popular is" + is_popular)
-
     return {
-    'id': post_id,
-    'title': title,
-    'post_link': link,
-    'post_content': post_content,
-    'content_peek': clean_post_peek(content_peek),
-    'is_draft': is_draft.upper() == 'T',
-    'is_popular': is_popular.upper() == 'T',
-    'tags': tags
+        'id': post_id,
+        'title': title,
+        'post_link': link,
+        'post_content': post_content,
+        'content_peek': clean_post_peek(content_peek),
+        'is_draft': is_draft.upper() == 'T',
+        'is_popular': is_popular.upper() == 'T',
+        'tags': tags,
+        'notes': notes  # Include notes for reference
     }, content[:metadata.start()]
+
 
 def clean_post_peek(content_peek):
     cleaned_peek = []
@@ -103,6 +109,7 @@ def update_file_with_id(file_path: str, post_id: int, third):
 
 def upload_post_to_supabase(file_path: str, data):
     header = data.pop('header', None)
+    notes = data.pop('notes', None)  # Exclude notes from database upload
 
     db_data = {
         key: data[key] for key in data if key != 'header'
@@ -111,11 +118,11 @@ def upload_post_to_supabase(file_path: str, data):
     if db_data.get('id'):
         print("Updating post with id " + str(db_data['id']))
         response = supabase.table("posts").update(
-        db_data).eq('id', db_data['id']).execute()
+            db_data).eq('id', db_data['id']).execute()
         db_data['tags'] = db_data.get('tags', [])
     else:
         print("Inserting new post")
-        new_post_id = random.randint(0, 100000)
+        new_post_id = random.randint(0, 1000000000000000)
         db_data['id'] = new_post_id
         db_data['tags'] = db_data.get('tags', [])
         response = supabase.table("posts").insert(db_data).execute()
@@ -125,7 +132,9 @@ def upload_post_to_supabase(file_path: str, data):
 
     print(response)
     print("Post uploaded successfully.")
-
+    if notes:
+        print("Notes retained in the .md file:")
+        print(notes)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
