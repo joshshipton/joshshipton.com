@@ -22,7 +22,6 @@ plan
 - closing remarks
     -
 
-
 ------
 
 quotes i like
@@ -88,12 +87,53 @@ i think it makes the most amount of sense to subscribe to some sort of platonist
 
 this is useful becuase it serves as an ideal to strive for, we should try and work on and correct our taste so we can get closer and closer to this ideal beauty.
 
-> Good taste is usefully defined as the capacity for deep aesthetic pleasure, and the discernment to judge whether a given thing is capable of inducing deep aesthetic pleasure
+> Good taste is usefully defined as the capacity for deep aesthetic pleasure, and the discernment to judge whether a given thing is capable of inducing deep aesthetic pleasure - [SO](https://www.sympatheticopposition.com/p/contra-scott-on-taste)
 
 #### why is taste important?
 
+taste is important because you need to make sure you are working on the right things, you want to be working on things that are going to be recived well.
+
+another important reason is that the more and more abundace we create as a species the more and more competitive everything becomes and the more we value taste. put beuautifuly by Anu Atluru
+
+> "In a world of scarcity, we treasure tools. In a world of abundance, we treasure taste"  - (Anu Atluru)[https://www.workingtheorys.com/p/taste-is-eating-silicon-valley]
+
+#### but how do i develop good taste?
 
 
+great question, im trying to figure this out right now, i think its simpler than most people think.
+
+> "Ultimately, it comes down to taste, it comes down to trying to expose yourself to the best things that humans have done and then trying to bring those things into what you're doing. Picasso had a saying: "good artists copy, great artists steal." - Steve Jobs
+
+i think you just have to expose yourself to people with good taste as much as possible
+
+you also need to be producing and not just consuming, you should find something that you don't have to force yourself to do. ask yourself "what do i already like? what am i naturally interested in? then produce in this space constantly asking yourself what's good and what's not good.
+
+over time you will naturally develop a sixth sense for taste
+
+taste is two things
+
+1. consume good content, consume things that people have spent time and energy creating. <u> if something is in good taste it should rewards attention with pleasure </u>. watch a piece of reality tv, then watch any of x. one gets significantly better the more attention you give to it, the other can only be consumed if you don't pay too much attention.
+
+2. you have to be prolific, you have to have a large body of work, created brick by brick. everytime you make something you have to think about what made it good and what made it bad and iterate. you need to be iterating.
+
+#### what im doing to develop good taste
+
+building and writing as much as i can
+
+my philosophy is the more i create the more feedback i am going to get, everytime i write or create anything i can see the finished product as a whole and iterate on it, keeping and extending the parts that i think are good, and fixing up what i think is bad.
+
+if you iterate over and over again you are going to get better everytime, if you do this for long enough you're going to develop what you want.
+
+not being scared of producing crappy stuff, i have tons of unfished articles and essays that im scared to release because i don't believe they are good enough, i think you have to be willing to produce bad work, its far more valuable to just post, iterate, post, iterate, than work on one work over and over again.
+
+to quote Visakan Veerasamy who i think is one of the absolute smartest and under-rated thinkers on the planet
+
+
+> You have a far greater shot at tasting greatest and fun if you siply wriute as much as you possibly can, and then some. Why? because your concept of 'best' is a work-in-progress and a moving target. Why spend a year working on writing the best song you can, when you could instead spend a year improving your idea of what makes a song great?
+
+
+
+if you enjoyed this post you will probably enjoy these as well
 
 links
 
