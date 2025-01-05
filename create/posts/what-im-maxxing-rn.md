@@ -14,13 +14,20 @@ notes can go here
 
 what im maxxing rn
 
+- volume
 - taste
 - aura
 - luck
 
-[note] link to each above
+i think that these four things are literally all you need to be enviroment-agnostic successfull, each of those four documents are evergreen and will be added to overtime.
 
-i think that these three things are literally all you need to be successfull, each three of those documents are evergreen and will be added to overtime.
+each trait can be thought of as a cascadding into the others,
+
+more volume -> better taste
+
+better taste -> more aura
+
+more aura -> more luck
 
 
 

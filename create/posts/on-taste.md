@@ -58,6 +58,12 @@ So the sophisticates do have reasons behind what they do - but the reasons are a
 
 """
 
+questions to ask yourself
+    - why do you like what you like
+    - why dont you like what you dont like
+
+if you dont make things you dont really have ground to stand on
+
 IMPORTANT DISCTICTION
 
 

@@ -5,7 +5,7 @@
   import { tick } from "svelte";
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
-  import "prismjs/components/prism-prolog";  // Add this line
+  import "prismjs/components/prism-prolog";  
   import "prismjs/components/prism-c"
 
   const renderer = new marked.Renderer();
@@ -90,6 +90,12 @@ renderer.list = (body, ordered) => {
       gfm: true,
       breaks: true,
     });
+
+    // Load Twitter embed script
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    document.body.appendChild(script);
 
     // Apply syntax highlighting
     tick().then(() => {

@@ -131,7 +131,9 @@ Things youre allowed to do inspired by (https://milan.cvitkovic.net/writing/thin
 
     just talk to random people
 
+    do things without people
 
+    ask for forgiveness instead of permission
 
 
 

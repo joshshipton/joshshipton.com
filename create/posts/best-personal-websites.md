@@ -14,3 +14,4 @@ IS_POPULAR=F
 - https://blog.codinghorror.com/
 - https://sive.rs/
 - https://milan.cvitkovic.net/
+
