@@ -15,17 +15,9 @@ i'm well aware that the first 100 articles or posts i write will be terrible, i 
 
 ---END NOTES---
 
-
-> "If you say you're ambitious, but you don't have a body of work you can point at, you should STFU and build the body of work first. Even if it's a bunch of notes and drafts and crappy prototypes or whatever. Code your apps, write your plays and poems. I will die on this hill."
-> - Visakan Veerasamy (<span class="profile-pic" data-author="visakanv"></span>)
-
-> "The reason I keep saying 'you need to do more volume' is because intelligent people win at literally anything once they recognize the patterns. I have never once failed at anything I put my mind to, because I eventually figure out every system and its loopholes."
-> - Fox (<span class="profile-pic" data-author="bowtiedfox"></span>)
-
-> "The big lesson of survivor bias is that you should optimize for being a survivor."
-> - Visakan Veerasamy (<span class="profile-pic" data-author="visakanv"></span>)
-
 this is my north star for 2025, you need to do more, and you need to not care about what the quality is like. the only way to get better is to do.
+
+[TWEET author="Visakan Veerasamy" url="https://twitter.com/visakanv/status/1451147667732525063" content="if you say you're ambitious, but you don't have a body of work you can point at, you should STFU and build the body of work first. even if it's a bunch of notes and drafts and crappy prototypes or whatever. code your apps, write your plays and poems. I will die on this hill."]
 
 <div class="center">
 <blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">if you say you&#39;re ambitious, but you don&#39;t have a body of work you can point at, you should STFU and build the body of work first. even if it&#39;s a bunch of notes and drafts and crappy prototypes or whatever. code your apps, write your plays and poems. I will die on this hill.</p>&mdash; Visakan Veerasamy (@visakanv) <a href="https://twitter.com/visakanv/status/1451147667732525063?ref_src=twsrc%5Etfw">October 21, 2021</a></blockquote>

@@ -3,7 +3,7 @@
   import { marked } from "marked";
   import Prism from "prismjs";
   import { tick } from "svelte";
-  import Tweet from './Tweet.svelte';
+  import Tweet from '$lib/Tweet.svelte';
   import "prismjs/components/prism-python";
   import "prismjs/themes/prism.css";
   import "prismjs/components/prism-prolog";  
