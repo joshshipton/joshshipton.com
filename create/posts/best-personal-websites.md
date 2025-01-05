@@ -13,3 +13,4 @@ IS_POPULAR=F
 - https://www.joelonsoftware.com/
 - https://blog.codinghorror.com/
 - https://sive.rs/
+- https://milan.cvitkovic.net/

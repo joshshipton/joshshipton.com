@@ -5,22 +5,25 @@ IS_DRAFT=T
 IS_POPULAR=F
 TAGS=[phil]
 ----------
-
 ---NOTES---
+
 plan
 
 - what is taste?
+    - taste is the ability to know what is good and bad
 
-- taste is super important because
+- why i am trying to improve my taste in 2024
     - abundance world
     - you want to be someone who makes beautiful tasteful things
 
-
 - how to develop good taste
     - expose yourself to good taste, follow people with good taste, copy them
+    - be prolific
 
 - closing remarks
     -
+
+sumamry: i am caring more about developing taste in 2025, this is why and how im doing it.
 
 ------
 
@@ -68,6 +71,7 @@ notes
 i think that taste is just knowing what will hit your target audience just right, this is what you need to work on, you need to work on collating things that are beuaitufl and make you feel a certain way.
 
 
+
 ---
 
 
@@ -89,7 +93,9 @@ this is useful becuase it serves as an ideal to strive for, we should try and wo
 
 > Good taste is usefully defined as the capacity for deep aesthetic pleasure, and the discernment to judge whether a given thing is capable of inducing deep aesthetic pleasure - [SO](https://www.sympatheticopposition.com/p/contra-scott-on-taste)
 
-#### why is taste important?
+#### why i want to develop good taste in 2025
+
+i believe that
 
 taste is important because you need to make sure you are working on the right things, you want to be working on things that are going to be recived well.
 
@@ -98,7 +104,6 @@ another important reason is that the more and more abundace we create as a speci
 > "In a world of scarcity, we treasure tools. In a world of abundance, we treasure taste"  - (Anu Atluru)[https://www.workingtheorys.com/p/taste-is-eating-silicon-valley]
 
 #### but how do i develop good taste?
-
 
 great question, im trying to figure this out right now, i think its simpler than most people think.
 
@@ -130,7 +135,6 @@ to quote Visakan Veerasamy who i think is one of the absolute smartest and under
 
 
 > You have a far greater shot at tasting greatest and fun if you siply wriute as much as you possibly can, and then some. Why? because your concept of 'best' is a work-in-progress and a moving target. Why spend a year working on writing the best song you can, when you could instead spend a year improving your idea of what makes a song great?
-
 
 
 if you enjoyed this post you will probably enjoy these as well
