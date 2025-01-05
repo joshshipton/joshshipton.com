@@ -13,6 +13,8 @@ here is the josh shipton reading list, some of my favorite books with a quick an
 
 expect this to change and update over time as i read more and remember things i have read in the past that should defiently be on this list
 
+if a book is on this list it means that i've read it cover to cover and enjoyed it, if its in green i thought it was well above average and if its in blue i thought it was exceptional
+
 # non-fiction 
 
 mindset carol dweck
@@ -32,7 +34,7 @@ biographies
 
 - shoe dog nike one
 - david goggins 
-- trauma cleaer 
+- trauma cleaner
 
 # philosophy 
 
@@ -42,8 +44,6 @@ nietzhe beyond good and evil
 the trouble with being born 
 the myth of sisyphus
 meditations marcus aruelies 
-
-
 
 # fiction books
 
@@ -59,7 +59,7 @@ the name of the wind
 the city of brass
 the king killer chronicles
 red rising 
-
+storm light archive
 
 articles: 
 
@@ -67,5 +67,4 @@ websites:
 
 geroge macks lindy library "the top 0.1% of ideas ive found" - https://www.george-mack.com/content/lindy-library-the-0-1-of-ideas-ive-found
 less wrong i just love the autism
-
 

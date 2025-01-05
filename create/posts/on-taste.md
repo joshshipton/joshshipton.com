@@ -5,7 +5,6 @@ IS_DRAFT=T
 IS_POPULAR=F
 TAGS=[phil]
 ----------
-
 ---NOTES---
 plan
 
@@ -130,7 +129,6 @@ to quote Visakan Veerasamy who i think is one of the absolute smartest and under
 
 
 > You have a far greater shot at tasting greatest and fun if you siply wriute as much as you possibly can, and then some. Why? because your concept of 'best' is a work-in-progress and a moving target. Why spend a year working on writing the best song you can, when you could instead spend a year improving your idea of what makes a song great?
-
 
 
 if you enjoyed this post you will probably enjoy these as well
