@@ -1,6 +1,6 @@
-ID=""
-TITLE=""
-LINK=""
+ID="918374840082976"
+TITLE="you can't afford to not be AURAMAXXING"
+LINK="auramaxxing"
 IS_DRAFT=T
 IS_POPULAR=F
 TAGS=[eg,eg1]

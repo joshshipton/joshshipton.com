@@ -139,16 +139,16 @@ not being scared of producing crappy stuff, i have tons of unfished articles and
 
 to quote Visakan Veerasamy who i think is one of the absolute smartest and under-rated thinkers on the planet
 
-
 > You have a far greater shot at tasting greatest and fun if you siply wriute as much as you possibly can, and then some. Why? because your concept of 'best' is a work-in-progress and a moving target. Why spend a year working on writing the best song you can, when you could instead spend a year improving your idea of what makes a song great?
 
+the other big thing that you can do to work and adapt taste is to criqitize everythng you see, if you see an outfit or advertisment you like or dont like take 10 seconds to express to yourself why you feel that way. try to point out specific things. by taking the internal feeling and forcing yourself to express it into language you start to conciousely understand why some things are better or worse and why you feel differntly towards certain things.
 
-if you enjoyed this post you will probably enjoy these as well
+hanks for comings, this is one part of <a href="https://joshshipton.com/post/what-im-maxxing-in-2025">what i'm maxxing in 2025</a>
 
-links
+further reading if you're intrested in taste
 
+- https://www.workingtheorys.com/p/taste-is-eating-silicon-valley
+- https://www.astralcodexten.com/p/friendly-and-hostile-analogies-for
 - https://www.sympatheticopposition.com/p/contra-scott-on-taste
 - https://thezvi.substack.com/p/a-matter-of-taste
-- https://www.astralcodexten.com/p/friendly-and-hostile-analogies-for
 - https://logos.substack.com/p/on-taste
-- https://www.workingtheorys.com/p/taste-is-eating-silicon-valley

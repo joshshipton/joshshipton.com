@@ -1,6 +1,6 @@
-ID=""
-TITLE=""
-LINK=""
+ID="138911958186648"
+TITLE="luck maxxing"
+LINK="luck"
 IS_DRAFT=T
 IS_POPULAR=F
 TAGS=[eg,eg1]
