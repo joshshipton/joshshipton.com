@@ -1,55 +1,48 @@
-  <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .footer {
-            padding: 10px 0;
-            text-align: center;
-            font-size: 12px;
-            color: #000;
-        }
-        .footer a {
-            color: #000;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .image-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+<!-- +page.svelte -->
+<script>
+  import { PalmtreesIcon, PlaneIcon, GlobeIcon } from 'lucide-svelte';
+</script>
 
+<div class="min-h-screen flex flex-col">
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Travel Experiences</h1>
 
-    <div class="content center">
-        <h2>Sample Travel Review</h2>
-        <div class="image-container">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fhooks%2Fplaceholder-image%2F&psig=AOvVaw2-2QJpU8puCs8RtI_0UsAx&ust=1738212285582000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLi42sCPmosDFQAAAAAdAAAAABAE" alt="Travel destination" />
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="space-y-8">
+      <!-- Section 1 -->
+      <div class="flex items-center gap-4 mb-4">
+        <PalmtreesIcon class="w-8 h-8 text-gray-600" />
+        <h2 class="text-xl font-semibold">Luxury Resorts</h2>
+      </div>
+      <p class="text-gray-600">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris.
+      </p>
 
-        <h2>Destination Highlights</h2>
-        <div class="image-container">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fhooks%2Fplaceholder-image%2F&psig=AOvVaw2-2QJpU8puCs8RtI_0UsAx&ust=1738212285582000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLi42sCPmosDFQAAAAAdAAAAABAE" alt="Destination highlights" />
-        </div>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <!-- Section 2 -->
+      <div class="flex items-center gap-4 mb-4">
+        <PlaneIcon class="w-8 h-8 text-gray-600" />
+        <h2 class="text-xl font-semibold">Flight Reviews</h2>
+      </div>
+      <p class="text-gray-600">
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      </p>
+
+      <!-- Section 3 -->
+      <div class="flex items-center gap-4 mb-4">
+        <GlobeIcon class="w-8 h-8 text-gray-600" />
+        <h2 class="text-xl font-semibold">Global Adventures</h2>
+      </div>
+      <p class="text-gray-600">
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet.
+      </p>
     </div>
-    <div class="footer">
-        <p>Website by <a href="mailto:shiptonjosh@gmail.com">Josh Shipton</a></p>
-    </div>
-</html>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center text-xs">
+    <p>Website by <a href="mailto:shiptonjosh@gmail.com" class="hover:underline">Josh Shipton</a></p>
+  </footer>
+</div>
