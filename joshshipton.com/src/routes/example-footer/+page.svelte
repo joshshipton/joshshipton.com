@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Example</title>
-    <style>
+  <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -40,23 +34,22 @@
             height: auto;
         }
     </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Sample Travel Review</h1>
+
+
+    <div class="content center">
+        <h2>Sample Travel Review</h2>
         <div class="image-container">
-            <img src="/api/placeholder/800/400" alt="Travel destination" />
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fhooks%2Fplaceholder-image%2F&psig=AOvVaw2-2QJpU8puCs8RtI_0UsAx&ust=1738212285582000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLi42sCPmosDFQAAAAAdAAAAABAE" alt="Travel destination" />
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
         <h2>Destination Highlights</h2>
         <div class="image-container">
-            <img src="/api/placeholder/800/400" alt="Destination highlights" />
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fhooks%2Fplaceholder-image%2F&psig=AOvVaw2-2QJpU8puCs8RtI_0UsAx&ust=1738212285582000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLi42sCPmosDFQAAAAAdAAAAABAE" alt="Destination highlights" />
         </div>
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
     <div class="footer">
         <p>Website by <a href="mailto:shiptonjosh@gmail.com">Josh Shipton</a></p>
     </div>
-</body>
 </html>
