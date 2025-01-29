@@ -1,8 +1,3 @@
-<!-- +page.svelte -->
-<script>
-  import { PalmtreesIcon, PlaneIcon, GlobeIcon } from 'lucide-svelte';
-</script>
-
 <div class="min-h-screen flex flex-col">
   <main class="flex-1 max-w-3xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6">Travel Experiences</h1>
